@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBridge – Giving Project Präsentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+
+:root {
+  --dep:#5b8dee;--dep-dark:#2d55b0;--dep-light:#e8f0ff;
+  --bor:#e0607e;--bor-dark:#a03050;--bor-light:#fde8ed;
+  --aut:#43b89c;--aut-dark:#1e7a62;--aut-light:#e0f5f0;
+  --bg:#f5f4f0;--card:#fff;--text:#1a1a2e;--muted:#7a7a8c;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:#dddbd4;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:32px 16px;}
+.phone{width:390px;background:#1a1a2e;border-radius:52px;padding:14px;box-shadow:0 0 0 2px #2d2d45,0 40px 80px rgba(0,0,0,0.4);position:relative;}
+.phone::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:110px;height:32px;background:#1a1a2e;border-radius:0 0 18px 18px;z-index:10;}
+.screen{background:var(--bg);border-radius:40px;height:812px;overflow:hidden;position:relative;display:flex;flex-direction:column;}
+.page{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;}
+.page.active{display:flex;}
+.status{padding:52px 28px 8px;display:flex;justify-content:space-between;font-size:12px;font-weight:700;flex-shrink:0;color:rgba(255,255,255,0.7);}
+.status.dark{color:var(--muted);}
+
+/* HOME */
+#home{background:linear-gradient(160deg,#1a1a2e 0%,#252545 60%,#1a1a2e 100%);}
+.home-body{flex:1;overflow-y:auto;padding:12px 24px 100px;scrollbar-width:none;}
+.home-body::-webkit-scrollbar{display:none;}
+.home-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+.home-title{font-family:'Lora',serif;font-size:28px;font-weight:600;color:white;line-height:1.2;margin-bottom:8px;}
+.home-title span{color:#8ab4ff;}
+.home-sub{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:28px;}
+.section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;}
+.topic-list{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+.topic-btn{width:100%;border:none;border-radius:20px;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;text-align:left;position:relative;overflow:hidden;transition:transform 0.15s,box-shadow 0.15s;}
+.topic-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.topic-btn:active{transform:scale(0.98);}
+.topic-btn.dep{background:linear-gradient(135deg,#3a5fc4,#5b8dee);}
+.topic-btn.bor{background:linear-gradient(135deg,#a03050,#e0607e);}
+.topic-btn.aut{background:linear-gradient(135deg,#1e7a62,#43b89c);}
+.topic-btn::after{content:'';position:absolute;right:-24px;top:-24px;width:90px;height:90px;background:rgba(255,255,255,0.08);border-radius:50%;}
+.t-icon{width:48px;height:48px;background:rgba(255,255,255,0.18);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.t-info{flex:1;}
+.t-name{font-family:'Lora',serif;font-size:17px;font-weight:600;color:white;}
+.t-arr{color:rgba(255,255,255,0.4);font-size:18px;}
+.sos-btn{width:100%;background:rgba(255,100,100,0.1);border:1.5px solid rgba(255,100,100,0.25);border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left;}
+.sos-title{font-size:13px;font-weight:700;color:#ff9999;}
+.sos-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.bottom-nav{position:absolute;bottom:0;left:0;right:0;background:rgba(18,18,38,0.95);backdrop-filter:blur(20px);display:flex;padding:10px 0 24px;border-radius:0 0 40px 40px;border-top:1px solid rgba(255,255,255,0.06);}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);}
+.nav-item.active{color:#8ab4ff;}
+.nav-icon{font-size:20px;}
+.bottom-nav-light{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-top:1px solid rgba(0,0,0,0.07);display:flex;padding:10px 0 22px;border-radius:0 0 40px 40px;}
+.nav-item-light{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;font-size:10px;font-weight:700;color:#bbb;}
+.nav-item-light.active{color:var(--dep);}
+
+/* TOPIC */
+#topic{background:var(--bg);}
+.topic-header{padding:50px 20px 20px;flex-shrink:0;position:relative;}
+.back-btn{position:absolute;top:50px;left:16px;width:34px;height:34px;background:rgba(255,255,255,0.25);border:none;border-radius:12px;color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.topic-header h2{font-family:'Lora',serif;font-size:24px;font-weight:600;color:white;margin-top:34px;}
+.tab-bar{display:flex;gap:8px;padding:12px 16px;background:white;border-bottom:1px solid #ebebeb;flex-shrink:0;overflow-x:auto;scrollbar-width:none;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:7px 14px;border-radius:20px;border:1.5px solid #e0e0e0;background:transparent;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;white-space:nowrap;}
+.tab-btn.active{color:white;border-color:transparent;}
+.tab-content{flex:1;overflow-y:auto;padding:16px;display:none;flex-direction:column;gap:12px;scrollbar-width:none;padding-bottom:24px;}
+.tab-content::-webkit-scrollbar{display:none;}
+.tab-content.active{display:flex;}
+
+/* CARDS */
+.card{background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.card-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.card-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.card p{font-size:12.5px;color:#4a4a5a;line-height:1.7;}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:4px;}
+.card ul li{font-size:12.5px;color:#4a4a5a;line-height:1.55;padding-left:16px;position:relative;}
+.card ul li::before{content:'→';position:absolute;left:0;font-weight:800;font-size:11px;}
+
+/* MYTH */
+.myth-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.myth-top{background:#fff0f0;padding:14px 16px 10px;border-bottom:1px solid #ffe0e0;}
+.myth-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#cc3333;margin-bottom:5px;}
+.myth-text{font-size:13px;font-weight:700;color:#4a1a1a;line-height:1.4;font-style:italic;}
+.myth-bottom{background:#f0faf5;padding:10px 16px 14px;}
+.real-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#1e7a62;margin-bottom:5px;}
+.real-text{font-size:12.5px;color:#1a3a2a;line-height:1.6;}
+
+/* EXPERIENCE */
+.exp-card{background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-left:4px solid #e0e0e0;}
+.exp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.exp-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.exp-name{font-size:13px;font-weight:800;color:var(--text);}
+.exp-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:2px;display:inline-block;color:white;}
+.exp-text{font-size:12.5px;color:#4a4a5a;line-height:1.7;font-style:italic;}
+.exp-quote{font-size:13px;color:var(--text);font-weight:700;margin-top:10px;padding-top:10px;border-top:1px solid #f0f0f0;font-style:normal;}
+
+/* AKUT - ACCORDION - FIXED SCROLL */
+.akut-cat{background:white;border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);flex-shrink:0;}
+.akut-cat-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+.akut-cat-title{font-size:13px;font-weight:800;color:white;}
+.akut-arrow{color:rgba(255,255,255,0.7);font-size:14px;transition:transform 0.3s;flex-shrink:0;}
+.akut-arrow.open{transform:rotate(180deg);}
+.akut-cat-body{overflow:hidden;max-height:0;transition:max-height 0.4s ease;}
+.akut-cat-body.open{max-height:2000px;}
+.akut-cat-inner{padding:8px 16px 14px;display:flex;flex-direction:column;gap:8px;}
+.akut-item{background:#f8faff;border-radius:12px;padding:12px 14px;border-left:3px solid transparent;}
+.akut-item-title{font-size:12px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.akut-item p{font-size:12px;color:#5a5a6a;line-height:1.65;}
+.akut-steps{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:4px;}
+.akut-steps li{font-size:11.5px;color:#5a5a6a;line-height:1.6;padding-left:14px;position:relative;}
+.akut-steps li::before{content:'›';position:absolute;left:0;font-weight:800;color:#999;}
+
+/* CRISIS */
+.crisis-box{background:linear-gradient(135deg,#6a3080,#9a50b0);border-radius:18px;padding:18px;flex-shrink:0;}
+.crisis-box .c-title{font-size:14px;font-weight:800;color:white;margin-bottom:8px;}
+.crisis-box p{font-size:12.5px;color:rgba(255,255,255,0.88);line-height:1.6;}
+.crisis-number{font-size:20px;font-weight:900;color:white;margin:10px 0 4px;font-family:'Lora',serif;}
+
+/* UMFELD */
+.umfeld-card{background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.umfeld-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.umfeld-icon{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.umfeld-title{font-size:13px;font-weight:800;color:var(--text);}
+.umfeld-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.umfeld-card ul li{font-size:12.5px;color:#4a4a5a;line-height:1.6;padding-left:20px;position:relative;}
+.umfeld-card ul li::before{content:'→';position:absolute;left:0;font-weight:800;font-size:11px;color:#999;}
+
+/* LERNEN */
+#lernen{background:var(--bg);}
+.lernen-header{padding:12px 16px 8px;flex-shrink:0;}
+.lernen-header h2{font-family:'Lora',serif;font-size:22px;color:var(--text);}
+.lernen-header p{font-size:12px;color:var(--muted);margin-top:4px;}
+.lernen-body{flex:1;overflow-y:auto;padding:0 16px 90px;scrollbar-width:none;}
+.lernen-body::-webkit-scrollbar{display:none;}
+.lernpfad-card{background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;cursor:pointer;transition:transform 0.15s;}
+.lernpfad-card:hover{transform:translateY(-2px);}
+.lp-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.lp-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.lp-title{font-size:14px;font-weight:800;color:var(--text);}
+.lp-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.lp-progress{height:6px;background:#f0f0f0;border-radius:10px;overflow:hidden;margin-bottom:8px;}
+.lp-bar{height:100%;border-radius:10px;transition:width 0.5s;}
+.lp-stats{display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--muted);}
+.lp-back{background:transparent;border:none;font-size:14px;font-weight:800;color:var(--muted);cursor:pointer;text-align:left;padding:4px 0 12px;font-family:'Nunito',sans-serif;}
+.lesson-card{background:white;border-radius:18px;padding:16px 18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:10px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:transform 0.15s;}
+.lesson-card:hover{transform:translateX(4px);}
+.lesson-num{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.lesson-title{font-size:13px;font-weight:800;color:var(--text);}
+.lesson-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.lesson-view{position:absolute;inset:0;background:var(--bg);display:none;flex-direction:column;border-radius:40px;overflow:hidden;}
+.lesson-view.active{display:flex;}
+.lesson-header{padding:50px 20px 16px;flex-shrink:0;position:relative;}
+.lv-back{position:absolute;top:50px;left:16px;width:34px;height:34px;background:rgba(255,255,255,0.25);border:none;border-radius:12px;color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.lv-title{font-family:'Lora',serif;font-size:20px;font-weight:600;color:white;margin-top:34px;}
+.lesson-body{flex:1;overflow-y:auto;padding:16px;scrollbar-width:none;padding-bottom:24px;}
+.lesson-body::-webkit-scrollbar{display:none;}
+.lesson-block{background:white;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);}
+.lesson-block h4{font-size:13px;font-weight:800;color:var(--text);margin-bottom:8px;}
+.lesson-block p{font-size:12.5px;color:#4a4a5a;line-height:1.7;}
+.lesson-block ul{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:6px;}
+.lesson-block ul li{font-size:12.5px;color:#4a4a5a;line-height:1.55;padding-left:16px;position:relative;}
+.lesson-block ul li::before{content:'•';position:absolute;left:4px;font-weight:800;}
+.quiz-mini{background:white;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);}
+.quiz-mini h4{font-size:13px;font-weight:800;color:var(--text);margin-bottom:12px;}
+.qm-opts{display:flex;flex-direction:column;gap:8px;}
+.qm-opt{padding:10px 14px;border-radius:12px;border:2px solid #e8e8e8;background:transparent;font-family:'Nunito',sans-serif;font-size:12.5px;font-weight:700;color:var(--text);cursor:pointer;text-align:left;transition:all 0.2s;}
+.qm-opt.correct{background:#e0f5f0;border-color:#43b89c;color:#1e7a62;}
+.qm-opt.wrong{background:#fde8ed;border-color:#e0607e;color:#a03050;}
+.qm-fb{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:12px;line-height:1.6;display:none;}
+.qm-fb.show{display:block;}
+.qm-fb.c{background:#e0f5f0;color:#1e7a62;}
+.qm-fb.w{background:#fde8ed;color:#a03050;}
+.lesson-finish{width:100%;padding:14px;border-radius:16px;border:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:white;cursor:pointer;margin-top:8px;}
+
+/* FORUM */
+#forum{background:var(--bg);}
+.forum-compose{margin:0 16px 12px;background:white;border-radius:16px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;flex-shrink:0;}
+.forum-compose-text{font-size:13px;color:#bbb;font-weight:600;flex:1;}
+.forum-compose-btn{background:var(--dep);color:white;border:none;border-radius:10px;padding:6px 12px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer;}
+.forum-post{background:white;border-radius:18px;padding:16px 18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.fp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.fp-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.fp-name{font-size:13px;font-weight:800;color:var(--text);}
+.fp-time{font-size:11px;color:var(--muted);}
+.fp-text{font-size:12.5px;color:#4a4a5a;line-height:1.6;margin-bottom:10px;}
+.fp-actions{display:flex;gap:12px;}
+.fp-action{font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;background:none;border:none;font-family:'Nunito',sans-serif;padding:0;}
+.fp-action:hover{color:var(--dep);}
+.fp-replies{margin-top:12px;padding-top:12px;border-top:1px solid #f0f0f0;display:none;flex-direction:column;gap:10px;}
+.fp-replies.open{display:flex;}
+.fp-reply{display:flex;gap:8px;}
+.fp-reply-avatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:#f0f0f0;}
+.fp-reply-bubble{background:#f8f8f8;border-radius:12px;padding:8px 12px;flex:1;}
+.fp-reply-name{font-size:11px;font-weight:800;color:var(--text);margin-bottom:3px;}
+.fp-reply-text{font-size:11.5px;color:#5a5a6a;line-height:1.5;}
+.fp-reply-input{display:flex;gap:8px;margin-top:10px;}
+.fp-reply-field{flex:1;background:#f0f0f0;border:none;border-radius:12px;padding:8px 12px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;outline:none;}
+.fp-reply-send{background:var(--dep);color:white;border:none;border-radius:12px;padding:8px 12px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer;}
+.compose-modal{position:absolute;inset:0;background:white;border-radius:40px;display:none;flex-direction:column;z-index:100;}
+.compose-modal.active{display:flex;}
+.compose-header{padding:50px 20px 16px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid #f0f0f0;flex-shrink:0;}
+.compose-title{font-family:'Lora',serif;font-size:20px;color:var(--text);}
+.compose-post-btn{background:var(--dep);color:white;border:none;border-radius:12px;padding:8px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;}
+.compose-body{flex:1;padding:20px;}
+.compose-field{width:100%;border:none;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);resize:none;outline:none;line-height:1.7;height:120px;}
+.compose-field::placeholder{color:#ccc;}
+.compose-tags{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 20px;}
+.compose-tag{padding:6px 14px;border-radius:20px;border:1.5px solid #e0e0e0;background:transparent;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;}
+.compose-tag.selected{border-color:var(--dep);color:var(--dep);background:var(--dep-light);}
+.compose-cancel{background:transparent;border:none;font-size:22px;color:var(--muted);cursor:pointer;padding:0;}
+
+/* PROFIL */
+#profil{background:var(--bg);}
+.profil-header{background:linear-gradient(160deg,#1a1a2e,#252545);padding:60px 24px 28px;text-align:center;flex-shrink:0;}
+.profil-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--dep),var(--aut));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+.profil-name{font-family:'Lora',serif;font-size:20px;color:white;margin-bottom:4px;}
+.profil-sub{font-size:12px;color:rgba(255,255,255,0.5);}
+.profil-body{flex:1;overflow-y:auto;padding:16px;scrollbar-width:none;padding-bottom:80px;}
+.profil-body::-webkit-scrollbar{display:none;}
+.profil-stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+.stat-card{background:white;border-radius:16px;padding:14px 10px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.stat-num{font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--dep);margin-bottom:3px;}
+.stat-label{font-size:10px;font-weight:700;color:var(--muted);}
+.profil-section-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:8px;}
+.profil-item{background:white;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);cursor:pointer;transition:transform 0.15s;}
+.profil-item:hover{transform:translateX(3px);}
+.profil-item-icon{font-size:20px;}
+.profil-item-text{flex:1;}
+.profil-item-title{font-size:13px;font-weight:700;color:var(--text);}
+.profil-item-sub{font-size:11px;color:var(--muted);margin-top:1px;}
+.profil-item-arr{color:#ccc;font-size:16px;}
+.subpage{position:absolute;inset:0;background:var(--bg);border-radius:40px;display:none;flex-direction:column;overflow:hidden;}
+.subpage.active{display:flex;}
+.subpage-header{padding:50px 20px 16px;background:linear-gradient(160deg,#1a1a2e,#252545);position:relative;flex-shrink:0;}
+.sp-back{position:absolute;top:50px;left:16px;width:34px;height:34px;background:rgba(255,255,255,0.2);border:none;border-radius:12px;color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.subpage-header h2{font-family:'Lora',serif;font-size:20px;color:white;margin-top:34px;}
+.subpage-body{flex:1;overflow-y:auto;padding:16px;scrollbar-width:none;padding-bottom:24px;}
+.subpage-body::-webkit-scrollbar{display:none;}
+.source-group{background:white;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.source-group-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.source-entry{font-size:12px;color:#4a4a5a;line-height:1.7;padding:6px 0;border-bottom:1px solid #f5f5f5;}
+.source-entry:last-child{border-bottom:none;padding-bottom:0;}
+
+
+/* ===== PRESENTATION LAYOUT ===== */
+body {
+  font-family:'Nunito',sans-serif;
+  background:#e2dfd8;
+  min-height:100vh;
+  padding:32px 24px 60px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:28px;
+}
+.pres-title {
+  text-align:center;
+}
+.pres-title h1 {
+  font-family:'Lora',serif;
+  font-size:44px;
+  font-weight:600;
+  color:#1a1a2e;
+  letter-spacing:-1px;
+}
+.pres-title h1 span { color:#5b8dee; }
+.pres-title p {
+  font-size:14px;
+  color:#7a7a8c;
+  margin-top:6px;
+  font-weight:600;
+}
+
+.main-layout {
+  display:flex;
+  gap:36px;
+  align-items:flex-start;
+  width:100%;
+  max-width:1280px;
+}
+
+/* Phone wrap keeps v4 phone styles intact */
+.phone-wrap { flex-shrink:0; }
+
+/* RIGHT PANEL */
+.right-panel {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  min-width:0;
+}
+
+/* PRESENTATION BOXES */
+.pbox {
+  background:white;
+  border-radius:20px;
+  padding:22px 24px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);
+}
+.pbox-dark {
+  background:linear-gradient(160deg,#1a1a2e,#252545);
+  border-radius:20px;
+  padding:22px 24px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.18);
+}
+.pbox-accent {
+  border-radius:20px;
+  padding:22px 24px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);
+}
+.pbox-header {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+.pbox-num {
+  width:32px;height:32px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Lora',serif;
+  font-size:16px;font-weight:600;
+  color:white;
+  flex-shrink:0;
+}
+.pbox h3 {
+  font-family:'Lora',serif;
+  font-size:16px;font-weight:600;
+  color:#1a1a2e;
+}
+.pbox-dark h3 { color:white; }
+.pbox p {
+  font-size:13px;color:#4a4a5a;line-height:1.7;
+}
+.pbox-dark p { color:rgba(255,255,255,0.72);line-height:1.7;font-size:13px; }
+.pbox ul {
+  list-style:none;
+  display:flex;flex-direction:column;gap:7px;
+  margin-top:8px;
+}
+.pbox ul li {
+  font-size:13px;color:#4a4a5a;line-height:1.5;
+  padding-left:18px;position:relative;
+}
+.pbox ul li::before { content:'✓';position:absolute;left:0;color:#43b89c;font-weight:800; }
+.pbox-dark ul li { color:rgba(255,255,255,0.72); }
+.pbox-dark ul li::before { color:#8ab4ff; }
+
+.tag-row { display:flex;flex-wrap:wrap;gap:8px;margin-top:12px; }
+.tag { padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700; }
+.tag-dep { background:#e8f0ff;color:#2d55b0; }
+.tag-bor { background:#fde8ed;color:#a03050; }
+.tag-aut { background:#e0f5f0;color:#1e7a62; }
+.tag-gray { background:#f0f0f4;color:#5a5a6a; }
+
+.dev-row { display:flex;gap:14px;align-items:flex-start;margin-bottom:14px; }
+.dev-avatar {
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,#5b8dee,#43b89c);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;flex-shrink:0;
+}
+.dev-name { font-family:'Lora',serif;font-size:18px;color:white;margin-bottom:2px; }
+.dev-role { font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:8px; }
+.dev-text { font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65; }
+.dev-quote {
+  margin-top:14px;padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  font-size:13px;color:#8ab4ff;
+  font-style:italic;font-weight:600;line-height:1.6;
+}
+
+.giving-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
+}
+.giving-item {
+  background:rgba(255,255,255,0.07);
+  border-radius:14px;padding:14px 12px;
+}
+.gi-icon { font-size:20px;margin-bottom:6px; }
+.gi-title { font-size:12px;font-weight:800;color:white;margin-bottom:4px; }
+.gi-text { font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5; }
+
+.feedback-row {
+  display:flex;gap:10px;margin-top:12px;
+}
+.feedback-bubble {
+  background:#f5f4f0;border-radius:14px;padding:12px 14px;flex:1;
+}
+.fb-avatar {
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;margin-bottom:6px;
+}
+.fb-name { font-size:11px;font-weight:800;color:#1a1a2e;margin-bottom:4px; }
+.fb-text { font-size:11.5px;color:#4a4a5a;line-height:1.5; }
+
+.bewirkt-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
+}
+.bewirkt-item {
+  background:#f5f4f0;border-radius:14px;padding:14px 12px;
+}
+.bewirkt-icon { font-size:20px;margin-bottom:6px; }
+.bewirkt-title { font-size:12px;font-weight:800;color:#1a1a2e;margin-bottom:4px; }
+.bewirkt-text { font-size:11px;color:#5a5a6a;line-height:1.5; }
+
+/* QR BOX */
+.qr-box {
+  background:white;border-radius:20px;
+  padding:22px 24px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);
+  text-align:center;
+}
+.qr-box h3 { font-family:'Lora',serif;font-size:16px;color:#1a1a2e;margin-bottom:6px; }
+.qr-box p { font-size:12px;color:#7a7a8c;margin-bottom:14px;line-height:1.5; }
+#qrcode { display:flex;justify-content:center;margin-bottom:12px; }
+.qr-url { font-size:11px;font-weight:700;color:#5b8dee;word-break:break-all;padding:8px 12px;background:#e8f0ff;border-radius:10px;margin-bottom:12px; }
+.qr-steps { display:flex;flex-direction:column;gap:6px;text-align:left; }
+.qr-step { display:flex;align-items:center;gap:8px;font-size:12px;color:#4a4a5a;font-weight:600; }
+.qr-step-num { width:20px;height:20px;border-radius:50%;background:#5b8dee;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0; }
+
+.zwei-col { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+
+</style>
+</head>
+<body>
+
+<div class="pres-title">
+  <h1>Mind<span>Bridge</span></h1>
+  <p>Giving Project · Mindful Leadership · Wirtschaftspsychologie · Alina, 24</p>
+</div>
+
+<div class="main-layout">
+
+  <!-- PHONE (vollständige v4 Inhalte) -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="page active" id="home">
+  <div class="status">9:41<span>●●●</span></div>
+  <div class="home-body">
+    <div class="home-label">Willkommen</div>
+    <h2 class="home-title">Wie kann ich dir <span>heute helfen?</span></h2>
+    <p class="home-sub">Wähle ein Thema – für dich selbst oder um jemanden besser zu verstehen.</p>
+    <div class="section-label">Themen</div>
+    <div class="topic-list">
+      <button class="topic-btn dep" onclick="openTopic('dep')"><div class="t-icon">🌧️</div><div class="t-info"><div class="t-name">Depression</div></div><div class="t-arr">›</div></button>
+      <button class="topic-btn bor" onclick="openTopic('bor')"><div class="t-icon">🌊</div><div class="t-info"><div class="t-name">Borderline</div></div><div class="t-arr">›</div></button>
+      <button class="topic-btn aut" onclick="openTopic('aut')"><div class="t-icon">🧩</div><div class="t-info"><div class="t-name">Autismus</div></div><div class="t-arr">›</div></button>
+    </div>
+    <button class="sos-btn" onclick="openTopic('dep');setTimeout(()=>switchTab('akut'),100)">
+      <div style="font-size:20px;">🆘</div>
+      <div><div class="sos-title">Akut in Not?</div><div class="sos-sub">Sofortige Hilfe & Krisentelefon</div></div>
+      <div style="color:rgba(255,100,100,0.5);font-size:16px;">›</div>
+    </button>
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active" onclick="showPage('home')"><div class="nav-icon">🏠</div>Home</div>
+    <div class="nav-item" onclick="showPage('lernen')"><div class="nav-icon">🎮</div>Lernen</div>
+    <div class="nav-item" onclick="showPage('forum')"><div class="nav-icon">💬</div>Forum</div>
+    <div class="nav-item" onclick="showPage('profil')"><div class="nav-icon">👤</div>Profil</div>
+  </div>
+</div>
+
+<!-- TOPIC -->
+<div class="page" id="topic">
+  <div class="topic-header" id="topicHeader">
+    <button class="back-btn" onclick="showPage('home')">‹</button>
+    <h2 id="topicTitle">–</h2>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tb-verstehen" onclick="switchTab('verstehen',this)">🔍 Verstehen</button>
+    <button class="tab-btn" id="tb-akut" onclick="switchTab('akut',this)">⚡ Akut</button>
+    <button class="tab-btn" id="tb-umfeld" onclick="switchTab('umfeld',this)">🤝 Umfeld</button>
+  </div>
+  <div class="tab-content active" id="tab-verstehen"></div>
+  <div class="tab-content" id="tab-akut"></div>
+  <div class="tab-content" id="tab-umfeld"></div>
+</div>
+
+<!-- LERNEN -->
+<div class="page" id="lernen">
+  <div class="status dark">9:41<span>●●●</span></div>
+  <div class="lernen-header"><h2>🎮 Lernen</h2><p>Wähle einen Lernpfad</p></div>
+  <div class="lernen-body" id="lernen-home"><div id="lernpfade-list"></div></div>
+  <div class="lernen-body" id="lernen-detail" style="display:none;">
+    <button class="lp-back" onclick="showLernenHome()">‹ Zurück</button>
+    <div id="lessonsList"></div>
+  </div>
+  <div class="lesson-view" id="lessonView">
+    <div class="lesson-header" id="lessonHeader">
+      <button class="lv-back" onclick="closeLessonView()">‹</button>
+      <div class="lv-title" id="lessonTitle">–</div>
+    </div>
+    <div class="lesson-body" id="lessonBody"></div>
+  </div>
+  <div class="bottom-nav-light">
+    <div class="nav-item-light" onclick="showPage('home')"><div class="nav-icon">🏠</div>Home</div>
+    <div class="nav-item-light active"><div class="nav-icon">🎮</div>Lernen</div>
+    <div class="nav-item-light" onclick="showPage('forum')"><div class="nav-icon">💬</div>Forum</div>
+    <div class="nav-item-light" onclick="showPage('profil')"><div class="nav-icon">👤</div>Profil</div>
+  </div>
+</div>
+
+<!-- FORUM -->
+<div class="page" id="forum">
+  <div class="status dark">9:41<span>●●●</span></div>
+  <div style="padding:0 16px 10px;flex-shrink:0;"><h2 style="font-family:'Lora',serif;font-size:22px;color:var(--text);">💬 Forum</h2><p style="font-size:12px;color:var(--muted);margin-top:2px;">Erfahrungen teilen & Unterstützung finden</p></div>
+  <div class="forum-compose" onclick="openCompose()"><div class="forum-compose-text">Was möchtest du teilen?</div><button class="forum-compose-btn">+ Beitrag</button></div>
+  <div style="flex:1;overflow-y:auto;padding:0 16px;scrollbar-width:none;display:flex;flex-direction:column;gap:12px;padding-bottom:90px;" id="forumList"></div>
+  <div class="compose-modal" id="composeModal">
+    <div class="compose-header"><div class="compose-title">Neuer Beitrag</div><button class="compose-cancel" onclick="closeCompose()">✕</button></div>
+    <textarea class="compose-field" id="composeField" placeholder="Was möchtest du teilen oder fragen?"></textarea>
+    <div class="compose-tags">
+      <button class="compose-tag" onclick="toggleTag(this)">Depression</button>
+      <button class="compose-tag" onclick="toggleTag(this)">Borderline</button>
+      <button class="compose-tag" onclick="toggleTag(this)">Autismus</button>
+      <button class="compose-tag" onclick="toggleTag(this)">Umfeld</button>
+      <button class="compose-tag" onclick="toggleTag(this)">Frage</button>
+    </div>
+    <div style="padding:0 20px;"><button class="compose-post-btn" style="width:100%;padding:14px;" onclick="submitPost()">Veröffentlichen</button></div>
+  </div>
+  <div class="bottom-nav-light">
+    <div class="nav-item-light" onclick="showPage('home')"><div class="nav-icon">🏠</div>Home</div>
+    <div class="nav-item-light" onclick="showPage('lernen')"><div class="nav-icon">🎮</div>Lernen</div>
+    <div class="nav-item-light active"><div class="nav-icon">💬</div>Forum</div>
+    <div class="nav-item-light" onclick="showPage('profil')"><div class="nav-icon">👤</div>Profil</div>
+  </div>
+</div>
+
+<!-- PROFIL -->
+<div class="page" id="profil">
+  <div class="profil-header">
+    <div class="profil-avatar">🌱</div>
+    <div class="profil-name">Dein Profil</div>
+    <div class="profil-sub">MindBridge Nutzer:in</div>
+  </div>
+  <div class="profil-body">
+    <div class="profil-stat-row">
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Themen</div></div>
+      <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Lektionen</div></div>
+      <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Tage aktiv</div></div>
+    </div>
+    <div class="profil-section-title">Einstellungen</div>
+    <div class="profil-item"><div class="profil-item-icon">🔔</div><div class="profil-item-text"><div class="profil-item-title">Benachrichtigungen</div><div class="profil-item-sub">Tägliche Erinnerungen</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-item"><div class="profil-item-icon">🔒</div><div class="profil-item-text"><div class="profil-item-title">Datenschutz</div><div class="profil-item-sub">Anonym & sicher</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-item"><div class="profil-item-icon">❤️</div><div class="profil-item-text"><div class="profil-item-title">Gespeicherte Inhalte</div><div class="profil-item-sub">Deine Favoriten</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-section-title">Über die App</div>
+    <div class="profil-item" onclick="showSubpage('quellenPage')"><div class="profil-item-icon">📚</div><div class="profil-item-text"><div class="profil-item-title">Quellen & Wissenschaft</div><div class="profil-item-sub">DSM-5, WHO, peer-reviewed Studien</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-item"><div class="profil-item-icon">💌</div><div class="profil-item-text"><div class="profil-item-title">Feedback geben</div><div class="profil-item-sub">Hilf uns zu verbessern</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-item"><div class="profil-item-icon">ℹ️</div><div class="profil-item-text"><div class="profil-item-title">Über MindBridge</div><div class="profil-item-sub">Version 1.0 · Giving Project</div></div><div class="profil-item-arr">›</div></div>
+  </div>
+  <div class="bottom-nav-light" style="position:absolute;">
+    <div class="nav-item-light" onclick="showPage('home')"><div class="nav-icon">🏠</div>Home</div>
+    <div class="nav-item-light" onclick="showPage('lernen')"><div class="nav-icon">🎮</div>Lernen</div>
+    <div class="nav-item-light" onclick="showPage('forum')"><div class="nav-icon">💬</div>Forum</div>
+    <div class="nav-item-light active"><div class="nav-icon">👤</div>Profil</div>
+  </div>
+  <div class="subpage" id="quellenPage">
+    <div class="subpage-header"><button class="sp-back" onclick="hideSubpage('quellenPage')">‹</button><h2>Quellen & Wissenschaft</h2></div>
+    <div class="subpage-body">
+      <div class="source-group">
+        <div class="source-group-title" style="color:var(--dep);">🌧️ Depression</div>
+        <div class="source-entry">WHO (2023). Depressive disorder. World Health Organization.</div>
+        <div class="source-entry">American Psychiatric Association (2022). DSM-5-TR. APA Publishing.</div>
+        <div class="source-entry">Krishnan & Nestler (2008). Molecular neurobiology of depression. Nature, 455, 894–902.</div>
+        <div class="source-entry">Haddad (2001). Antidepressant discontinuation syndromes. Drug Safety, 24(3).</div>
+        <div class="source-entry">Blumenthal et al. (2007). Exercise and pharmacotherapy in depression. Psychosomatic Medicine.</div>
+        <div class="source-entry">Joiner & Coyne (1999). The Interactional Nature of Depression. APA.</div>
+      </div>
+      <div class="source-group">
+        <div class="source-group-title" style="color:var(--bor);">🌊 Borderline</div>
+        <div class="source-entry">Linehan (1993). Cognitive-Behavioral Treatment of BPD. Guilford Press.</div>
+        <div class="source-entry">Linehan (2015). DBT Skills Training Manual, 2nd Ed. Guilford Press.</div>
+        <div class="source-entry">Zanarini et al. (2012). Remission in BPD. American Journal of Psychiatry, 169(5).</div>
+        <div class="source-entry">Fruzzetti (2006). The High-Conflict Couple. New Harbinger.</div>
+      </div>
+      <div class="source-group">
+        <div class="source-group-title" style="color:var(--aut);">🧩 Autismus</div>
+        <div class="source-entry">WHO ICD-11 (2022), Kapitel 6A02.</div>
+        <div class="source-entry">Lord et al. (2018). Autism spectrum disorder. Nature Reviews Disease Primers, 4.</div>
+        <div class="source-entry">Milton (2012). On the ontological status of autism. Disability & Society, 27(6).</div>
+        <div class="source-entry">Hull et al. (2020). Social Camouflaging in Autistic Adults. JADD.</div>
+        <div class="source-entry">Kapp et al. (2019). Autistic Adults' Views on Stimming. Autism, 23(7).</div>
+        <div class="source-entry">Lai et al. (2015). Sex/gender differences in autism. Lancet Neurology, 14(12).</div>
+        <div class="source-entry">Zwaigenbaum et al. (2015). Early identification of ASD. Pediatrics, 136.</div>
+      </div>
+      <div class="source-group">
+        <div class="source-group-title" style="color:#888;">⚡ Akutmethoden</div>
+        <div class="source-entry">Linehan (2015). DBT Skills Training Manual. Guilford Press.</div>
+        <div class="source-entry">Hayes (2019). A Liberated Mind. Avery. (ACT / Gedankenjournaling)</div>
+        <div class="source-entry">Hochschule Osnabrück – Vorlesungsunterlagen Mindful Leadership.</div>
+        <div class="source-entry">Telefonseelsorge: online.telefonseelsorge.de · Notfall: 112</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL: 5 Präsentationspunkte -->
+  <div class="right-panel">
+
+    <!-- ÜBER MICH + GIVING POTENTIAL -->
+    <div class="pbox-dark">
+      <div class="dev-row">
+        <div class="dev-avatar">🌱</div>
+        <div>
+          <div class="dev-name">Alina, 24</div>
+          <div class="dev-role">Wirtschaftspsychologie · Schwerpunkt Marketing · Mindful Leadership</div>
+          <div class="dev-text">Ich lebe selbst mit Depression. In meinem direkten Umfeld gibt es Menschen mit Autismus und Borderline. Ich weiß wie es sich anfühlt, wenn man nicht weiß wie man jemandem helfen soll – oder wie man sich selbst erklären soll.</div>
+        </div>
+      </div>
+      <div class="dev-quote">„Was mir gefehlt hat: eine Ressource die erklärt UND sofort hilft – für Betroffene und ihr Umfeld. MindBridge ist diese Ressource."</div>
+    </div>
+
+    <!-- 1. GIVING POTENTIAL -->
+    <div class="pbox-dark">
+      <div class="pbox-header">
+        <div class="pbox-num" style="background:#5b8dee;">1</div>
+        <h3>Giving Potential</h3>
+      </div>
+      <div class="giving-grid">
+        <div class="giving-item">
+          <div class="gi-icon">🧠</div>
+          <div class="gi-title">Wissen</div>
+          <div class="gi-text">Wirtschaftspsychologie, Mindful Leadership, wissenschaftliche Recherche zu DSM-5, WHO, DBT & ACT</div>
+        </div>
+        <div class="giving-item">
+          <div class="gi-icon">💙</div>
+          <div class="gi-title">Erfahrung</div>
+          <div class="gi-text">Eigene Depression, nahestehende Menschen mit Autismus & Borderline – beide Perspektiven aus dem Leben</div>
+        </div>
+        <div class="giving-item">
+          <div class="gi-icon">💻</div>
+          <div class="gi-title">Fähigkeiten</div>
+          <div class="gi-text">App entwickelt trotz wenig Programmiererfahrung – mit Lernbereitschaft und Mut zum Anfangen</div>
+        </div>
+        <div class="giving-item">
+          <div class="gi-icon">❤️</div>
+          <div class="gi-title">Werte</div>
+          <div class="gi-text">Entstigmatisierung psychischer Erkrankungen, Empathie, Niedrigschwelligkeit, Mut zur Offenheit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. ZIELGRUPPE -->
+    <div class="zwei-col">
+      <div class="pbox">
+        <div class="pbox-header">
+          <div class="pbox-num" style="background:#e0607e;">2</div>
+          <h3>Zielgruppe & Bedarf</h3>
+        </div>
+        <p><strong>Wen erreicht MindBridge?</strong></p>
+        <ul style="margin-top:8px;">
+          <li>Betroffene psychischer Erkrankungen</li>
+          <li>Angehörige, Freunde & Partner</li>
+          <li>Fachkräfte (Kita, Schule, Soziales)</li>
+          <li>Alle die mehr verstehen wollen</li>
+        </ul>
+        <p style="margin-top:12px;"><strong>Warum diese Zielgruppe?</strong></p>
+        <p style="margin-top:6px;">Laut WHO leiden 1 von 4 Menschen irgendwann im Leben an einer psychischen Erkrankung. Gleichzeitig dauert es durchschnittlich 10 Jahre bis zur Diagnose (DGPPN, 2022) – auch weil Stigma Hilfe verhindert.</p>
+        <div class="tag-row">
+          <span class="tag tag-dep">Depression</span>
+          <span class="tag tag-bor">Borderline</span>
+          <span class="tag tag-aut">Autismus</span>
+          <span class="tag tag-gray">+ erweiterbar</span>
+        </div>
+      </div>
+
+      <!-- 3. WAS WURDE GEMACHT -->
+      <div class="pbox">
+        <div class="pbox-header">
+          <div class="pbox-num" style="background:#43b89c;">3</div>
+          <h3>Was wurde gemacht?</h3>
+        </div>
+        <p>Eine evidenzbasierte <strong>Psychoedukations-App</strong> mit drei Erkrankungen, jeweils:</p>
+        <ul>
+          <li>Verstehen – DSM-5 Kriterien, Mythen, Erfahrungsberichte</li>
+          <li>Akut – DBT, ACT & Achtsamkeitsmethoden aus der Vorlesung</li>
+          <li>Umfeld – konkrete Kommunikationshilfen für Angehörige</li>
+          <li>Lernen – Lernpfade & Quiz</li>
+          <li>Forum – Community & Austausch</li>
+        </ul>
+        <p style="margin-top:10px;font-size:12px;color:#7a7a8c;"><strong>Studienlage:</strong> Psychoedukation reduziert Stigma (Corrigan et al., 2012). Digital-Health-Apps zeigen nachweisliche Wirkung auf Selbstwirksamkeit (Linardon et al., 2020). Frühzeitige Information verbessert Hilfesuchverhalten.</p>
+      </div>
+    </div>
+
+    <!-- 4. FEEDBACK + 5. REFLEXION -->
+    <div class="zwei-col">
+      <div class="pbox">
+        <div class="pbox-header">
+          <div class="pbox-num" style="background:#8a6fbf;">4</div>
+          <h3>Feedback der Zielgruppe</h3>
+        </div>
+        <p style="margin-bottom:10px;">Betroffene aus dem persönlichen Umfeld haben die App getestet:</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="feedback-bubble">
+            <div class="fb-avatar" style="background:#e8f0ff;">💙</div>
+            <div class="fb-name">Betroffene, Depression</div>
+            <div class="fb-text">„Die Akut-Methoden sind wirklich praktisch. Endlich was das ich auch in der Krise aufmachen kann."</div>
+          </div>
+          <div class="feedback-bubble">
+            <div class="fb-avatar" style="background:#fde8ed;">🌊</div>
+            <div class="fb-name">Angehöriger, Borderline</div>
+            <div class="fb-text">„Ich habe endlich verstanden warum meine Schwester so reagiert. Das Umfeld-Kapitel hat mir sehr geholfen."</div>
+          </div>
+          <div class="feedback-bubble">
+            <div class="fb-avatar" style="background:#e0f5f0;">🧩</div>
+            <div class="fb-name">Betroffene, Autismus</div>
+            <div class="fb-text">„Gut gelungen – aber klar: Es ist noch ein Prototyp. Wenn er veröffentlicht wird, kann er wirklich vielen helfen."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-header">
+          <div class="pbox-num" style="background:#e0a030;">5</div>
+          <h3>Was hat es bei mir bewirkt?</h3>
+        </div>
+        <div class="bewirkt-grid">
+          <div class="bewirkt-item">
+            <div class="bewirkt-icon">🔍</div>
+            <div class="bewirkt-title">Vertieftes Verständnis</div>
+            <div class="bewirkt-text">Die intensive Recherche hat mein eigenes Verständnis für alle drei Erkrankungen enorm vertieft – auch für meine eigene.</div>
+          </div>
+          <div class="bewirkt-item">
+            <div class="bewirkt-icon">⚡</div>
+            <div class="bewirkt-title">Energie & Freude</div>
+            <div class="bewirkt-text">Es hat mir Freude bereitet, etwas zu schaffen das anderen beim Verstehen psychischer Erkrankungen helfen kann.</div>
+          </div>
+          <div class="bewirkt-item">
+            <div class="bewirkt-icon">🌱</div>
+            <div class="bewirkt-title">Noch kein klassisches Giving</div>
+            <div class="bewirkt-text">Ehrlich gesagt: Bisher erreicht die App nur Freunde und Familie. Das echte Giving liegt noch vor mir – wenn sie veröffentlicht wird.</div>
+          </div>
+          <div class="bewirkt-item">
+            <div class="bewirkt-icon">💙</div>
+            <div class="bewirkt-title">Das Potenzial</div>
+            <div class="bewirkt-text">Wissen weiterzugeben und Verständnis zu schaffen – das ist für mich die kraftvollste Form von Giving. Und das fängt gerade erst an.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QR CODE -->
+    <div class="qr-box">
+      <h3>📱 App selbst ausprobieren</h3>
+      <p>Scanne den QR-Code und öffne MindBridge auf deinem Handy – direkt im Browser, keine Installation nötig.</p>
+      <div id="qrcode"></div>
+      <div class="qr-url" id="qrUrl">mindbridge-vollbild.html</div>
+      <div class="qr-steps">
+        <div class="qr-step"><div class="qr-step-num">1</div>Kamera-App öffnen</div>
+        <div class="qr-step"><div class="qr-step-num">2</div>QR-Code scannen</div>
+        <div class="qr-step"><div class="qr-step-num">3</div>MindBridge direkt nutzen</div>
+      </div>
+    </div>
+
+  </div><!-- right-panel -->
+</div><!-- main-layout -->
+
+<script>
+const topics = {
+  dep:{
+    name:'🌧️ Depression',color:'#5b8dee',dark:'#2d55b0',
+    grad:'linear-gradient(135deg,#2d55b0,#5b8dee)',
+    verstehen:[
+      {type:'card',title:'Was ist Depression?',dot:'#5b8dee',text:'Depression ist eine neurobiologische Erkrankung mit nachweisbaren Veränderungen in Hirnstruktur und -chemie. Sie zählt laut WHO zu den häufigsten Erkrankungen weltweit. Kein Charakterfehler, keine Schwäche – eine behandelbare Erkrankung.'},
+      {type:'card',title:'Psychische Anzeichen',dot:'#f0c040',list:['Anhaltende Niedergeschlagenheit fast jeden Tag','Interessenverlust & Freudlosigkeit (Anhedonie)','Gefühle von Wertlosigkeit oder Schuldgefühle','Konzentrations- und Entscheidungsprobleme','Rückzug von Familie, Freunden, Hobbys','Verlangsamtes Denken oder Entscheiden','Wiederkehrende Gedanken an den Tod']},
+      {type:'card',title:'Körperliche Anzeichen',dot:'#e07070',list:['Chronische Erschöpfung ohne erklärbaren Grund','Kopfschmerzen & Migräne','Magen-Darm-Beschwerden, Übelkeit','Engegefühl in Brust oder Kehle','Schlafprobleme: Ein- oder Durchschlafstörungen','Appetit- oder Gewichtsveränderungen','Schwere Glieder, körperliche Verlangsamung','Libidoverlust']},
+      {type:'exp',avatar:'🙋',name:'Sarah, 28',col:'#e8f0ff',tag:'Betroffene',tagCol:'#5b8dee',text:'Für mich war das Schlimmste, dass ich gar nichts mehr fühlen konnte. Keine Trauer, keine Freude – einfach Leere. Ich musste erst lernen, dass das auch Depression ist.'},
+      {type:'exp',avatar:'💛',name:'Alina, 24',col:'#fff8e0',tag:'Betroffene',tagCol:'#d4a000',text:'Das Gefühl der Hoffnungslosigkeit hat mich gelähmt. Ich konnte nur diese tiefe Leere spüren und dachte, ich bin es nicht wert, dass mir geholfen wird – und dass es mir nicht schlecht genug geht.',quote:'Aber jedem, dem es schlecht geht, geht es schlecht genug für Hilfe.'},
+      {type:'myth',m:'"Reiß dich einfach zusammen – das ist nur Schwäche."',r:'Depression ist eine medizinische Erkrankung mit messbaren neurobiologischen Veränderungen. Willenskraft allein hilft genauso wenig wie bei einem gebrochenen Bein.'},
+      {type:'myth',m:'"Depression ist dasselbe wie Traurigkeit."',r:'Normale Traurigkeit vergeht. Depression hält Wochen bis Monate an, betrifft alle Lebensbereiche und erfordert Behandlung.'},
+      {type:'myth',m:'"Antidepressiva machen süchtig."',r:'Antidepressiva erzeugen keine Abhängigkeit. Sie werden schrittweise abgesetzt – immer mit ärztlicher Begleitung.'},
+      {type:'myth',m:'"Wer über Suizid spricht, tut es nicht wirklich."',r:'Das Gegenteil ist richtig. Ankündigungen immer ernst nehmen und professionelle Hilfe suchen.'},
+    ],
+    akut:[
+      {cat:'🧘 In den Moment kommen',color:'#5b8dee',items:[
+        {t:'5-4-3-2-1 Methode',d:'5 Dinge sehen → 4 Dinge hören → 3 Dinge körperlich spüren → 2 Dinge riechen → 1 Ding schmecken. Bringt dich zurück in den Moment.'},
+        {t:'2 Füße + 1 Atemzug',d:'Stell deine Füße bewusst auf den Boden, spüre wie sie ihn berühren. Atme tief ein und aus. Verfolge den Atem in deinem Körper. Jederzeit integrierbar.',steps:['Füße fest auf den Boden stellen','Druck bewusst wahrnehmen','Einen tiefen Atemzug nehmen','Atem im Körper verfolgen']},
+        {t:'Sichere Orte visualisieren',d:'Schließe die Augen. Stelle dir einen Ort vor, an dem du dich sicher fühlst. So detailliert wie möglich – was siehst, hörst, riechst du dort?'},
+      ]},
+      {cat:'💨 Atemübungen',color:'#43b89c',items:[
+        {t:'Boxatmung (4-4-4-4)',d:'4 Sek. einatmen → 4 halten → 4 ausatmen → 4 halten. Wiederholen. Aktiviert das parasympathische Nervensystem.'},
+        {t:'4-6-8 Atmung',d:'4 Sek. einatmen → 6 halten → 8 ausatmen. Die verlängerte Ausatmung beruhigt besonders effektiv.'},
+        {t:'Verlängerte Ausatmung',d:'Einfachste Variante: Einfach länger ausatmen als einatmen (z.B. 4 ein, 6 aus). Überall anwendbar.'},
+        {t:'Psychological Sigh',d:'2x kurz hintereinander durch die Nase einatmen, dann lang ausatmen. Baut CO₂ schnell ab und beruhigt sofort.'},
+      ]},
+      {cat:'💪 Körper & Bewegung',color:'#e0a030',items:[
+        {t:'Progressive Muskelrelaxation',d:'Muskelgruppen nacheinander 5 Sek. anspannen, dann 30 Sek. loslassen. Von den Füßen bis zum Kopf.'},
+        {t:'Abschütteln / Neurogenes Zittern',d:'Den Körper bewusst ausschütteln – Arme, Beine, Schultern. Löst gespeicherte Anspannung im Nervensystem.'},
+        {t:'Tapping / Abklopfen',d:'Mit den Fingern sanft Schultern, Schläfen und Brustbein abklopfen. Beruhigt das Nervensystem (EFT-Technik).'},
+        {t:'Micro-Bewegung',d:'10 Jumping Jacks, Liegestütze oder Treppensteigen. Baut Stresshormone schnell ab.'},
+        {t:'Bewusstes Dehnen',d:'Langsam strecken, dehnen, schütteln. Besonders Schultern und Nacken – wo Stress sich sammelt.'},
+      ]},
+      {cat:'🧠 Gedankenmanagement',color:'#8a6fbf',items:[
+        {t:'Gedankenjournaling (10–15 Min.)',d:'Notiere 2 Min. lang JEDEN Gedanken der dir durch den Kopf geht. Dann: Wo lagen die Gedanken – Vergangenheit, Gegenwart, Zukunft? Was lösen sie aus? Welcher innere Anteil war aktiv? Optional: Mit verstellter Stimme laut vorlesen.',steps:['Stift & Zettel nehmen','2 Min. alle Gedanken aufschreiben','Protokoll durchlesen & reflektieren','Optional: laut mit verstellter Stimme lesen']},
+        {t:'Gedankenstopp',d:'Negativen Gedanken bewusst erkennen → innerlich oder laut "Stopp!" sagen → optional Stoppschild vorstellen oder klatschen → Aufmerksamkeit aktiv umlenken → positives Ersatzbild entwickeln.'},
+        {t:'Gedanken zählen',d:'Automatische Gedanken nicht bewerten, sondern zählen. Als Strichliste oder Gegenstand verschieben. Schafft Abstand und eine beobachtende Haltung.'},
+        {t:'Selbstmitgefühls-Brief',d:'Wähle einen Bereich in dem du dich "nicht gut genug" fühlst. Schreibe einen Brief an dich selbst aus der Perspektive einer bedingungslos liebenden Person. Lies ihn dann so als käme er wirklich von ihr.',steps:['Bereich wählen der dich belastet','Brief aus liebevoller Perspektive schreiben','Brief laut lesen und wirken lassen']},
+      ]},
+      {cat:'🌿 Beruhigung & Trost',color:'#5ba08a',items:[
+        {t:'Body Scan',d:'Gehe gedanklich von den Zehen bis zum Kopf. Wo spürst du Spannung? Keine Bewertung – nur wahrnehmen. 5–10 Minuten.'},
+        {t:'Supportive Touch',d:'Hand aufs Herz legen oder sich selbst umarmen (Butterfly Hug). Aktiviert das Bindungssystem und beruhigt.'},
+        {t:'Grounding / Propriozeption',d:'Nackte Füße auf den Boden spüren, gegen eine Wand drücken, Sitzunterlage spüren. Verbindet mit dem Körper.'},
+        {t:'Sanfte Trost-Optionen',d:'Weiche Decke, Lieblingsfotos anschauen, Lieblingssong hören. Kleines Angenehmes bewusst genießen.'},
+        {t:'Sinnesspaziergang',d:'Draußen gehen und bewusst alle Sinne nutzen. Frische Luft und Bewegung zusammen – besonders wirksam.'},
+      ]},
+      {cat:'💬 Verbindung & Soziales',color:'#e0607e',items:[
+        {t:'Eine Person kontaktieren',d:'Keine lange Nachricht nötig: "Ich denke gerade an dich" reicht. Verbindung schlägt Isolation.'},
+        {t:'Gedanken aussprechen & gehört werden',d:'Jemandem einfach erzählen was dich beschäftigt – ohne Rat zu suchen. Nur gehört werden.'},
+        {t:'Online-Selbsthilfe',d:'ifightdepression.com – kostenlos, evidenzbasiert, anonym.'},
+        {t:'Um konkrete Hilfe bitten',d:'"Kannst du heute mit mir einkaufen gehen?" Konkret ist leichter als offen zu fragen.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'💬',col:'#5b8dee',title:'Hilfreiche Dinge sagen',list:['"Ich bin für dich da – egal was."','"Wie geht es dir wirklich gerade?" – und dann zuhören.','"Du musst mir nichts erklären. Ich bin einfach hier."','"Darf ich dich zum Arzttermin begleiten?"']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Anderen geht es viel schlechter" – minimiert den Schmerz.','"Reiß dich zusammen" – ist medizinisch falsch.','"Denk einfach positiv" – Positivitätsdruck verschlimmert.','"Du hast doch alles" – Depression kennt keinen rationalen Grund.']},
+      {icon:'🤲',col:'#43b89c',title:'Konkret unterstützen',list:['Konkrete Angebote: "Ich kaufe heute ein – brauchst du etwas?"','Regelmäßig melden – auch ohne Antwort zu erwarten.','Gemeinsam Zeit ohne Druck verbringen.','Arzttermin gemeinsam suchen und Begleitung anbieten.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen schützen',list:['Du kannst nicht heilen – du kannst begleiten.','Eigene Erschöpfung ernst nehmen. Pausen sind kein Verrat.','Angehörigen-Beratung: NAKOS (nakos.de).','Auch du darfst dir Hilfe holen.']},
+    ]
+  },
+  bor:{
+    name:'🌊 Borderline',color:'#e0607e',dark:'#a03050',
+    grad:'linear-gradient(135deg,#a03050,#e0607e)',
+    verstehen:[
+      {type:'card',title:'Was ist Borderline (BPS)?',dot:'#e0607e',text:'Die Borderline-Persönlichkeitsstörung ist eine psychische Erkrankung mit intensiven Emotionen, impulsivem Verhalten und instabilen Beziehungen. Betroffene erleben Gefühle ohne die Schutzschicht die andere haben – alles trifft mit voller Intensität.'},
+      {type:'card',title:'Psychische Anzeichen',dot:'#f0c040',list:['Intensive Angst vor Verlassenwerden','Instabile Beziehungen: Idealisierung ↔ Abwertung','Instabiles Selbstbild / Identitätsstörung','Impulsivität in selbstschädigenden Bereichen','Starke Stimmungsschwankungen (Minuten bis Stunden)','Chronische innere Leere','Intensive, schwer kontrollierbare Wut','Kurzfristige Dissoziation oder Paranoia']},
+      {type:'card',title:'Körperliche Anzeichen',dot:'#e07070',list:['Körperliche Anspannung und Zittern','Herzrasen in emotionalen Momenten','Engegefühl in der Brust','Selbstverletzende Handlungen als Spannungsabbau','Schlafstörungen durch emotionale Unruhe','Erschöpfung nach intensiven Gefühlsausbrüchen']},
+      {type:'exp',avatar:'👩',name:'Lena, 25',col:'#fde8ed',tag:'Betroffene',tagCol:'#e0607e',text:'Die Leute denken, ich will Drama. Aber wenn ich jemanden anschreie, bin ich gerade in einem emotionalen Sturm der sich anfühlt wie das Ende der Welt. Ich will das nicht – ich kann es in dem Moment nicht steuern.'},
+      {type:'exp',avatar:'👨',name:'Felix, 31',col:'#e0f5f0',tag:'Angehöriger',tagCol:'#43b89c',text:'Ich habe lange nicht verstanden warum meine Schwester mich einen Tag vergöttert und den nächsten hasst. Durch Psychoedukation wurde mir klar: Das ist die Erkrankung – nicht ihre Einstellung zu mir.'},
+      {type:'myth',m:'"Borderline-Menschen sind manipulativ."',r:'Betroffene handeln aus echtem, intensivem Schmerz – nicht aus Kalkül. BPS erhöht das Risiko für Selbstverletzung, nicht für Fremdgefährdung.'},
+      {type:'myth',m:'"BPS ist nicht heilbar."',r:'Mit DBT erreichen bis zu 50% der Betroffenen nach 10 Jahren eine Remission. Frühe Behandlung verbessert die Prognose erheblich.'},
+      {type:'myth',m:'"Selbstverletzung ist Aufmerksamkeitssuche."',r:'Selbstverletzung ist meist ein Versuch unerträgliche Spannung zu regulieren – oft im Verborgenen. Ein ernstzunehmendes Alarmsignal.'},
+    ],
+    akut:[
+      {cat:'🌡️ TIPP-Technik (DBT)',color:'#e0607e',items:[
+        {t:'T – Temperature',d:'Gesicht in eiskaltes Wasser tauchen oder Eiswürfel halten. Aktiviert den Tauchreflex und senkt Herzrate sehr schnell.'},
+        {t:'I – Intensive Bewegung',d:'10 Minuten rennen, Liegestütze, Treppensteigen. Baut Stresshormone effektiv ab.'},
+        {t:'P – Verlangsamtes Atmen',d:'4 Sek. ein, 6 Sek. aus. Signalisiert dem Körper Sicherheit.'},
+        {t:'P – Progressive Relaxation',d:'Muskelgruppen anspannen (5 Sek.) und loslassen (30 Sek.). Beginne bei den Füßen.'},
+      ]},
+      {cat:'💨 Atemübungen',color:'#8a6fbf',items:[
+        {t:'Boxatmung (4-4-4-4)',d:'4 ein → 4 halten → 4 aus → 4 halten. Beruhigt Körper und Geist.'},
+        {t:'4-6-8 Atmung',d:'4 ein → 6 halten → 8 aus. Verlängerte Ausatmung beruhigt besonders bei starker Anspannung.'},
+        {t:'Summen mit geschlossenen Lippen',d:'Tiefes Summen aktiviert den Vagusnerv und beruhigt das Nervensystem direkt.'},
+      ]},
+      {cat:'🧠 Gedankenmanagement',color:'#5b8dee',items:[
+        {t:'STOP-Technik',d:'Stop → Take a step back → Observe → Proceed mindfully. Kurze Pause bevor du reagierst.',steps:['Stopp – innehalten','Einen Schritt zurücktreten (mental)','Beobachten was gerade passiert','Bewusst und ruhig handeln']},
+        {t:'Radical Acceptance',d:'Den Moment so akzeptieren wie er ist – nicht gut finden, sondern aufhören dagegen anzukämpfen. "Es ist gerade so."'},
+        {t:'Opposite Action',d:'Wenn Impuls = isolieren → jemanden kontaktieren. Wenn Impuls = schreien → sehr leise sprechen. Gegenteil der Emotion tun.'},
+        {t:'Gedankenstopp',d:'Negativen Gedanken erkennen → "Stopp!" sagen → Stoppschild vorstellen → Aufmerksamkeit umlenken.'},
+      ]},
+      {cat:'🌿 Beruhigung & Sicherheit',color:'#43b89c',items:[
+        {t:'Sicheren Raum aufsuchen',d:'Ruhige, vertraute Umgebung. Rückzug ist Selbstfürsorge, keine Schwäche.'},
+        {t:'Krisenplan nutzen',d:'Hast du mit deiner Therapeutin einen Krisenplan? Jetzt ist der Moment ihn hervorzuholen.'},
+        {t:'Supportive Touch',d:'Hand aufs Herz, Butterfly Hug (Arme verschränkt auf Brust klopfen). Aktiviert das Bindungssystem.'},
+        {t:'Self-Compassion',d:'"Ich leide gerade. Das ist schwer. Andere leiden auch. Ich darf mir Mitgefühl schenken." – 3 Sätze wiederholen.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'🌊',col:'#e0607e',title:'Emotionen validieren',list:['"Ich verstehe, dass du gerade sehr verletzt bist."','"Deine Gefühle machen Sinn."','Ruhig bleiben – Gelassenheit überträgt sich.','Zuhören ohne sofort zu lösen.']},
+      {icon:'📏',col:'#8a6fbf',title:'Grenzen setzen – liebevoll',list:['"Ich bin für dich da, aber nicht um Mitternacht."','Konsistenz ist entscheidend – Unberechenbarkeit verstärkt Verlustangst.','Grenzen ruhig kommunizieren – ohne Vorwürfe.']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['Ultimaten und Drohungen – verstärken Verlustangst.','Nachgeben aus Erschöpfung – schafft Unsicherheit.','Die Diagnose abtun: "Das ist doch nur dein Borderline."','Mit-eskalieren wenn Emotionen hochkochen.']},
+      {icon:'📚',col:'#43b89c',title:'Wissen & Selbstfürsorge',list:['Angehörigengruppen: ANUAS e.V. (anuas.de).','Buch: "Ich hasse dich – verlass mich nicht" (Mason).','Eigene Beratung oder Therapie bei Belastung.','DBT-Konzepte für Angehörige kennenlernen.']},
+    ]
+  },
+  aut:{
+    name:'🧩 Autismus',color:'#43b89c',dark:'#1e7a62',
+    grad:'linear-gradient(135deg,#1e7a62,#43b89c)',
+    verstehen:[
+      {type:'card',title:'Was ist Autismus?',dot:'#43b89c',text:'Autismus-Spektrum-Störung (ASS) ist eine neurologische Entwicklungsvariante – keine Krankheit. Autistische Menschen nehmen die Welt anders wahr, kommunizieren anders und haben andere Bedürfnisse. Das Spektrum ist sehr breit.'},
+      {type:'card',title:'Psychische & soziale Merkmale',dot:'#f0c040',list:['Andersartige soziale Kommunikation & Interaktion','Intensive, eingeschränkte Sonderinteressen','Stereotype Bewegungen zur Selbstregulation (Stimming)','Starkes Bedürfnis nach Routinen','Wörtliches Sprachverständnis – Ironie oft nicht erkennbar','Schwierigkeiten beim Lesen sozialer Regeln']},
+      {type:'card',title:'Sensorische & körperliche Merkmale',dot:'#e07070',list:['Hypersensitivität: Überempfindlichkeit auf Lärm, Licht, Berührung, Gerüche','Hyposensitivität: Weniger Wahrnehmung von Schmerz oder Temperatur','Sensorische Überflutung führt zu Erschöpfung (Autistic Burnout)','Schlafprobleme durch sensorische Verarbeitung','Besondere Empfindlichkeit auf bestimmte Stoffe oder Nahrungsmittel','Magen-Darm-Beschwerden häufig begleitend']},
+      {type:'card',title:'🔍 Frühkindliche Erkennung',dot:'#ff9944',list:['Kein oder seltener Blickkontakt bis 6 Monate','Kein soziales Lächeln bis 6 Monate','Kein Zeigen oder Winken bis 12 Monate','Reagiert nicht auf eigenen Namen bis 12 Monate','Keine einzelnen Wörter bis 16 Monate','Kein Zwei-Wort-Sätze bis 24 Monate','Kein So-tun-als-ob-Spiel bis 18 Monate','Verlust bereits erlernter Sprache oder Fähigkeiten','⚠️ Bei Mädchen: Symptome durch Masking oft jahrelang übersehen – gezielt auf subtile Zeichen achten','Anlaufstelle: Kinderarzt → SPZ (Sozialpädiatrisches Zentrum)']},
+      {type:'exp',avatar:'🧑',name:'Jana, 22',col:'#e0f5f0',tag:'Betroffene',tagCol:'#43b89c',text:'Ich habe 22 Jahre lang gedacht ich bin einfach seltsam und überdramatisch. Meine Diagnose mit 22 war wie: Endlich macht alles Sinn. Ich bin nicht kaputt – ich bin anders.'},
+      {type:'exp',avatar:'👩',name:'Petra, 42',col:'#e8f0ff',tag:'Mutter',tagCol:'#5b8dee',text:'Bei meiner Tochter hat es 4 Jahre gedauert bis zur Diagnose. Mädchen maskieren so gut. Ich wünschte, ich hätte früher gewusst wonach ich schauen muss.'},
+      {type:'myth',m:'"Autisten haben kein Einfühlungsvermögen."',r:'Viele autistische Menschen empfinden sehr intensiv. Das doppelte Empathieproblem zeigt: Missverständnisse entstehen auf beiden Seiten.'},
+      {type:'myth',m:'"Autismus kann man immer sehen."',r:'Viele Autist:innen maskieren. Das kostet enorm Energie. Besonders bei Frauen und Mädchen jahrelang unerkannt.'},
+      {type:'myth',m:'"Autismus entsteht durch Impfungen."',r:'Diese Behauptung basiert auf einer zurückgezogenen Fälschung. Dutzende Großstudien fanden keinen Zusammenhang.'},
+    ],
+    akut:[
+      {cat:'🔇 Reize reduzieren',color:'#43b89c',items:[
+        {t:'Rückzugsort aufsuchen',d:'Ruhig, wenig Licht, alleine. Das ist Selbstregulation – keine Schwäche. Rückzug schützt das Nervensystem.'},
+        {t:'Ohrenschützer nutzen',d:'Noise-Cancelling-Kopfhörer oder Ohrstöpsel – können auch vorbeugend getragen werden.'},
+        {t:'Visuelle Reize dämpfen',d:'Sonnenbrille auch drinnen, Bildschirm dimmen, Blaufilter aktivieren.'},
+        {t:'In die Ferne blicken',d:'Blick nicht fokussieren – bewusst in die Weite schweifen lassen. Entspannt das visuelle System.'},
+      ]},
+      {cat:'🤸 Stimming & Körperregulation',color:'#5b8dee',items:[
+        {t:'Stimming aktiv erlauben',d:'Schaukeln, Flattern, Summen – das ist Selbstregulation. Raum und Erlaubnis geben.'},
+        {t:'Gewichtete Decke / Tiefendruck',d:'Tiefendruck beruhigt das Nervensystem nachweislich. Stressbälle, Fidget-Toys als Alternative.'},
+        {t:'Summen mit geschlossenen Lippen',d:'Aktiviert den Vagusnerv und reguliert das Nervensystem direkt.'},
+        {t:'Proprietozeptives Erden',d:'Nackte Füße auf dem Boden spüren, gegen eine Wand drücken, Sitzfläche bewusst wahrnehmen.'},
+      ]},
+      {cat:'💨 Atemübungen',color:'#8a6fbf',items:[
+        {t:'Verlängerte Ausatmung',d:'Länger ausatmen als einatmen (z.B. 4 ein, 6 aus). Einfach und überall anwendbar.'},
+        {t:'Boxatmung (4-4-4-4)',d:'4 ein → 4 halten → 4 aus → 4 halten. Strukturiert und vorhersehbar – besonders bei Autismus hilfreich.'},
+        {t:'Psychological Sigh',d:'2x kurz durch die Nase einatmen, dann lang ausatmen. Schnelle Beruhigung.'},
+      ]},
+      {cat:'🗣️ Kommunikation in der Krise',color:'#e0a030',items:[
+        {t:'Schreiben statt sprechen',d:'In Krisen kann Sprechen unmöglich sein (Shutdown). Schreiben, Tippen oder Bilder zeigen sind gültige Kommunikation.'},
+        {t:'AAC-Apps nutzen',d:'LetMeTalk (kostenlos) für nonverbale Kommunikation in schwierigen Momenten.'},
+        {t:'Vorab vereinbarte Signale',d:'Ein Wort oder Symbol für "Ich brauche Pause" im Voraus mit Vertrauensperson vereinbaren.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'🗣️',col:'#43b89c',title:'Kommunikation anpassen',list:['Klar und direkt sprechen – keine Ironie, kein Sarkasmus.','Ausreichend Zeit zum Antworten lassen.','Augenkontakt nicht erzwingen.','Rückfragen einladen: "Habe ich mich verständlich ausgedrückt?"']},
+      {icon:'🌱',col:'#5b8dee',title:'Umgebung gestalten',list:['Reizarme Bereiche anbieten: weniger Lärm, regulierbares Licht.','Tagesplan und klare Strukturen ermöglichen.','Routinen respektieren – sie geben Sicherheit.','Änderungen immer vorher ankündigen.']},
+      {icon:'💛',col:'#e0a030',title:'Stärken sehen & fördern',list:['Spezialinteressen ernstnehmen und Raum geben.','Nicht versuchen, Verhalten zu "korrigieren".','Neurodiversität als Gewinn verstehen.','Fortschritte aktiv benennen und feiern.']},
+      {icon:'🔍',col:'#ff9944',title:'Frühkindliche Erkennung',list:['Auf frühe Zeichen achten: Blickkontakt, Zeigegeste, Reaktion auf Namen.','Bei Mädchen besonders aufmerksam – Masking verdeckt Symptome.','Bei Verdacht: Kinderarzt → Überweisung an SPZ.','Frühförderung so früh wie möglich beginnen.','Autismus Deutschland e.V. (autismus.de) für Beratung.']},
+    ]
+  }
+};
+
+let currentTopic='dep';
+
+function openTopic(key){
+  currentTopic=key;
+  const t=topics[key];
+  document.getElementById('topicHeader').style.background=t.grad;
+  document.getElementById('topicTitle').textContent=t.name;
+  renderVerstehen(key);renderAkut(key);renderUmfeld(key);
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-verstehen').classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color='';});
+  const tb=document.getElementById('tb-verstehen');
+  tb.classList.add('active');tb.style.background=t.color;tb.style.color='white';
+  showPage('topic');
+}
+
+function renderVerstehen(key){
+  const t=topics[key],el=document.getElementById('tab-verstehen');
+  el.innerHTML='';
+  t.verstehen.forEach(item=>{
+    if(item.type==='card'){
+      const d=document.createElement('div');d.className='card';
+      let h=`<div class="card-title"><div class="card-dot" style="background:${item.dot}"></div>${item.title}</div>`;
+      if(item.text)h+=`<p>${item.text}</p>`;
+      if(item.list)h+=`<ul>${item.list.map(l=>`<li>${l}</li>`).join('')}</ul>`;
+      d.innerHTML=h;el.appendChild(d);
+    }else if(item.type==='myth'){
+      const d=document.createElement('div');d.className='myth-card';
+      d.innerHTML=`<div class="myth-top"><div class="myth-label">❌ Mythos</div><div class="myth-text">${item.m}</div></div><div class="myth-bottom"><div class="real-label">✅ Realität</div><div class="real-text">${item.r}</div></div>`;
+      el.appendChild(d);
+    }else if(item.type==='exp'){
+      const d=document.createElement('div');d.className='exp-card';d.style.borderLeftColor=item.col;
+      d.innerHTML=`<div class="exp-header"><div class="exp-avatar" style="background:${item.col}">${item.avatar}</div><div><div class="exp-name">${item.name}</div><span class="exp-tag" style="background:${item.tagCol}">${item.tag}</span></div></div><div class="exp-text">${item.text}</div>${item.quote?`<div class="exp-quote">💛 "${item.quote}"</div>`:''}`;
+      el.appendChild(d);
+    }
+  });
+}
+
+function renderAkut(key){
+  const t=topics[key],el=document.getElementById('tab-akut');
+  el.innerHTML='';
+  t.akut.forEach((cat,i)=>{
+    if(cat.crisis){
+      const d=document.createElement('div');d.className='crisis-box';
+      d.innerHTML=`<div class="c-title">🆘 Du bist nicht allein</div><p>Bei Suizidgedanken, Selbstverletzung, oder wenn du einfach nicht mehr weißt wie es weitergehen soll – du musst das nicht alleine tragen:</p><div class="crisis-number">📞 0800 111 0 111</div><p>Telefonseelsorge – kostenlos, 24h, anonym. Kein Problem ist zu klein.</p><p style="margin-top:8px;font-size:11px;opacity:0.8;">online.telefonseelsorge.de · Notfall: 112</p>`;
+      el.appendChild(d);return;
+    }
+    const id=`ab-${key}-${i}`;
+    const d=document.createElement('div');d.className='akut-cat';
+    const itemsHtml=cat.items.map(item=>{
+      let stepsHtml='';
+      if(item.steps)stepsHtml=`<ul class="akut-steps">${item.steps.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+      return`<div class="akut-item" style="border-left-color:${cat.color}"><div class="akut-item-title">${item.t}</div><p>${item.d}</p>${stepsHtml}</div>`;
+    }).join('');
+    d.innerHTML=`<div class="akut-cat-header" style="background:${cat.color}" onclick="toggleAkut('${id}',this)"><div class="akut-cat-title">${cat.cat}</div><div class="akut-arrow">▼</div></div><div class="akut-cat-body" id="${id}"><div class="akut-cat-inner">${itemsHtml}</div></div>`;
+    el.appendChild(d);
+  });
+}
+
+function toggleAkut(id,header){
+  const body=document.getElementById(id);
+  const arrow=header.querySelector('.akut-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function renderUmfeld(key){
+  const t=topics[key],el=document.getElementById('tab-umfeld');
+  el.innerHTML='';
+  t.umfeld.forEach(u=>{
+    const d=document.createElement('div');d.className='umfeld-card';
+    d.innerHTML=`<div class="umfeld-header"><div class="umfeld-icon" style="background:${u.col}22">${u.icon}</div><div class="umfeld-title">${u.title}</div></div><ul>${u.list.map(l=>`<li>${l}</li>`).join('')}</ul>`;
+    el.appendChild(d);
+  });
+}
+
+function switchTab(name,btn){
+  const t=topics[currentTopic];
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color='';});
+  if(btn){btn.classList.add('active');btn.style.background=t.color;btn.style.color='white';}
+}
+
+// LERNEN
+const lernpfade=[
+  {id:'lp-dep',icon:'🌧️',color:'#5b8dee',grad:'linear-gradient(135deg,#2d55b0,#5b8dee)',title:'Depression verstehen',sub:'Grundlagen · Mythen · Umgang',progress:0,lessons:[
+    {title:'Was ist Depression wirklich?',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Depression ist eine Erkrankung',p:'Depression ist keine Schwäche und kein Charakterfehler. Es ist eine neurobiologische Erkrankung – genau wie Diabetes eine körperliche Erkrankung ist.'},
+      {type:'list',h:'Typische Anzeichen',items:['Anhaltende Niedergeschlagenheit','Interessenverlust (Anhedonie)','Erschöpfung ohne Grund','Schlafprobleme','Körperliche Symptome wie Kopfschmerzen']},
+      {type:'quiz',q:'Welches ist ein Kernsymptom der Depression?',opts:['Zu viel Energie','Anhedonie (Freudlosigkeit)','Euphorie'],correct:1,fb:'Anhedonie – die Unfähigkeit Freude zu empfinden – ist eines der zwei Kernsymptome der Depression laut DSM-5.'},
+    ]},
+    {title:'Mythen & Fakten',sub:'4 Min · Quiz',content:[
+      {type:'text',h:'Warum Mythen schaden',p:'Falsche Vorstellungen über Depression hindern Betroffene daran, Hilfe zu suchen. Und sie verletzen Menschen, die ohnehin schon kämpfen.'},
+      {type:'quiz',q:'"Reiß dich zusammen" hilft bei Depression.',opts:['Richtig','Falsch'],correct:1,fb:'Depression ist eine Erkrankung. Man kann sie nicht durch Willenskraft überwinden.'},
+      {type:'quiz',q:'Depression und Traurigkeit sind dasselbe.',opts:['Richtig','Falsch'],correct:1,fb:'Traurigkeit ist normal und vergeht. Depression ist eine klinische Erkrankung die Wochen bis Monate anhält.'},
+    ]},
+  ]},
+  {id:'lp-bor',icon:'🌊',color:'#e0607e',grad:'linear-gradient(135deg,#a03050,#e0607e)',title:'Borderline begleiten',sub:'Verstehen · DBT · Angehörige',progress:0,lessons:[
+    {title:'Was ist BPS?',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Intensive Gefühle ohne Schutzschicht',p:'Stell dir vor, du erlebst Emotionen ohne die Hülle die anderen Menschen schützt. Jede Kritik trifft mit voller Wucht. Das ist Borderline.'},
+      {type:'text',h:'Was DBT ist',p:'Die Dialektisch-Behaviorale Therapie ist der Goldstandard bei BPS. Sie lehrt Fähigkeiten zur Emotionsregulation, Achtsamkeit und Stresstoleranz.'},
+      {type:'quiz',q:'Was ist die evidenzbasierte Haupttherapie bei Borderline?',opts:['Verhaltenstherapie','DBT','Hypnose'],correct:1,fb:'DBT wurde von Marsha Linehan entwickelt und ist der Goldstandard bei Borderline-Persönlichkeitsstörung.'},
+    ]},
+  ]},
+  {id:'lp-aut',icon:'🧩',color:'#43b89c',grad:'linear-gradient(135deg,#1e7a62,#43b89c)',title:'Autismus & Neurodiversität',sub:'Spektrum · Frühzeichen · Stärken',progress:0,lessons:[
+    {title:'Neurodiversität verstehen',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Eine andere Art zu denken',p:'Autismus ist kein Defizit – es ist eine andere neurologische Variante. Autistische Menschen denken, fühlen und kommunizieren anders. Das bringt Herausforderungen, aber auch besondere Stärken.'},
+      {type:'text',h:'Das doppelte Empathieproblem',p:'Oft heißt es, Autist:innen hätten kein Einfühlungsvermögen. Die Forschung zeigt: Das Missverständnis geht in beide Richtungen.'},
+      {type:'quiz',q:'Autismus ist eine Erkrankung die geheilt werden muss.',opts:['Richtig','Falsch'],correct:1,fb:'Autismus ist eine Entwicklungsvariante, keine Krankheit. Das Ziel ist Verstehen und Unterstützung – nicht Heilung.'},
+    ]},
+  ]},
+];
+
+let currentLp=null;
+
+function renderLernpfade(){
+  const el=document.getElementById('lernpfade-list');el.innerHTML='';
+  lernpfade.forEach((lp,i)=>{
+    const d=document.createElement('div');d.className='lernpfad-card';d.onclick=()=>openLernpfad(i);
+    d.innerHTML=`<div class="lp-header"><div class="lp-icon" style="background:${lp.color}22">${lp.icon}</div><div><div class="lp-title">${lp.title}</div><div class="lp-sub">${lp.sub}</div></div></div><div class="lp-progress"><div class="lp-bar" style="width:${lp.progress}%;background:${lp.color}"></div></div><div class="lp-stats"><span>${lp.lessons.length} Lektionen</span><span style="color:${lp.color}">${lp.progress}% abgeschlossen</span></div>`;
+    el.appendChild(d);
+  });
+}
+
+function openLernpfad(i){
+  currentLp=i;const lp=lernpfade[i];
+  const el=document.getElementById('lessonsList');
+  el.innerHTML=`<div style="font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:14px;">${lp.icon} ${lp.title}</div>`;
+  lp.lessons.forEach((l,j)=>{
+    const d=document.createElement('div');d.className='lesson-card';d.onclick=()=>openLesson(i,j);
+    d.innerHTML=`<div class="lesson-num" style="background:${lp.color}22;color:${lp.color}">${j+1}</div><div><div class="lesson-title">${l.title}</div><div class="lesson-sub">${l.sub}</div></div><div style="margin-left:auto;font-size:16px;">${lp.progress>(j*50)?'✅':'🔓'}</div>`;
+    el.appendChild(d);
+  });
+  document.getElementById('lernen-home').style.display='none';
+  document.getElementById('lernen-detail').style.display='block';
+}
+
+function showLernenHome(){
+  document.getElementById('lernen-home').style.display='block';
+  document.getElementById('lernen-detail').style.display='none';
+}
+
+function openLesson(lpI,lI){
+  currentLp=lpI;const lp=lernpfade[lpI],l=lp.lessons[lI];
+  document.getElementById('lessonHeader').style.background=lp.grad;
+  document.getElementById('lessonTitle').textContent=l.title;
+  const body=document.getElementById('lessonBody');body.innerHTML='';
+  l.content.forEach((block,bi)=>{
+    if(block.type==='text'){
+      const d=document.createElement('div');d.className='lesson-block';
+      d.innerHTML=`<h4>${block.h}</h4><p>${block.p}</p>`;body.appendChild(d);
+    }else if(block.type==='list'){
+      const d=document.createElement('div');d.className='lesson-block';
+      d.innerHTML=`<h4>${block.h}</h4><ul>${block.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;body.appendChild(d);
+    }else if(block.type==='quiz'){
+      const qid=`qm-${bi}`;
+      const d=document.createElement('div');d.className='quiz-mini';
+      d.innerHTML=`<h4>❓ ${block.q}</h4><div class="qm-opts">${block.opts.map((o,oi)=>`<button class="qm-opt" onclick="answerMini('${qid}',${oi},${block.correct},'${block.fb.replace(/'/g,"&#39;")}')">${o}</button>`).join('')}</div><div class="qm-fb" id="${qid}"></div>`;
+      body.appendChild(d);
+    }
+  });
+  const fin=document.createElement('button');fin.className='lesson-finish';fin.style.background=lp.color;
+  fin.textContent='✅ Lektion abschließen';fin.onclick=()=>finishLesson();
+  body.appendChild(fin);
+  document.getElementById('lessonView').classList.add('active');
+}
+
+function answerMini(qid,idx,correct,fb){
+  const container=document.getElementById(qid).previousElementSibling;
+  const opts=container.querySelectorAll('.qm-opt');
+  if(opts[0].disabled)return;
+  opts.forEach(o=>o.disabled=true);
+  opts[idx].classList.add(idx===correct?'correct':'wrong');
+  if(idx!==correct)opts[correct].classList.add('correct');
+  const fbEl=document.getElementById(qid);
+  fbEl.textContent=(idx===correct?'✅ ':'❌ ')+fb;
+  fbEl.className='qm-fb show '+(idx===correct?'c':'w');
+}
+
+function finishLesson(){
+  lernpfade[currentLp].progress=Math.min(100,lernpfade[currentLp].progress+50);
+  renderLernpfade();closeLessonView();
+}
+function closeLessonView(){document.getElementById('lessonView').classList.remove('active');}
+
+// FORUM
+let forumPosts=[
+  {id:1,avatar:'🙋',bg:'#e8f0ff',name:'Anna M.',time:'vor 2 Stunden',text:'Hat jemand Erfahrungen damit, wie man Angehörigen erklärt was Borderline bedeutet? Meine Familie versteht es einfach nicht...',likes:12,replies:[
+    {avatar:'🧔',name:'Tom K.',text:'Ich habe meiner Familie das Buch "Ich hasse dich – verlass mich nicht" gegeben. Hat wirklich geholfen!'},
+    {avatar:'👩',name:'Lena R.',text:'Bei uns hat ein gemeinsamer Termin beim Therapeuten geholfen.'},
+  ]},
+  {id:2,avatar:'🧑',bg:'#e0f5f0',name:'Tom K.',time:'vor 5 Stunden',text:'Die DBT-Übungen aus dem Akut-Bereich helfen mir wirklich. Besonders die Boxatmung. Danke MindBridge! 🙏',likes:34,replies:[]},
+  {id:3,avatar:'👩',bg:'#fde8ed',name:'Lena R.',time:'gestern',text:'Ich bin Erzieherin und habe durch die App zum ersten Mal wirklich verstanden was Autismus bedeutet. Das Stimming-Kapitel hat mir die Augen geöffnet.',likes:56,replies:[
+    {avatar:'🙋',name:'Anna M.',text:'Das ist so schön zu hören! Genau dafür ist diese App da 💙'},
+  ]},
+  {id:4,avatar:'🧔',bg:'#e8f0ff',name:'Marc B.',time:'vor 2 Tagen',text:'Buchempfehlungen zum Thema Depression für Angehörige? Suche noch mehr Input...',likes:7,replies:[]},
+];
+let likedPosts=new Set();
+
+function renderForum(){
+  const el=document.getElementById('forumList');el.innerHTML='';
+  forumPosts.forEach(post=>{
+    const d=document.createElement('div');d.className='forum-post';
+    const liked=likedPosts.has(post.id);
+    const repliesHtml=post.replies.map(r=>`<div class="fp-reply"><div class="fp-reply-avatar">${r.avatar}</div><div class="fp-reply-bubble"><div class="fp-reply-name">${r.name}</div><div class="fp-reply-text">${r.text}</div></div></div>`).join('');
+    d.innerHTML=`<div class="fp-header"><div class="fp-avatar" style="background:${post.bg}">${post.avatar}</div><div><div class="fp-name">${post.name}</div><div class="fp-time">${post.time}</div></div></div><div class="fp-text">${post.text}</div><div class="fp-actions"><button class="fp-action" onclick="likePost(${post.id})">${liked?'❤️':'🤍'} ${post.likes}</button><button class="fp-action" onclick="toggleReplies('rep-${post.id}')">💬 ${post.replies.length} Antworten</button></div><div class="fp-replies" id="rep-${post.id}">${repliesHtml}<div class="fp-reply-input"><input class="fp-reply-field" placeholder="Antworten..." id="rf-${post.id}"><button class="fp-reply-send" onclick="sendReply(${post.id})">↑</button></div></div>`;
+    el.appendChild(d);
+  });
+}
+
+function likePost(id){
+  const p=forumPosts.find(p=>p.id===id);
+  if(likedPosts.has(id)){likedPosts.delete(id);p.likes--;}else{likedPosts.add(id);p.likes++;}
+  renderForum();
+}
+function toggleReplies(id){document.getElementById(id).classList.toggle('open');}
+function sendReply(postId){
+  const field=document.getElementById(`rf-${postId}`);
+  const text=field.value.trim();if(!text)return;
+  forumPosts.find(p=>p.id===postId).replies.push({avatar:'🌱',name:'Du',text});
+  renderForum();document.getElementById(`rep-${postId}`).classList.add('open');
+}
+function openCompose(){document.getElementById('composeModal').classList.add('active');}
+function closeCompose(){document.getElementById('composeModal').classList.remove('active');}
+function toggleTag(btn){btn.classList.toggle('selected');}
+function submitPost(){
+  const text=document.getElementById('composeField').value.trim();if(!text)return;
+  forumPosts.unshift({id:Date.now(),avatar:'🌱',bg:'#e0f5f0',name:'Du',time:'gerade eben',text,likes:0,replies:[]});
+  renderForum();closeCompose();document.getElementById('composeField').value='';
+}
+
+function showSubpage(id){document.getElementById(id).classList.add('active');}
+function hideSubpage(id){document.getElementById(id).classList.remove('active');}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}
+
+renderLernpfade();renderForum();
+
+// QR Code
+window.addEventListener('load', function() {
+  const url = window.location.href.replace('mindbridge-praesentation.html','mindbridge-vollbild.html');
+  document.getElementById('qrUrl').textContent = url;
+  try {
+    new QRCode(document.getElementById('qrcode'), {
+      text: url, width:140, height:140,
+      colorDark:'#1a1a2e', colorLight:'#ffffff',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  } catch(e) {}
+});
+</script>
+</body>
+</html>
