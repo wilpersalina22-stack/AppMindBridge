@@ -65,7 +65,7 @@ body{font-family:'Nunito',sans-serif;background:#dddbd4;min-height:100vh;display
 .tab-bar::-webkit-scrollbar{display:none;}
 .tab-btn{flex-shrink:0;padding:7px 14px;border-radius:20px;border:1.5px solid #e0e0e0;background:transparent;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;white-space:nowrap;}
 .tab-btn.active{color:white;border-color:transparent;}
-.tab-content{flex:1;overflow-y:auto;padding:16px;display:none;flex-direction:column;gap:12px;scrollbar-width:none;padding-bottom:24px;}
+.tab-content{flex:1;overflow-y:auto;padding:16px;display:none;flex-direction:column;gap:12px;scrollbar-width:none;padding-bottom:100px;}
 .tab-content::-webkit-scrollbar{display:none;}
 .tab-content.active{display:flex;}
 
@@ -244,215 +244,128 @@ body{font-family:'Nunito',sans-serif;background:#dddbd4;min-height:100vh;display
 .source-entry:last-child{border-bottom:none;padding-bottom:0;}
 
 
-/* ===== PRESENTATION LAYOUT ===== */
-body {
-  font-family:'Nunito',sans-serif;
-  background:#e2dfd8;
-  min-height:100vh;
-  padding:32px 24px 60px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:28px;
-}
-.pres-title {
-  text-align:center;
-}
-.pres-title h1 {
-  font-family:'Lora',serif;
-  font-size:44px;
-  font-weight:600;
-  color:#1a1a2e;
-  letter-spacing:-1px;
-}
-.pres-title h1 span { color:#5b8dee; }
-.pres-title p {
-  font-size:14px;
-  color:#7a7a8c;
-  margin-top:6px;
-  font-weight:600;
-}
+body{font-family:'Nunito',sans-serif;background:#e2dfd8;min-height:100vh;padding:40px 32px 60px;display:flex;flex-direction:column;align-items:center;gap:32px;}
+.pres-title{text-align:center;}
+.pres-title h1{font-family:'Lora',serif;font-size:48px;font-weight:600;color:#1a1a2e;letter-spacing:-1px;}
+.pres-title h1 span{color:#5b8dee;}
+.pres-title p{font-size:16px;color:#7a7a8c;margin-top:8px;font-weight:600;}
+.main-layout{display:flex;gap:40px;align-items:flex-start;width:100%;max-width:1320px;}
+.phone-wrap{flex-shrink:0;}
+.right-panel{flex:1;display:flex;flex-direction:column;gap:18px;min-width:0;}
+.pbox{background:white;border-radius:22px;padding:26px 28px;box-shadow:0 4px 24px rgba(0,0,0,0.07);}
+.pbox-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.pbox-icon{width:40px;height:40px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.pbox h3{font-family:'Lora',serif;font-size:20px;font-weight:600;color:#1a1a2e;}
+.pbox p{font-size:15px;color:#4a4a5a;line-height:1.75;}
+.pbox strong{color:#1a1a2e;}
+.pbox ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:10px;}
+.pbox ul li{font-size:15px;color:#4a4a5a;line-height:1.6;padding-left:20px;position:relative;}
+.pbox ul li::before{content:'→';position:absolute;left:0;font-weight:800;font-size:12px;color:#999;}
+.dev-box{background:linear-gradient(160deg,#1a1a2e,#252545);border-radius:22px;padding:26px 28px;box-shadow:0 4px 28px rgba(0,0,0,0.16);}
+.dev-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px;}
+.dev-avatar{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#5b8dee,#43b89c);display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;}
+.dev-name{font-family:'Lora',serif;font-size:21px;color:white;margin-bottom:3px;}
+.dev-role{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:10px;}
+.dev-text{font-size:15px;color:rgba(255,255,255,0.78);line-height:1.7;}
+.dev-quote{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.12);font-size:15px;color:#8ab4ff;font-style:italic;font-weight:600;line-height:1.65;}
+.gp-body{margin-top:14px;display:flex;flex-direction:column;gap:12px;}
+.gp-item{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:#f8f8fb;border-radius:14px;}
+.gp-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.gp-title{font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.gp-text{font-size:14px;color:#5a5a6a;line-height:1.6;}
+.zg-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.zg-card{background:#f8f8fb;border-radius:14px;padding:14px 16px;}
+.zg-card h4{font-size:14px;font-weight:800;color:#1a1a2e;margin-bottom:8px;}
+.zg-card ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.zg-card ul li{font-size:13.5px;color:#4a4a5a;line-height:1.5;padding-left:16px;position:relative;}
+.zg-card ul li::before{content:'→';position:absolute;left:0;font-weight:800;font-size:11px;color:#999;}
+.zg-stat{background:linear-gradient(135deg,#e8f0ff,#e0f5f0);border-radius:14px;padding:14px 16px;margin-top:12px;}
+.zg-stat p{font-size:14px;color:#2d4a6a;line-height:1.7;}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.feature-item{background:#f8f8fb;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;}
+.feature-icon{font-size:18px;flex-shrink:0;}
+.feature-title{font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:3px;}
+.feature-text{font-size:12.5px;color:#5a5a6a;line-height:1.5;}
+.studie-list{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.studie-item{background:#f0f7ff;border-radius:14px;padding:13px 16px;border-left:4px solid #5b8dee;}
+.studie-text{font-size:14px;color:#2d4a7a;line-height:1.65;}
+.studie-source{font-size:12px;color:#7a9ac0;margin-top:4px;font-style:italic;}
+.fb-summary{background:#f0faf5;border-radius:14px;padding:16px 18px;margin-bottom:14px;border-left:4px solid #43b89c;}
+.fb-summary p{font-size:15px;color:#1e4a3a;line-height:1.75;}
+.fb-quotes{display:flex;flex-direction:column;gap:10px;}
+.fb-quote{background:#f8f8fb;border-radius:14px;padding:14px 16px;}
+.fb-quote-header{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+.fb-quote-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.fb-quote-name{font-size:13px;font-weight:800;color:#1a1a2e;}
+.fb-quote-text{font-size:14px;color:#4a4a5a;line-height:1.65;font-style:italic;}
+.reflex-text{font-size:15px;color:#4a4a5a;line-height:1.75;margin-bottom:14px;}
+.reflex-highlight{background:linear-gradient(135deg,#e8f0ff,#e0f5f0);border-radius:14px;padding:16px 18px;font-size:15px;color:#1a1a2e;line-height:1.7;font-weight:600;}
+.qr-box{background:white;border-radius:22px;padding:26px 28px;box-shadow:0 4px 24px rgba(0,0,0,0.07);display:flex;gap:28px;align-items:center;}
+.qr-left{flex-shrink:0;}
+#qrcode canvas,#qrcode img{border-radius:12px;}
+.qr-right h3{font-family:'Lora',serif;font-size:20px;color:#1a1a2e;margin-bottom:8px;}
+.qr-right p{font-size:15px;color:#7a7a8c;line-height:1.65;margin-bottom:12px;}
+.qr-url{font-size:13px;font-weight:700;color:#5b8dee;word-break:break-all;padding:10px 14px;background:#e8f0ff;border-radius:12px;margin-bottom:14px;display:block;}
+.qr-steps{display:flex;flex-direction:column;gap:8px;}
+.qr-step{display:flex;align-items:center;gap:10px;font-size:14px;color:#4a4a5a;font-weight:600;}
+.qr-step-num{width:24px;height:24px;border-radius:50%;background:#5b8dee;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;}
+.tag-dep{background:#e8f0ff;color:#2d55b0;}
+.tag-bor{background:#fde8ed;color:#a03050;}
+.tag-aut{background:#e0f5f0;color:#1e7a62;}
+.tag-gray{background:#f0f0f4;color:#5a5a6a;}
 
-.main-layout {
-  display:flex;
-  gap:36px;
-  align-items:flex-start;
-  width:100%;
-  max-width:1280px;
+@media (max-width: 1100px) {
+  .main-layout { flex-direction: column; align-items: center; }
+  .right-panel { width: 100%; max-width: 620px; }
+  .phone-wrap { align-self: center; }
 }
-
-/* Phone wrap keeps v4 phone styles intact */
-.phone-wrap { flex-shrink:0; }
-
-/* RIGHT PANEL */
-.right-panel {
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  min-width:0;
+@media (max-width: 460px) {
+  body { padding: 20px 10px 40px; gap: 20px; }
+  .pres-title h1 { font-size: 32px; }
+  .pres-title p { font-size: 13px; }
+  .phone { width: 340px; }
+  .screen { height: 710px; }
+  .pbox { padding: 18px 16px; }
+  .dev-box { padding: 18px 16px; }
+  .qr-box { flex-direction: column; align-items: center; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .zg-split { grid-template-columns: 1fr; }
 }
-
-/* PRESENTATION BOXES */
-.pbox {
-  background:white;
-  border-radius:20px;
-  padding:22px 24px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.07);
-}
-.pbox-dark {
-  background:linear-gradient(160deg,#1a1a2e,#252545);
-  border-radius:20px;
-  padding:22px 24px;
-  box-shadow:0 4px 24px rgba(0,0,0,0.18);
-}
-.pbox-accent {
-  border-radius:20px;
-  padding:22px 24px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.07);
-}
-.pbox-header {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:14px;
-}
-.pbox-num {
-  width:32px;height:32px;
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Lora',serif;
-  font-size:16px;font-weight:600;
-  color:white;
-  flex-shrink:0;
-}
-.pbox h3 {
-  font-family:'Lora',serif;
-  font-size:16px;font-weight:600;
-  color:#1a1a2e;
-}
-.pbox-dark h3 { color:white; }
-.pbox p {
-  font-size:13px;color:#4a4a5a;line-height:1.7;
-}
-.pbox-dark p { color:rgba(255,255,255,0.72);line-height:1.7;font-size:13px; }
-.pbox ul {
-  list-style:none;
-  display:flex;flex-direction:column;gap:7px;
-  margin-top:8px;
-}
-.pbox ul li {
-  font-size:13px;color:#4a4a5a;line-height:1.5;
-  padding-left:18px;position:relative;
-}
-.pbox ul li::before { content:'✓';position:absolute;left:0;color:#43b89c;font-weight:800; }
-.pbox-dark ul li { color:rgba(255,255,255,0.72); }
-.pbox-dark ul li::before { color:#8ab4ff; }
-
-.tag-row { display:flex;flex-wrap:wrap;gap:8px;margin-top:12px; }
-.tag { padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700; }
-.tag-dep { background:#e8f0ff;color:#2d55b0; }
-.tag-bor { background:#fde8ed;color:#a03050; }
-.tag-aut { background:#e0f5f0;color:#1e7a62; }
-.tag-gray { background:#f0f0f4;color:#5a5a6a; }
-
-.dev-row { display:flex;gap:14px;align-items:flex-start;margin-bottom:14px; }
-.dev-avatar {
-  width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(135deg,#5b8dee,#43b89c);
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;flex-shrink:0;
-}
-.dev-name { font-family:'Lora',serif;font-size:18px;color:white;margin-bottom:2px; }
-.dev-role { font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:8px; }
-.dev-text { font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65; }
-.dev-quote {
-  margin-top:14px;padding-top:14px;
-  border-top:1px solid rgba(255,255,255,0.1);
-  font-size:13px;color:#8ab4ff;
-  font-style:italic;font-weight:600;line-height:1.6;
-}
-
-.giving-grid {
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
-}
-.giving-item {
-  background:rgba(255,255,255,0.07);
-  border-radius:14px;padding:14px 12px;
-}
-.gi-icon { font-size:20px;margin-bottom:6px; }
-.gi-title { font-size:12px;font-weight:800;color:white;margin-bottom:4px; }
-.gi-text { font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5; }
-
-.feedback-row {
-  display:flex;gap:10px;margin-top:12px;
-}
-.feedback-bubble {
-  background:#f5f4f0;border-radius:14px;padding:12px 14px;flex:1;
-}
-.fb-avatar {
-  width:28px;height:28px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;margin-bottom:6px;
-}
-.fb-name { font-size:11px;font-weight:800;color:#1a1a2e;margin-bottom:4px; }
-.fb-text { font-size:11.5px;color:#4a4a5a;line-height:1.5; }
-
-.bewirkt-grid {
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
-}
-.bewirkt-item {
-  background:#f5f4f0;border-radius:14px;padding:14px 12px;
-}
-.bewirkt-icon { font-size:20px;margin-bottom:6px; }
-.bewirkt-title { font-size:12px;font-weight:800;color:#1a1a2e;margin-bottom:4px; }
-.bewirkt-text { font-size:11px;color:#5a5a6a;line-height:1.5; }
-
-/* QR BOX */
-.qr-box {
-  background:white;border-radius:20px;
-  padding:22px 24px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.07);
-  text-align:center;
-}
-.qr-box h3 { font-family:'Lora',serif;font-size:16px;color:#1a1a2e;margin-bottom:6px; }
-.qr-box p { font-size:12px;color:#7a7a8c;margin-bottom:14px;line-height:1.5; }
-#qrcode { display:flex;justify-content:center;margin-bottom:12px; }
-.qr-url { font-size:11px;font-weight:700;color:#5b8dee;word-break:break-all;padding:8px 12px;background:#e8f0ff;border-radius:10px;margin-bottom:12px; }
-.qr-steps { display:flex;flex-direction:column;gap:6px;text-align:left; }
-.qr-step { display:flex;align-items:center;gap:8px;font-size:12px;color:#4a4a5a;font-weight:600; }
-.qr-step-num { width:20px;height:20px;border-radius:50%;background:#5b8dee;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0; }
-
-.zwei-col { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
-
 </style>
 </head>
 <body>
 
 <div class="pres-title">
   <h1>Mind<span>Bridge</span></h1>
-  <p>Giving Project · Mindful Leadership · Wirtschaftspsychologie · Alina, 24</p>
+  <p>Giving Project · Mindful Leadership · Wirtschaftspsychologie · Hochschule Osnabrück · Alina, 24</p>
 </div>
 
 <div class="main-layout">
-
-  <!-- PHONE (vollständige v4 Inhalte) -->
   <div class="phone-wrap">
     <div class="phone">
       <div class="screen">
         <div class="page active" id="home">
   <div class="status">9:41<span>●●●</span></div>
   <div class="home-body">
-    <div class="home-label">Willkommen</div>
+        <div class="home-label">Willkommen</div>
     <h2 class="home-title">Wie kann ich dir <span>heute helfen?</span></h2>
-    <p class="home-sub">Wähle ein Thema – für dich selbst oder um jemanden besser zu verstehen.</p>
-    <div class="section-label">Themen</div>
+    <p class="home-sub">Verstehen, Begleiten, Handeln – niedrigschwellige Infos zu psychischer Gesundheit und Neurodiversität. Für Betroffene und ihr Umfeld.</p>
+    <div class="section-label">Persönliche Themen</div>
     <div class="topic-list">
       <button class="topic-btn dep" onclick="openTopic('dep')"><div class="t-icon">🌧️</div><div class="t-info"><div class="t-name">Depression</div></div><div class="t-arr">›</div></button>
       <button class="topic-btn bor" onclick="openTopic('bor')"><div class="t-icon">🌊</div><div class="t-info"><div class="t-name">Borderline</div></div><div class="t-arr">›</div></button>
       <button class="topic-btn aut" onclick="openTopic('aut')"><div class="t-icon">🧩</div><div class="t-info"><div class="t-name">Autismus</div></div><div class="t-arr">›</div></button>
     </div>
-    <button class="sos-btn" onclick="openTopic('dep');setTimeout(()=>switchTab('akut'),100)">
+    <div class="section-label">Weitere Themen</div>
+    <div class="topic-list">
+      <button class="topic-btn" style="background:linear-gradient(135deg,#b06010,#f0a030)" onclick="openTopic('adhs')"><div class="t-icon">🧠</div><div class="t-info"><div class="t-name">ADHS</div></div><div class="t-arr">›</div></button>
+      <button class="topic-btn" style="background:linear-gradient(135deg,#6c3483,#9b59b6)" onclick="openTopic('angst')"><div class="t-icon">😰</div><div class="t-info"><div class="t-name">Angststörungen</div></div><div class="t-arr">›</div></button>
+      <button class="topic-btn" style="background:linear-gradient(135deg,#a02020,#e05555)" onclick="openTopic('burnout')"><div class="t-icon">🔥</div><div class="t-info"><div class="t-name">Burnout</div></div><div class="t-arr">›</div></button>
+      <button class="topic-btn" style="background:linear-gradient(135deg,#a04060,#e8a0c0);position:relative;" onclick="openTopic('ess')"><div class="t-icon">🍽️</div><div class="t-info"><div class="t-name">Essstörungen</div><div style="font-size:10px;color:rgba(255,255,255,0.6);margin-top:2px;">In Entwicklung</div></div><div style="position:absolute;top:10px;right:10px;background:rgba(255,200,0,0.9);color:#1a1a2e;font-size:10px;font-weight:800;padding:2px 7px;border-radius:8px;">⚠️</div><div class="t-arr" style="margin-right:20px;">›</div></button>
+    </div>
+    <button class="sos-btn" onclick="document.getElementById('crisisModal').classList.add('active')">
       <div style="font-size:20px;">🆘</div>
       <div><div class="sos-title">Akut in Not?</div><div class="sos-sub">Sofortige Hilfe & Krisentelefon</div></div>
       <div style="color:rgba(255,100,100,0.5);font-size:16px;">›</div>
@@ -463,6 +376,36 @@ body {
     <div class="nav-item" onclick="showPage('lernen')"><div class="nav-icon">🎮</div>Lernen</div>
     <div class="nav-item" onclick="showPage('forum')"><div class="nav-icon">💬</div>Forum</div>
     <div class="nav-item" onclick="showPage('profil')"><div class="nav-icon">👤</div>Profil</div>
+  </div>
+</div>
+
+<!-- CRISIS MODAL -->
+<div class="compose-modal" id="crisisModal">
+  <div style="background:linear-gradient(135deg,#6a3080,#9a50b0);padding:50px 20px 20px;flex-shrink:0;position:relative;">
+    <button class="compose-cancel" onclick="document.getElementById('crisisModal').classList.remove('active')" style="position:absolute;top:50px;right:16px;color:white;font-size:20px;">✕</button>
+    <div style="font-size:14px;font-weight:800;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Soforthilfe</div>
+    <div style="font-family:'Lora',serif;font-size:20px;color:white;">🆘 Du bist nicht allein</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;">
+    <div style="background:#f0e8ff;border-radius:16px;padding:16px 18px;">
+      <div style="font-size:12px;font-weight:800;color:#6a3080;margin-bottom:6px;">📞 TELEFONSEELSORGE</div>
+      <div style="font-size:22px;font-weight:900;color:#6a3080;margin-bottom:4px;">0800 111 0 111</div>
+      <div style="font-size:12px;color:#5a3a7a;line-height:1.6;">Kostenlos · 24 Stunden · Anonym<br>Kein Problem ist zu klein.</div>
+    </div>
+    <div style="background:#fff4e0;border-radius:16px;padding:16px 18px;">
+      <div style="font-size:12px;font-weight:800;color:#b06010;margin-bottom:6px;">🚨 NOTFALL</div>
+      <div style="font-size:22px;font-weight:900;color:#b06010;margin-bottom:4px;">112</div>
+      <div style="font-size:12px;color:#7a5010;">Bei akuter Gefahr für Leib und Leben</div>
+    </div>
+    <div style="background:white;border-radius:16px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+      <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:8px;">🌐 ONLINE-HILFE</div>
+      <div style="font-size:12.5px;color:#4a4a5a;line-height:1.8;">online.telefonseelsorge.de<br>ifightdepression.com – kostenlos & anonym</div>
+    </div>
+    <div style="background:white;border-radius:16px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+      <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:8px;">🧘 SOFORT-METHODEN</div>
+      <div style="font-size:12.5px;color:#4a4a5a;line-height:1.8;"><strong>5-4-3-2-1:</strong> 5 Dinge sehen · 4 hören · 3 fühlen<br><strong>Boxatmung:</strong> 4 ein → 4 halten → 4 aus → 4 halten<br><strong>Grounding:</strong> Füße auf den Boden, tief einatmen</div>
+    </div>
+    <button onclick="document.getElementById('crisisModal').classList.remove('active')" style="width:100%;padding:14px;background:#6a3080;color:white;border:none;border-radius:16px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Zurück zur App</button>
   </div>
 </div>
 
@@ -480,6 +423,12 @@ body {
   <div class="tab-content active" id="tab-verstehen"></div>
   <div class="tab-content" id="tab-akut"></div>
   <div class="tab-content" id="tab-umfeld"></div>
+  <div class="bottom-nav-light">
+    <div class="nav-item-light" onclick="showPage('home')"><div class="nav-icon">🏠</div>Home</div>
+    <div class="nav-item-light" onclick="showPage('lernen')"><div class="nav-icon">🎮</div>Lernen</div>
+    <div class="nav-item-light" onclick="showPage('forum')"><div class="nav-icon">💬</div>Forum</div>
+    <div class="nav-item-light" onclick="showPage('profil')"><div class="nav-icon">👤</div>Profil</div>
+  </div>
 </div>
 
 <!-- LERNEN -->
@@ -519,6 +468,9 @@ body {
       <button class="compose-tag" onclick="toggleTag(this)">Depression</button>
       <button class="compose-tag" onclick="toggleTag(this)">Borderline</button>
       <button class="compose-tag" onclick="toggleTag(this)">Autismus</button>
+      <button class="compose-tag" onclick="toggleTag(this)">ADHS</button>
+      <button class="compose-tag" onclick="toggleTag(this)">Angststörungen</button>
+      <button class="compose-tag" onclick="toggleTag(this)">Burnout</button>
       <button class="compose-tag" onclick="toggleTag(this)">Umfeld</button>
       <button class="compose-tag" onclick="toggleTag(this)">Frage</button>
     </div>
@@ -534,25 +486,22 @@ body {
 
 <!-- PROFIL -->
 <div class="page" id="profil">
-  <div class="profil-header">
-    <div class="profil-avatar">🌱</div>
-    <div class="profil-name">Dein Profil</div>
-    <div class="profil-sub">MindBridge Nutzer:in</div>
+  <div class="profil-header" style="position:relative;">
+    <button onclick="openEditPage()" style="position:absolute;top:54px;right:16px;background:rgba(255,255,255,0.15);border:none;border-radius:10px;color:white;font-size:12px;font-weight:800;padding:6px 12px;cursor:pointer;">✏️ Bearbeiten</button>
+    <div class="profil-avatar" id="profilAvatar">🌱</div>
+    <div class="profil-name" id="profilName">Dein Profil</div>
+    <div class="profil-sub" id="profilRole">MindBridge Nutzer:in</div>
   </div>
   <div class="profil-body">
     <div class="profil-stat-row">
-      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Themen</div></div>
-      <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Lektionen</div></div>
+      <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Themen</div></div>
+      <div class="stat-card"><div class="stat-num">28</div><div class="stat-label">Lektionen</div></div>
       <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Tage aktiv</div></div>
     </div>
-    <div class="profil-section-title">Einstellungen</div>
-    <div class="profil-item"><div class="profil-item-icon">🔔</div><div class="profil-item-text"><div class="profil-item-title">Benachrichtigungen</div><div class="profil-item-sub">Tägliche Erinnerungen</div></div><div class="profil-item-arr">›</div></div>
-    <div class="profil-item"><div class="profil-item-icon">🔒</div><div class="profil-item-text"><div class="profil-item-title">Datenschutz</div><div class="profil-item-sub">Anonym & sicher</div></div><div class="profil-item-arr">›</div></div>
-    <div class="profil-item"><div class="profil-item-icon">❤️</div><div class="profil-item-text"><div class="profil-item-title">Gespeicherte Inhalte</div><div class="profil-item-sub">Deine Favoriten</div></div><div class="profil-item-arr">›</div></div>
     <div class="profil-section-title">Über die App</div>
     <div class="profil-item" onclick="showSubpage('quellenPage')"><div class="profil-item-icon">📚</div><div class="profil-item-text"><div class="profil-item-title">Quellen & Wissenschaft</div><div class="profil-item-sub">DSM-5, WHO, peer-reviewed Studien</div></div><div class="profil-item-arr">›</div></div>
-    <div class="profil-item"><div class="profil-item-icon">💌</div><div class="profil-item-text"><div class="profil-item-title">Feedback geben</div><div class="profil-item-sub">Hilf uns zu verbessern</div></div><div class="profil-item-arr">›</div></div>
-    <div class="profil-item"><div class="profil-item-icon">ℹ️</div><div class="profil-item-text"><div class="profil-item-title">Über MindBridge</div><div class="profil-item-sub">Version 1.0 · Giving Project</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-item" onclick="showSubpage('feedbackPage')"><div class="profil-item-icon">💌</div><div class="profil-item-text"><div class="profil-item-title">Feedback geben</div><div class="profil-item-sub">Hilf uns zu verbessern</div></div><div class="profil-item-arr">›</div></div>
+    <div class="profil-item" onclick="showSubpage('aboutPage')"><div class="profil-item-icon">💙</div><div class="profil-item-text"><div class="profil-item-title">Über MindBridge</div><div class="profil-item-sub">Projekt, Entwicklerin & Warum</div></div><div class="profil-item-arr">›</div></div>
   </div>
   <div class="bottom-nav-light" style="position:absolute;">
     <div class="nav-item-light" onclick="showPage('home')"><div class="nav-icon">🏠</div>Home</div>
@@ -567,9 +516,9 @@ body {
         <div class="source-group-title" style="color:var(--dep);">🌧️ Depression</div>
         <div class="source-entry">WHO (2023). Depressive disorder. World Health Organization.</div>
         <div class="source-entry">American Psychiatric Association (2022). DSM-5-TR. APA Publishing.</div>
-        <div class="source-entry">Krishnan & Nestler (2008). Molecular neurobiology of depression. Nature, 455, 894–902.</div>
-        <div class="source-entry">Haddad (2001). Antidepressant discontinuation syndromes. Drug Safety, 24(3).</div>
-        <div class="source-entry">Blumenthal et al. (2007). Exercise and pharmacotherapy in depression. Psychosomatic Medicine.</div>
+        <div class="source-entry">Malhi & Mann (2018). Depression. The Lancet, 392(10161), 2299–2312.</div>
+        <div class="source-entry">Fornaro et al. (2023). Antidepressant discontinuation syndrome: state-of-the-art clinical review. European Neuropsychopharmacology, 66, 1–10.</div>
+        <div class="source-entry">Recchia et al. (2022). Effect of exercise for depression: systematic review and network meta-analysis. BMJ, 376.</div>
         <div class="source-entry">Joiner & Coyne (1999). The Interactional Nature of Depression. APA.</div>
       </div>
       <div class="source-group">
@@ -596,175 +545,230 @@ body {
         <div class="source-entry">Hochschule Osnabrück – Vorlesungsunterlagen Mindful Leadership.</div>
         <div class="source-entry">Telefonseelsorge: online.telefonseelsorge.de · Notfall: 112</div>
       </div>
-    </div>
-  </div>
-</div>
-
-
+      <div class="source-group">
+        <div class="source-group-title" style="color:#f0a030;">🧠 ADHS</div>
+        <div class="source-entry">American Psychiatric Association (2022). DSM-5-TR, ADHD. APA Publishing.</div>
+        <div class="source-entry">Faraone et al. (2021). The World Federation of ADHD International Consensus Statement. Neuroscience & Biobehavioral Reviews, 128, 789–818.</div>
+        <div class="source-entry">Kooij et al. (2019). Updated European Consensus Statement on diagnosis and treatment of adult ADHD. European Psychiatry, 56.</div>
+        <div class="source-entry">Hesslinger et al. (2003). Psychotherapy of ADHD in adults. European Archives of Psychiatry and Clinical Neuroscience.</div>
+        <div class="source-entry">ADHS Deutschland e.V. – adhs-deutschland.de</div>
+      </div>
+      <div class="source-group">
+        <div class="source-group-title" style="color:#9b59b6;">😰 Angststörungen</div>
+        <div class="source-entry">American Psychiatric Association (2022). DSM-5-TR, Anxiety Disorders. APA Publishing.</div>
+        <div class="source-entry">Bandelow et al. (2015). Efficacy of treatments for anxiety disorders. International Journal of Psychiatry in Clinical Practice, 19(4).</div>
+        <div class="source-entry">Clark & Beck (2010). Cognitive Therapy of Anxiety Disorders. Guilford Press.</div>
+        <div class="source-entry">Barlow (2014). Clinical Handbook of Psychological Disorders, 5th Ed. Guilford Press.</div>
+        <div class="source-entry">Deutsche Angst-Hilfe – angst-hilfe.de</div>
+      </div>
+      <div class="source-group">
+        <div class="source-group-title" style="color:#e05555;">🔥 Burnout</div>
+        <div class="source-entry">WHO ICD-11 (2022), Kapitel QD85 – Burnout als berufsbedingtes Phänomen.</div>
+        <div class="source-entry">Maslach & Leiter (2016). Burnout. In Stress: Concepts, Cognition, Emotion, and Behavior. Elsevier.</div>
+        <div class="source-entry">Schaufeli et al. (2009). Burnout: 35 years of research and practice. Career Development International, 14(3).</div>
+        <div class="source-entry">Ahola & Hakanen (2007). Job strain, burnout and depressive symptoms. Journal of Affective Disorders, 99(1–3).</div>
+        <div class="source-entry">Deutsche Burnout-Gesellschaft – burnout-gesellschaft.de</div>
+      </div>
+      <div class="source-group">
+        <div class="source-group-title" style="color:#e8a0c0;">🍽️ Essstörungen</div>
+        <div class="source-entry">American Psychiatric Association (2022). DSM-5-TR, Feeding and Eating Disorders. APA Publishing.</div>
+        <div class="source-entry">Herpertz et al. (2011). S3-Leitlinie Diagnostik und Therapie der Essstörungen. AWMF-Register Nr. 051-026.</div>
+        <div class="source-entry">Linardon et al. (2023). CBT for eating disorders: map of systematic review evidence. International Journal of Eating Disorders.</div>
+        <div class="source-entry">Arcelus et al. (2011). Mortality rates in patients with anorexia nervosa. Archives of General Psychiatry, 68(7).</div>
+        <div class="source-entry">Nationale Allianz für Essstörungen: 0221 4931045 · anad.de · bzga.de</div>
+        <div class="source-entry">⚠️ Dieser Bereich wird noch von Fachleuten gegengelesen.</div>
       </div>
     </div>
   </div>
 
-  <!-- RIGHT PANEL: 5 Präsentationspunkte -->
+      <div class="subpage" id="feedbackPage">
+        <div class="subpage-header"><button class="sp-back" onclick="hideSubpage('feedbackPage')">‹</button><h2>💌 Feedback geben</h2></div>
+        <div class="subpage-body">
+          <div style="background:white;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">DEIN FEEDBACK</div>
+            <textarea id="feedbackText" style="width:100%;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:13px;outline:none;resize:none;height:110px;line-height:1.6;color:var(--text);" placeholder="Was gefällt dir? Was könnte besser sein?"></textarea>
+          </div>
+          <div style="background:white;border-radius:16px;padding:16px 18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">BEREICH</div>
+            <select id="feedbackArea" style="width:100%;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:13px;outline:none;background:white;color:var(--text);">
+              <option>Allgemein</option><option>Depression</option><option>Borderline</option><option>Autismus</option><option>ADHS</option><option>Angststörungen</option><option>Burnout</option><option>Essstörungen</option><option>Lernen</option><option>Forum</option>
+            </select>
+          </div>
+          <button onclick="submitFeedback()" id="feedbackBtn" style="width:100%;padding:14px;background:var(--dep);color:white;border:none;border-radius:16px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Feedback senden</button>
+          <div id="feedbackSuccess" style="display:none;margin-top:12px;background:#e0f5f0;border-radius:14px;padding:14px 16px;text-align:center;font-size:13px;font-weight:700;color:#1e7a62;">💙 Danke für dein Feedback!</div>
+        </div>
+      </div>
+
+      <div class="subpage" id="editPage">
+        <div class="subpage-header"><button class="sp-back" onclick="hideSubpage('editPage')">‹</button><h2>✏️ Profil bearbeiten</h2></div>
+        <div class="subpage-body">
+          <div style="background:white;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">NAME</div>
+            <input id="editName" style="width:100%;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;color:var(--text);" placeholder="Dein Name">
+          </div>
+          <div style="background:white;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">ROLLE</div>
+            <input id="editRole" style="width:100%;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;color:var(--text);" placeholder="z.B. Betroffene, Angehörige, Fachkraft ...">
+          </div>
+          <div style="background:white;border-radius:16px;padding:16px 18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:12px;">AVATAR</div>
+            <div id="avatarGrid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;"></div>
+          </div>
+          <button onclick="saveProfile()" style="width:100%;padding:14px;background:var(--dep);color:white;border:none;border-radius:16px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Speichern</button>
+        </div>
+      </div>
+
+      <div class="subpage" id="aboutPage">
+        <div class="subpage-header" style="background:linear-gradient(160deg,#1a1a2e,#252545);">
+          <button class="sp-back" onclick="hideSubpage('aboutPage')">‹</button>
+          <h2>💙 Über MindBridge</h2>
+        </div>
+        <div class="subpage-body">
+          <div style="background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#5b8dee,#43b89c);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">🌱</div>
+            <div>
+              <div style="font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:3px;">Alina, 24</div>
+              <div style="font-size:12px;color:#5b8dee;font-weight:700;margin-bottom:8px;">Wirtschaftspsychologie · Mindful Leadership</div>
+              <div style="font-size:12.5px;color:#4a4a5a;line-height:1.65;">Ich lebe selbst mit Depression. In meinem Umfeld gibt es Menschen mit Autismus und Borderline. Ich weiß wie es sich anfühlt, wenn man nicht weiß wie man helfen soll – oder wie man sich selbst erklären soll.</div>
+            </div>
+          </div>
+          <div style="background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;">
+            <div style="font-family:'Lora',serif;font-size:16px;color:#1a1a2e;margin-bottom:10px;">💙 Warum MindBridge?</div>
+            <div style="font-size:12.5px;color:#4a4a5a;line-height:1.7;">Was mir gefehlt hat, war eine Ressource die beides gleichzeitig kann: erklären und sofort helfen. Für Betroffene und für ihr Umfeld. Niedrigschwellig, kostenlos, wissenschaftlich fundiert. MindBridge begann mit den drei Themen aus meinem eigenen Leben – und wächst weiter.</div>
+          </div>
+          <div style="background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:12px;">
+            <div style="font-family:'Lora',serif;font-size:16px;color:#1a1a2e;margin-bottom:10px;">🔬 Wissenschaftliche Basis</div>
+            <div style="font-size:12.5px;color:#4a4a5a;line-height:1.7;">Alle Inhalte basieren auf DSM-5-TR (2022), WHO ICD-11 (2022), evidenzbasierten Methoden wie DBT und ACT sowie peer-reviewed Studien. Die vollständigen Quellen findest du unter Quellen & Wissenschaft.</div>
+          </div>
+          <div style="background:white;border-radius:18px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+            <div style="font-family:'Lora',serif;font-size:16px;color:#1a1a2e;margin-bottom:10px;">🚀 Stand & Möglichkeiten</div>
+            <div style="font-size:12.5px;color:#4a4a5a;line-height:1.7;">MindBridge deckt aktuell 7 Erkrankungen ab: Depression, Borderline, Autismus, ADHS, Angststörungen, Burnout und Essstörungen – alle mit Verstehen-, Akut- und Umfeld-Bereich sowie Lernpfaden. Mögliche nächste Schritte wären eine Kooperation mit Fachleuten zur Inhaltsvalidierung, weitere Sprachen und eine breitere Veröffentlichung. Was davon entsteht, hängt von Zeit und Kapazitäten ab.</div>
+          </div>
+        </div>
+      </div>
+</div>
+      </div>
+    </div>
+  </div>
+
   <div class="right-panel">
 
-    <!-- ÜBER MICH + GIVING POTENTIAL -->
-    <div class="pbox-dark">
+    <div class="dev-box">
       <div class="dev-row">
         <div class="dev-avatar">🌱</div>
         <div>
           <div class="dev-name">Alina, 24</div>
           <div class="dev-role">Wirtschaftspsychologie · Schwerpunkt Marketing · Mindful Leadership</div>
-          <div class="dev-text">Ich lebe selbst mit Depression. In meinem direkten Umfeld gibt es Menschen mit Autismus und Borderline. Ich weiß wie es sich anfühlt, wenn man nicht weiß wie man jemandem helfen soll – oder wie man sich selbst erklären soll.</div>
+          <div class="dev-text">Ich lebe selbst mit Depression. In meinem direkten Umfeld gibt es Menschen mit Autismus und Borderline. MindBridge begann mit diesen drei persönlichen Themen – und wuchs durch die Erkenntnis, dass so viele Menschen in genau dieser Lücke stecken: zwischen Unwissen und dem Wunsch zu verstehen.</div>
         </div>
       </div>
-      <div class="dev-quote">„Was mir gefehlt hat: eine Ressource die erklärt UND sofort hilft – für Betroffene und ihr Umfeld. MindBridge ist diese Ressource."</div>
+      <div class="dev-quote">„Was mir gefehlt hat, war eine Ressource die erklärt und sofort helfen kann – niedrigschwellig, kostenlos, für Betroffene und ihr Umfeld. MindBridge kann diese Ressource sein."</div>
     </div>
 
-    <!-- 1. GIVING POTENTIAL -->
-    <div class="pbox-dark">
-      <div class="pbox-header">
-        <div class="pbox-num" style="background:#5b8dee;">1</div>
-        <h3>Giving Potential</h3>
-      </div>
-      <div class="giving-grid">
-        <div class="giving-item">
-          <div class="gi-icon">🧠</div>
-          <div class="gi-title">Wissen</div>
-          <div class="gi-text">Wirtschaftspsychologie, Mindful Leadership, wissenschaftliche Recherche zu DSM-5, WHO, DBT & ACT</div>
-        </div>
-        <div class="giving-item">
-          <div class="gi-icon">💙</div>
-          <div class="gi-title">Erfahrung</div>
-          <div class="gi-text">Eigene Depression, nahestehende Menschen mit Autismus & Borderline – beide Perspektiven aus dem Leben</div>
-        </div>
-        <div class="giving-item">
-          <div class="gi-icon">💻</div>
-          <div class="gi-title">Fähigkeiten</div>
-          <div class="gi-text">App entwickelt trotz wenig Programmiererfahrung – mit Lernbereitschaft und Mut zum Anfangen</div>
-        </div>
-        <div class="giving-item">
-          <div class="gi-icon">❤️</div>
-          <div class="gi-title">Werte</div>
-          <div class="gi-text">Entstigmatisierung psychischer Erkrankungen, Empathie, Niedrigschwelligkeit, Mut zur Offenheit</div>
-        </div>
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#e8f0ff;">🎯</div><h3>Giving Potential</h3></div>
+      <div class="gp-body">
+        <div class="gp-item"><div class="gp-icon">🗺️</div><div><div class="gp-title">Gelebte Erfahrung</div><div class="gp-text">Eigene Depression, nahestehende Menschen mit Autismus und Borderline – beide Perspektiven aus dem echten Leben. Diese persönliche Erfahrung bildet die Grundlage für authentische Inhalte.</div></div></div>
+        <div class="gp-item"><div class="gp-icon">❤️</div><div><div class="gp-title">Werte & Haltung</div><div class="gp-text">Entstigmatisierung psychischer Gesundheit und Neurodiversität, Empathie, Niedrigschwelligkeit und Mut zur Offenheit. Giving bedeutet für mich hier: Verständnis und Hilfe weitergeben zu können.</div></div></div>
+        <div class="gp-item"><div class="gp-icon">🧠</div><div><div class="gp-title">Wissen & Fähigkeiten</div><div class="gp-text">Wirtschaftspsychologisches Studium, Mindful Leadership, wissenschaftliche Recherche. Trotz wenig Programmiererfahrung eine vollständige App entwickelt – mit Lernbereitschaft und Mut.</div></div></div>
       </div>
     </div>
 
-    <!-- 2. ZIELGRUPPE -->
-    <div class="zwei-col">
-      <div class="pbox">
-        <div class="pbox-header">
-          <div class="pbox-num" style="background:#e0607e;">2</div>
-          <h3>Zielgruppe & Bedarf</h3>
-        </div>
-        <p><strong>Wen erreicht MindBridge?</strong></p>
-        <ul style="margin-top:8px;">
-          <li>Betroffene psychischer Erkrankungen</li>
-          <li>Angehörige, Freunde & Partner</li>
-          <li>Fachkräfte (Kita, Schule, Soziales)</li>
-          <li>Alle die mehr verstehen wollen</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>Warum diese Zielgruppe?</strong></p>
-        <p style="margin-top:6px;">Laut WHO leiden 1 von 4 Menschen irgendwann im Leben an einer psychischen Erkrankung. Gleichzeitig dauert es durchschnittlich 10 Jahre bis zur Diagnose (DGPPN, 2022) – auch weil Stigma Hilfe verhindert.</p>
-        <div class="tag-row">
-          <span class="tag tag-dep">Depression</span>
-          <span class="tag tag-bor">Borderline</span>
-          <span class="tag tag-aut">Autismus</span>
-          <span class="tag tag-gray">+ erweiterbar</span>
-        </div>
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#fde8ed;">👥</div><h3>Zielgruppe & Bedarf</h3></div>
+      <p>Psychische Gesundheit und Neurodiversität betreffen uns alle. Laut WHO leidet <strong>1 von 4 Menschen</strong> irgendwann im Leben an einer psychischen Erkrankung. Autismus betrifft rund <strong>1–2% der Bevölkerung</strong> (Zeidan et al., 2022). Trotzdem dauert es durchschnittlich <strong>10 Jahre bis zur Diagnose</strong>, weil Stigma, Unwissen und fehlende Ressourcen Hilfe verhindern (DGPPN, 2022).</p>
+      <div class="zg-split">
+        <div class="zg-card"><h4>Wen erreicht MindBridge?</h4><ul><li>Betroffene psychischer Erkrankungen</li><li>Angehörige, Freunde & Partner</li><li>Fachkräfte (Kita, Schule, Soziales)</li><li>Alle die mehr verstehen wollen</li></ul></div>
+        <div class="zg-card"><h4>Spezifische Bedarfe</h4><ul><li>Niedrigschwellige Erstinformation</li><li>Verständnis statt Stigma</li><li>Akuthilfe in Krisenmomenten</li><li>Orientierung für Angehörige</li></ul></div>
       </div>
+      <div class="zg-stat"><p><strong>Warum mir das persönlich wichtig ist:</strong> Ich habe selbst erlebt wie verschiedenste Menschen mit psychischen Erkrankungen und Neurodiversität umgehen – und wie überfordert das Umfeld sein kann, wenn es nicht weiß wie es mit der betroffenen Person umgehen soll. Genau diese Lücke füllt MindBridge.</p></div>
+    </div>
 
-      <!-- 3. WAS WURDE GEMACHT -->
-      <div class="pbox">
-        <div class="pbox-header">
-          <div class="pbox-num" style="background:#43b89c;">3</div>
-          <h3>Was wurde gemacht?</h3>
-        </div>
-        <p>Eine evidenzbasierte <strong>Psychoedukations-App</strong> mit drei Erkrankungen, jeweils:</p>
-        <ul>
-          <li>Verstehen – DSM-5 Kriterien, Mythen, Erfahrungsberichte</li>
-          <li>Akut – DBT, ACT & Achtsamkeitsmethoden aus der Vorlesung</li>
-          <li>Umfeld – konkrete Kommunikationshilfen für Angehörige</li>
-          <li>Lernen – Lernpfade & Quiz</li>
-          <li>Forum – Community & Austausch</li>
-        </ul>
-        <p style="margin-top:10px;font-size:12px;color:#7a7a8c;"><strong>Studienlage:</strong> Psychoedukation reduziert Stigma (Corrigan et al., 2012). Digital-Health-Apps zeigen nachweisliche Wirkung auf Selbstwirksamkeit (Linardon et al., 2020). Frühzeitige Information verbessert Hilfesuchverhalten.</p>
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#e0f5f0;">🔬</div><h3>Was wurde gemacht – und warum?</h3></div>
+      <p style="font-size:15px;color:#4a4a5a;line-height:1.75;margin-bottom:14px;">Eine evidenzbasierte <strong>Psychoedukations-App</strong> zu psychischer Gesundheit und Neurodiversität. Sie begann mit den drei Themen aus meinem persönlichen Leben und wurde um ADHS, Angststörungen, Burnout und Essstörungen erweitert. Jedes Thema hat drei Bereiche: <strong>Verstehen, Akut und Umfeld</strong>.</p>
+      <div class="feature-grid">
+        <div class="feature-item"><div class="feature-icon">🔍</div><div><div class="feature-title">Verstehen</div><div class="feature-text">DSM-5 Kriterien, Mythen aufklären, Erfahrungsberichte</div></div></div>
+        <div class="feature-item"><div class="feature-icon">⚡</div><div><div class="feature-title">Akut</div><div class="feature-text">DBT, ACT & Achtsamkeitsmethoden</div></div></div>
+        <div class="feature-item"><div class="feature-icon">🤝</div><div><div class="feature-title">Umfeld</div><div class="feature-text">Kommunikation, Alltag, Warnsignale, Selbstfürsorge</div></div></div>
+        <div class="feature-item"><div class="feature-icon">🎮</div><div><div class="feature-title">Lernen & Forum</div><div class="feature-text">Lernpfade mit Quiz und Community</div></div></div>
+      </div>
+      <p style="font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">Wissenschaftliche Grundlage:</p>
+      <div class="studie-list">
+        <div class="studie-item"><div class="studie-text">Psychoedukation reduziert nachweislich Stigma und verbessert das Hilfesuchverhalten.</div><div class="studie-source">Corrigan et al. (2014). Stigma and Mental Illness. Psychiatric Services.</div></div>
+        <div class="studie-item"><div class="studie-text">Digital-Health-Apps zeigen messbare Wirkung auf Selbstwirksamkeit und Behandlungsbereitschaft.</div><div class="studie-source">Linardon et al. (2020). Mental health apps. World Psychiatry.</div></div>
+        <div class="studie-item"><div class="studie-text">DBT-Techniken sind der Goldstandard bei BPS und wirksam bei Emotionsregulation.</div><div class="studie-source">Linehan (2015). DBT Skills Training Manual. Guilford Press.</div></div>
+        <div class="studie-item"><div class="studie-text">ACT-basierte Methoden zeigen bei Depression vergleichbare Wirksamkeit wie klassische KVT.</div><div class="studie-source">Hayes (2019). A Liberated Mind. / HS Osnabrück, Vorlesungsunterlagen Mindful Leadership.</div></div>
+      </div>
+      <p style="font-size:15px;font-weight:700;color:#1a1a2e;margin:16px 0 12px;">Welche Effekte kann das Angebot theoretisch haben?</p>
+      <div class="studie-list">
+        <div class="studie-item" style="border-left-color:#43b89c"><div class="studie-text">Stigmareduktion im sozialen Umfeld – Angehörige die verstehen, stigmatisieren weniger und begleiten unterstützender.</div><div class="studie-source">Corrigan et al. (2014); WHO World Mental Health Report (2022).</div></div>
+        <div class="studie-item" style="border-left-color:#9b59b6"><div class="studie-text">Verbessertes Hilfesuchverhalten – niedrigschwelliger Zugang senkt die Hemmschwelle, professionelle Hilfe zu suchen.</div><div class="studie-source">Clement et al. (2015). What is the impact of mental health-related stigma on help-seeking? Psychological Medicine, 45(1), 11–27.</div></div>
+        <div class="studie-item" style="border-left-color:#f0a030"><div class="studie-text">Krisenkompetenzvermittlung – Akutmethoden aus DBT/ACT können in echten Krisenmomenten direkt angewendet werden.</div><div class="studie-source">Linehan (2015); Zeidan et al. (2022). Mindfulness-based interventions.</div></div>
+        <div class="studie-item" style="border-left-color:#e0607e"><div class="studie-text">Empowerment von Angehörigen – informierte Begleitung reduziert Konflikte und erhöht die Beziehungsqualität.</div><div class="studie-source">Fruzzetti (2006). The High-Conflict Couple. / Linardon et al. (2020).</div></div>
       </div>
     </div>
 
-    <!-- 4. FEEDBACK + 5. REFLEXION -->
-    <div class="zwei-col">
-      <div class="pbox">
-        <div class="pbox-header">
-          <div class="pbox-num" style="background:#8a6fbf;">4</div>
-          <h3>Feedback der Zielgruppe</h3>
-        </div>
-        <p style="margin-bottom:10px;">Betroffene aus dem persönlichen Umfeld haben die App getestet:</p>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div class="feedback-bubble">
-            <div class="fb-avatar" style="background:#e8f0ff;">💙</div>
-            <div class="fb-name">Betroffene, Depression</div>
-            <div class="fb-text">„Die Akut-Methoden sind wirklich praktisch. Endlich was das ich auch in der Krise aufmachen kann."</div>
-          </div>
-          <div class="feedback-bubble">
-            <div class="fb-avatar" style="background:#fde8ed;">🌊</div>
-            <div class="fb-name">Angehöriger, Borderline</div>
-            <div class="fb-text">„Ich habe endlich verstanden warum meine Schwester so reagiert. Das Umfeld-Kapitel hat mir sehr geholfen."</div>
-          </div>
-          <div class="feedback-bubble">
-            <div class="fb-avatar" style="background:#e0f5f0;">🧩</div>
-            <div class="fb-name">Betroffene, Autismus</div>
-            <div class="fb-text">„Gut gelungen – aber klar: Es ist noch ein Prototyp. Wenn er veröffentlicht wird, kann er wirklich vielen helfen."</div>
-          </div>
-        </div>
-      </div>
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#e8f5e0;">🧘</div><h3>Verbindung zu Mindful Leadership</h3></div>
+      <ul>
+        <li>🪞 <strong>Selbstführung:</strong> Die App hilft Betroffenen zu verstehen was mit ihnen passiert – Verstehen ist Führung nach innen.</li>
+        <li>🌬️ <strong>Achtsamkeit & Therapiemethoden:</strong> Die Akut-Inhalte kombinieren achtsamkeitsbasierte Interventionen (Grounding, Atemübungen) mit therapiebasierten Methoden aus DBT und ACT.</li>
+        <li>❤️ <strong>Werte als Kompass:</strong> Empathie, Entstigmatisierung, Niedrigschwelligkeit – Mindful Leadership hat geholfen, diese Werte zu benennen und danach zu handeln.</li>
+        <li>🤝 <strong>Führung im Umfeld:</strong> Der Umfeld-Bereich überträgt Mindful-Leadership-Prinzipien auf den Alltag: achtsam kommunizieren, Grenzen setzen, Selbstfürsorge.</li>
+      </ul>
+    </div>
 
-      <div class="pbox">
-        <div class="pbox-header">
-          <div class="pbox-num" style="background:#e0a030;">5</div>
-          <h3>Was hat es bei mir bewirkt?</h3>
-        </div>
-        <div class="bewirkt-grid">
-          <div class="bewirkt-item">
-            <div class="bewirkt-icon">🔍</div>
-            <div class="bewirkt-title">Vertieftes Verständnis</div>
-            <div class="bewirkt-text">Die intensive Recherche hat mein eigenes Verständnis für alle drei Erkrankungen enorm vertieft – auch für meine eigene.</div>
-          </div>
-          <div class="bewirkt-item">
-            <div class="bewirkt-icon">⚡</div>
-            <div class="bewirkt-title">Energie & Freude</div>
-            <div class="bewirkt-text">Es hat mir Freude bereitet, etwas zu schaffen das anderen beim Verstehen psychischer Erkrankungen helfen kann.</div>
-          </div>
-          <div class="bewirkt-item">
-            <div class="bewirkt-icon">🌱</div>
-            <div class="bewirkt-title">Noch kein klassisches Giving</div>
-            <div class="bewirkt-text">Ehrlich gesagt: Bisher erreicht die App nur Freunde und Familie. Das echte Giving liegt noch vor mir – wenn sie veröffentlicht wird.</div>
-          </div>
-          <div class="bewirkt-item">
-            <div class="bewirkt-icon">💙</div>
-            <div class="bewirkt-title">Das Potenzial</div>
-            <div class="bewirkt-text">Wissen weiterzugeben und Verständnis zu schaffen – das ist für mich die kraftvollste Form von Giving. Und das fängt gerade erst an.</div>
-          </div>
-        </div>
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#fff8e0;">💬</div><h3>Feedback aus der Zielgruppe</h3></div>
+      <div class="fb-summary"><p>Erste Testungen mit betroffenen Personen aus dem persönlichen Umfeld zeigen: Die App wird als <strong>verständlich, niedrigschwellig und emotional relevant</strong> wahrgenommen. Besonders die Akut-Methoden und der Umfeld-Bereich wurden positiv hervorgehoben. Als Prototyp hat MindBridge das Potenzial, bei Veröffentlichung vielen Menschen zu helfen.</p></div>
+      <div class="fb-quotes">
+        <div class="fb-quote"><div class="fb-quote-header"><div class="fb-quote-avatar" style="background:#e8f0ff;">💙</div><div class="fb-quote-name">Betroffene, Depression</div></div><div class="fb-quote-text">„Die Akut-Methoden sind wirklich praktisch. Endlich etwas, das ich auch in der Krise aufmachen kann."</div></div>
+        <div class="fb-quote"><div class="fb-quote-header"><div class="fb-quote-avatar" style="background:#fde8ed;">🌊</div><div class="fb-quote-name">Angehöriger, Borderline</div></div><div class="fb-quote-text">„Ich habe endlich verstanden warum meine Schwester so reagiert. Das Umfeld-Kapitel hat mir sehr geholfen."</div></div>
+        <div class="fb-quote"><div class="fb-quote-header"><div class="fb-quote-avatar" style="background:#e0f5f0;">🧩</div><div class="fb-quote-name">Betroffene, Autismus</div></div><div class="fb-quote-text">„Gut gelungen – wenn sie veröffentlicht wird, kann sie wirklich vielen Menschen helfen."</div></div>
       </div>
     </div>
 
-    <!-- QR CODE -->
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#e8f0ff;">💙</div><h3>Was hat es bei mir bewirkt?</h3></div>
+      <p class="reflex-text">Aufklärung – dafür steht MindBridge. Depressionen werden langsam mehr anerkannt, aber das echte Verständnis fehlt noch: Warum viele Depressive es nicht schaffen sich zu duschen oder die Zähne zu putzen. Warum meine Schwester mit Autismus nicht als krank wahrgenommen wird, sondern als seltsam – weil ihre Symptome nicht sofort sichtbar sind. Warum Borderline-Betroffene als zickig oder zu anhänglich gelten, anstatt dass die Erkrankung dahinter gesehen wird. Genau diese Stereotypen möchte ich aufbrechen – für Angehörige, Freunde und Kolleg:innen. Und für alle, die noch auf einen Therapieplatz warten und schon jetzt verstehen wollen was möglicherweise bei ihnen los ist.</p>
+      <div class="reflex-highlight">„Es hat mir enorm Freude gemacht, durch dieses Projekt selbst Neues zu lernen und anderen Verständnis weiterzugeben. Ich nehme mit, dass ich noch viel lernen muss. Und das ist okay. Giving bedeutet für mich: anderen niedrigschwellig die Möglichkeit zu geben zu verstehen. Die Welt dadurch ein bisschen weniger judgy zu machen. Das ist mein Giving. Es hat gerade erst begonnen."</div>
+    </div>
+
+    <div class="pbox">
+      <div class="pbox-header"><div class="pbox-icon" style="background:#e0f5f0;">🚀</div><h3>Möglichkeiten & Potenzial</h3></div>
+      <p style="font-size:15px;color:#4a4a5a;line-height:1.75;margin-bottom:14px;">MindBridge ist ein funktionsfähiger Prototyp mit echtem Potenzial. Die folgenden Schritte wären möglich und sinnvoll — bisher fehlten vor allem Zeit und Kapazität, da dieses Projekt neben Studium und Alltag entstanden ist.</p>
+      <div class="gp-body">
+        <div class="gp-item"><div class="gp-icon">🔬</div><div><div class="gp-title">Fachliche Validierung</div><div class="gp-text">Die Inhalte könnten von Psycholog:innen und Fachkräften gegengelesen werden — besonders der Essstörungen-Bereich. Bisher fehlte die Kapazität für diese Zusammenarbeit.</div></div></div>
+        <div class="gp-item"><div class="gp-icon">🌍</div><div><div class="gp-title">Breitere Veröffentlichung</div><div class="gp-text">Die App ist auf GitHub Pages erreichbar, aber noch nicht aktiv verbreitet. Möglich wäre: eigene Domain, Social Media, Kooperationen mit Bildungseinrichtungen.</div></div></div>
+        <div class="gp-item"><div class="gp-icon">🤝</div><div><div class="gp-title">Kooperationen</div><div class="gp-text">Schulen, Hochschulen und soziale Einrichtungen könnten MindBridge als kostenlose Ressource nutzen. Das braucht Zeit und Kontakte — beides ist ausbaufähig.</div></div></div>
+        <div class="gp-item"><div class="gp-icon">📱</div><div><div class="gp-title">Technische Weiterentwicklung</div><div class="gp-text">Mehr Erkrankungen, ein echtes Forum-Backend, perspektivisch eine native App. Alles realistisch — sobald zeitliche Ressourcen vorhanden sind.</div></div></div>
+      </div>
+    </div>
+
     <div class="qr-box">
-      <h3>📱 App selbst ausprobieren</h3>
-      <p>Scanne den QR-Code und öffne MindBridge auf deinem Handy – direkt im Browser, keine Installation nötig.</p>
-      <div id="qrcode"></div>
-      <div class="qr-url" id="qrUrl">mindbridge-vollbild.html</div>
-      <div class="qr-steps">
-        <div class="qr-step"><div class="qr-step-num">1</div>Kamera-App öffnen</div>
-        <div class="qr-step"><div class="qr-step-num">2</div>QR-Code scannen</div>
-        <div class="qr-step"><div class="qr-step-num">3</div>MindBridge direkt nutzen</div>
+      <div class="qr-left"><div id="qrcode"></div></div>
+      <div class="qr-right">
+        <h3>📱 App selbst ausprobieren</h3>
+        <p>Scanne den QR-Code und öffne MindBridge direkt auf deinem Handy – keine Installation nötig.</p>
+        <div class="qr-url">wilpersalina22-stack.github.io/AppMindBridge/</div>
+        <div class="qr-steps">
+          <div class="qr-step"><div class="qr-step-num">1</div>Kamera-App öffnen</div>
+          <div class="qr-step"><div class="qr-step-num">2</div>QR-Code scannen</div>
+          <div class="qr-step"><div class="qr-step-num">3</div>MindBridge direkt nutzen</div>
+        </div>
       </div>
     </div>
 
-  </div><!-- right-panel -->
-</div><!-- main-layout -->
+    <div style="text-align:center;padding:28px 20px 32px;border-top:1px solid rgba(255,255,255,0.12);margin-top:8px;">
+      <div style="font-family:'Lora',serif;font-size:18px;color:white;line-height:1.6;max-width:480px;margin:0 auto;">
+        MindBridge hat gerade erst begonnen.<br>
+        <span style="color:rgba(255,255,255,0.65);font-size:15px;">Und das ist okay.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script>
 const topics = {
@@ -823,10 +827,12 @@ const topics = {
       {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
     ],
     umfeld:[
-      {icon:'💬',col:'#5b8dee',title:'Hilfreiche Dinge sagen',list:['"Ich bin für dich da – egal was."','"Wie geht es dir wirklich gerade?" – und dann zuhören.','"Du musst mir nichts erklären. Ich bin einfach hier."','"Darf ich dich zum Arzttermin begleiten?"']},
-      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Anderen geht es viel schlechter" – minimiert den Schmerz.','"Reiß dich zusammen" – ist medizinisch falsch.','"Denk einfach positiv" – Positivitätsdruck verschlimmert.','"Du hast doch alles" – Depression kennt keinen rationalen Grund.']},
-      {icon:'🤲',col:'#43b89c',title:'Konkret unterstützen',list:['Konkrete Angebote: "Ich kaufe heute ein – brauchst du etwas?"','Regelmäßig melden – auch ohne Antwort zu erwarten.','Gemeinsam Zeit ohne Druck verbringen.','Arzttermin gemeinsam suchen und Begleitung anbieten.']},
-      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen schützen',list:['Du kannst nicht heilen – du kannst begleiten.','Eigene Erschöpfung ernst nehmen. Pausen sind kein Verrat.','Angehörigen-Beratung: NAKOS (nakos.de).','Auch du darfst dir Hilfe holen.']},
+      {icon:'🔍',col:'#5b8dee',title:'Verstehen & Einordnen',list:['Depression ist nicht Traurigkeit – sie ist eine neurobiologische Erkrankung.','Antriebslosigkeit ist ein Symptom – kein Desinteresse an dir oder eurer Beziehung.','Gute Tage bedeuten nicht, dass die Depression vorbei ist.','Depression verändert die Wahrnehmung – Betroffene sehen alles durch einen negativen Filter.']},
+      {icon:'💬',col:'#43b89c',title:'Hilfreiche Kommunikation',list:['"Ich bin für dich da – egal was."','"Wie geht es dir wirklich gerade?" – und dann zuhören.','"Du musst mir nichts erklären. Ich bin einfach hier."','"Darf ich dich zum Arzttermin begleiten?"','Frage ob die Person Rat möchte oder nur gehört werden will.','Schweigen aushalten – manchmal reicht die Anwesenheit.']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Anderen geht es viel schlechter" – minimiert den Schmerz.','"Reiß dich zusammen" – ist medizinisch falsch und verletzend.','"Denk einfach positiv" – Positivitätsdruck verschlimmert Depression.','"Du hast doch alles" – Depression kennt keinen rationalen Grund.','Ungefragten Rat geben wenn jemand nur gehört werden möchte.']},
+      {icon:'🤲',col:'#5ba08a',title:'Im Alltag unterstützen',list:['Konkrete Angebote: "Ich kaufe heute ein – brauchst du etwas?"','Regelmäßig kurz melden – auch ohne Antwort zu erwarten.','Gemeinsam Zeit verbringen ohne Druck oder Leistungserwartung.','Arzttermin gemeinsam recherchieren und Begleitung anbieten.','Kleine Alltagsaufgaben übernehmen: Kochen, Einkaufen, Aufräumen.']},
+      {icon:'⚠️',col:'#e0a030',title:'Warnsignale erkennen',list:['Zunehmender Rückzug und Isolation – kein Kontakt mehr zu niemandem.','Äußerungen wie "Ich bin eine Last" oder "Es wäre besser ohne mich" ernst nehmen.','Verschenken wichtiger Gegenstände – mögliches Zeichen für Suizidgedanken.','Plötzliche Ruhe nach starker Niedergeschlagenheit – kann auf Entscheidung hinweisen.','Bei Suizidgedanken: direkt ansprechen und professionelle Hilfe holen.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen & Selbstfürsorge',list:['Du kannst nicht heilen – du kannst begleiten. Wichtiger Unterschied.','Eigene Erschöpfung wahrnehmen. Pausen sind kein Verrat.','NAKOS (nakos.de) – Angehörigenberatung, kostenlos und anonym.','Eigene Gefühle – Frustration, Hilflosigkeit – sind berechtigt.','Eigene Therapie oder Beratung bei anhaltender Belastung.']},
     ]
   },
   bor:{
@@ -836,8 +842,8 @@ const topics = {
       {type:'card',title:'Was ist Borderline (BPS)?',dot:'#e0607e',text:'Die Borderline-Persönlichkeitsstörung ist eine psychische Erkrankung mit intensiven Emotionen, impulsivem Verhalten und instabilen Beziehungen. Betroffene erleben Gefühle ohne die Schutzschicht die andere haben – alles trifft mit voller Intensität.'},
       {type:'card',title:'Psychische Anzeichen',dot:'#f0c040',list:['Intensive Angst vor Verlassenwerden','Instabile Beziehungen: Idealisierung ↔ Abwertung','Instabiles Selbstbild / Identitätsstörung','Impulsivität in selbstschädigenden Bereichen','Starke Stimmungsschwankungen (Minuten bis Stunden)','Chronische innere Leere','Intensive, schwer kontrollierbare Wut','Kurzfristige Dissoziation oder Paranoia']},
       {type:'card',title:'Körperliche Anzeichen',dot:'#e07070',list:['Körperliche Anspannung und Zittern','Herzrasen in emotionalen Momenten','Engegefühl in der Brust','Selbstverletzende Handlungen als Spannungsabbau','Schlafstörungen durch emotionale Unruhe','Erschöpfung nach intensiven Gefühlsausbrüchen']},
-      {type:'exp',avatar:'👩',name:'Lena, 25',col:'#fde8ed',tag:'Betroffene',tagCol:'#e0607e',text:'Die Leute denken, ich will Drama. Aber wenn ich jemanden anschreie, bin ich gerade in einem emotionalen Sturm der sich anfühlt wie das Ende der Welt. Ich will das nicht – ich kann es in dem Moment nicht steuern.'},
-      {type:'exp',avatar:'👨',name:'Felix, 31',col:'#e0f5f0',tag:'Angehöriger',tagCol:'#43b89c',text:'Ich habe lange nicht verstanden warum meine Schwester mich einen Tag vergöttert und den nächsten hasst. Durch Psychoedukation wurde mir klar: Das ist die Erkrankung – nicht ihre Einstellung zu mir.'},
+      {type:'exp',avatar:'👩',name:'Anonym, 25',col:'#fde8ed',tag:'Betroffene',tagCol:'#e0607e',text:'Das ist ein Beispieltext: Die Leute denken, ich will Drama. Aber wenn ich jemanden anschreie, bin ich gerade in einem emotionalen Sturm der sich anfühlt wie das Ende der Welt. Ich will das nicht – ich kann es in dem Moment nicht steuern.'},
+      {type:'exp',avatar:'👨',name:'Anonym, 31',col:'#e0f5f0',tag:'Angehöriger',tagCol:'#43b89c',text:'Das ist ein Beispieltext:Ich habe lange nicht verstanden warum meine Schwester mich einen Tag vergöttert und den nächsten hasst. Durch Psychoedukation wurde mir klar: Das ist die Erkrankung – nicht ihre Einstellung zu mir.'},
       {type:'myth',m:'"Borderline-Menschen sind manipulativ."',r:'Betroffene handeln aus echtem, intensivem Schmerz – nicht aus Kalkül. BPS erhöht das Risiko für Selbstverletzung, nicht für Fremdgefährdung.'},
       {type:'myth',m:'"BPS ist nicht heilbar."',r:'Mit DBT erreichen bis zu 50% der Betroffenen nach 10 Jahren eine Remission. Frühe Behandlung verbessert die Prognose erheblich.'},
       {type:'myth',m:'"Selbstverletzung ist Aufmerksamkeitssuche."',r:'Selbstverletzung ist meist ein Versuch unerträgliche Spannung zu regulieren – oft im Verborgenen. Ein ernstzunehmendes Alarmsignal.'},
@@ -869,10 +875,12 @@ const topics = {
       {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
     ],
     umfeld:[
-      {icon:'🌊',col:'#e0607e',title:'Emotionen validieren',list:['"Ich verstehe, dass du gerade sehr verletzt bist."','"Deine Gefühle machen Sinn."','Ruhig bleiben – Gelassenheit überträgt sich.','Zuhören ohne sofort zu lösen.']},
-      {icon:'📏',col:'#8a6fbf',title:'Grenzen setzen – liebevoll',list:['"Ich bin für dich da, aber nicht um Mitternacht."','Konsistenz ist entscheidend – Unberechenbarkeit verstärkt Verlustangst.','Grenzen ruhig kommunizieren – ohne Vorwürfe.']},
-      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['Ultimaten und Drohungen – verstärken Verlustangst.','Nachgeben aus Erschöpfung – schafft Unsicherheit.','Die Diagnose abtun: "Das ist doch nur dein Borderline."','Mit-eskalieren wenn Emotionen hochkochen.']},
-      {icon:'📚',col:'#43b89c',title:'Wissen & Selbstfürsorge',list:['Angehörigengruppen: ANUAS e.V. (anuas.de).','Buch: "Ich hasse dich – verlass mich nicht" (Mason).','Eigene Beratung oder Therapie bei Belastung.','DBT-Konzepte für Angehörige kennenlernen.']},
+      {icon:'🔍',col:'#e0607e',title:'Verstehen & Einordnen',list:['BPS bedeutet: Gefühle ohne Schutzschicht. Alles trifft mit voller Intensität – nicht manipulativ, sondern Neurobiologie.','Idealisierung und Abwertung ist ein Symptom – keine bewusste Entscheidung gegen dich.','Verlustangst ist real und intensiv – auch kleine Signale können als Ablehnung interpretiert werden.','Selbstverletzung ist meist Spannungsabbau, kein Kalkül – immer ernst nehmen.','BPS-Betroffene haben oft traumatische Hintergründe – Verhalten hat Geschichte.']},
+      {icon:'💬',col:'#43b89c',title:'Hilfreiche Kommunikation',list:['"Ich verstehe, dass du gerade sehr verletzt bist." – Gefühle validieren zuerst.','"Deine Gefühle machen Sinn."','Ruhig und klar sprechen – keine erhobene Stimme, keine Vorwürfe.','Grenzen liebevoll kommunizieren: "Ich bin für dich da, aber nicht um Mitternacht."','Nach Eskalation: abkühlen lassen, dann Gespräch in Ruhe suchen.','Konsequent und berechenbar sein – Verlässlichkeit reduziert Verlustangst.']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['Ultimaten und Drohungen – verstärken Verlustangst massiv.','Nachgeben aus Erschöpfung und dann bereuen – Inkonsistenz schafft Unsicherheit.','Die Diagnose als Erklärung: "Das ist nur dein Borderline" – wirkt abwertend.','Mit-eskalieren wenn Emotionen hochkochen.','Versprechen machen die man nicht halten kann.']},
+      {icon:'🤲',col:'#5ba08a',title:'Im Alltag unterstützen',list:['Routine und Berechenbarkeit bieten – kleine Rituale geben Sicherheit.','Pläne im Voraus kommunizieren und ankündigen wenn sich etwas ändert.','Gemeinsam einen Krisenplan erstellen – wer wird wann kontaktiert?','DBT-Konzepte für Angehörige kennenlernen.','Erfolge und Fortschritte aktiv benennen.']},
+      {icon:'⚠️',col:'#e0a030',title:'Warnsignale erkennen',list:['Zunehmende Selbstverletzung – professionelle Hilfe holen.','Hinweise auf Suizidgedanken: "Ich wünschte ich wäre nicht mehr hier."','Starke Dissoziation – ruhig Grounding anbieten.','Substanzkonsum als Copingmechanismus – behutsam ansprechen.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen & Selbstfürsorge',list:['Grenzen schützen beide Seiten – Grenzen setzen ist Fürsorge.','Eigene emotionale Erschöpfung wahrnehmen.','ANUAS e.V. (anuas.de) – für Angehörige von BPS-Betroffenen.','Mitgefühl für dich selbst haben: Du tust dein Bestes.']},
     ]
   },
   aut:{
@@ -915,12 +923,178 @@ const topics = {
       {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
     ],
     umfeld:[
-      {icon:'🗣️',col:'#43b89c',title:'Kommunikation anpassen',list:['Klar und direkt sprechen – keine Ironie, kein Sarkasmus.','Ausreichend Zeit zum Antworten lassen.','Augenkontakt nicht erzwingen.','Rückfragen einladen: "Habe ich mich verständlich ausgedrückt?"']},
-      {icon:'🌱',col:'#5b8dee',title:'Umgebung gestalten',list:['Reizarme Bereiche anbieten: weniger Lärm, regulierbares Licht.','Tagesplan und klare Strukturen ermöglichen.','Routinen respektieren – sie geben Sicherheit.','Änderungen immer vorher ankündigen.']},
-      {icon:'💛',col:'#e0a030',title:'Stärken sehen & fördern',list:['Spezialinteressen ernstnehmen und Raum geben.','Nicht versuchen, Verhalten zu "korrigieren".','Neurodiversität als Gewinn verstehen.','Fortschritte aktiv benennen und feiern.']},
-      {icon:'🔍',col:'#ff9944',title:'Frühkindliche Erkennung',list:['Auf frühe Zeichen achten: Blickkontakt, Zeigegeste, Reaktion auf Namen.','Bei Mädchen besonders aufmerksam – Masking verdeckt Symptome.','Bei Verdacht: Kinderarzt → Überweisung an SPZ.','Frühförderung so früh wie möglich beginnen.','Autismus Deutschland e.V. (autismus.de) für Beratung.']},
+      {icon:'🔍',col:'#43b89c',title:'Verstehen & Einordnen',list:['Autismus ist eine neurologische Variante – kein Defizit. Andere Kommunikation, andere Wahrnehmung.','Kein Augenkontakt bedeutet nicht Desinteresse – er kostet autistischen Menschen enorm Energie.','Stimming ist Selbstregulation – kein störendes Verhalten.','Masking ist erschöpfend – nach außen funktionieren bedeutet nicht, dass es innen gut geht.','Meltdowns und Shutdowns sind Überlastungsreaktionen – keine Manipulation.']},
+      {icon:'💬',col:'#5b8dee',title:'Hilfreiche Kommunikation',list:['Klar und direkt sprechen – keine Ironie, kein Sarkasmus.','Ausreichend Zeit zum Antworten lassen – kein sozialer Druck.','Rückfragen aktiv einladen: "Habe ich mich verständlich ausgedrückt?"','Augenkontakt nie erzwingen.','Konkret sein: "Ich brauche jetzt deine Hilfe bei X."','Schriftliche Kommunikation anbieten.']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Du machst das doch absichtlich" – Verhalten ist selten bewusst gewählt.','"Schau mich an wenn ich mit dir spreche."','"Wir sind doch alle ein bisschen autistisch."','"Du musst dich mehr anstrengen" – Masking kostet bereits enorm viel Kraft.','Änderungen ohne Vorankündigung.','Reizüberflutung ignorieren wenn die Person Zeichen gibt.']},
+      {icon:'🤲',col:'#5ba08a',title:'Im Alltag unterstützen',list:['Reizarme Umgebungen schaffen: weniger Lärm, regulierbares Licht.','Routinen und Rituale respektieren.','Änderungen immer vorher ankündigen – auch kleine.','Spezialinteressen ernstnehmen und Raum geben.','Rückzug nach sozialen Situationen einplanen und respektieren.']},
+      {icon:'⚠️',col:'#e0a030',title:'Warnsignale erkennen',list:['Autistic Burnout: anhaltende Erschöpfung, Verlust von Fähigkeiten, totaler Rückzug.','Zeichen von Depression oder Angststörungen – erhöhtes Risiko bei Autismus.','Selbstverletzendes Stimming als Zeichen extremer Überlastung.','Bei Kindern: Regression – Verlust bereits erlernter Fähigkeiten.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen & Selbstfürsorge',list:['Autistische Kommunikation zu lernen braucht Zeit – Geduld mit dir selbst.','Autismus Deutschland e.V. (autismus.de) – Beratung für Angehörige.','Eigene Frustrationen sind normal.','Neurodiversität als Bereicherung begreifen.']},
     ]
   }
+,
+  adhs:{
+    name:'🧠 ADHS',color:'#f0a030',dark:'#b06010',
+    grad:'linear-gradient(135deg,#b06010,#f0a030)',
+    verstehen:[
+      {type:'card',title:'Was ist ADHS?',dot:'#f0a030',text:'ADHS (Aufmerksamkeitsdefizit-Hyperaktivitätsstörung) ist eine neurologische Entwicklungsvariante – keine Faulheit, keine Disziplinlosigkeit. Betroffene haben ein anders reguliertes Aufmerksamkeits- und Impulskontrollsystem. ADHS besteht oft bis ins Erwachsenenalter und wird besonders bei Frauen und Mädchen häufig spät erkannt.'},
+      {type:'card',title:'Psychische & kognitive Merkmale',dot:'#f0c040',list:['Schwierigkeiten, die Aufmerksamkeit zu halten (besonders bei uninteressanten Aufgaben)','Hyperfokus bei Interessensthemen – stundenlange Konzentration möglich','Impulsivität: Handlungen oder Aussagen ohne vorherige Überlegung','Innere Unruhe, Rastlosigkeit, "Gedankenkarussell"','Vergesslichkeit im Alltag (Termine, Gegenstände, Aufgaben)','Emotionale Dysregulation: schnelle Stimmungswechsel','Aufschieberitis (Prokrastination) besonders bei Anfangen']},
+      {type:'card',title:'Körperliche & sensorische Merkmale',dot:'#e07070',list:['Motorische Unruhe: Wippen, Zappeln, Herumlaufen','Schlafschwierigkeiten – Gehirn "fährt nicht runter"','Körperliche Anspannung durch dauernde Reizverarbeitung','Hunger- und Sättigungsgefühle werden oft nicht wahrgenommen','Überempfindlichkeit auf bestimmte Reize möglich']},
+      {type:'exp',avatar:'🧑',name:'Mika, 26',col:'#fff4e0',tag:'Betroffene:r',tagCol:'#b06010',text:'Ich dachte jahrelang, ich bin einfach chaotisch und undiszipliniert. Meine Diagnose hat alles verändert. Plötzlich hatte mein ganzes Leben eine Erklärung – und ich hörte auf, mich dafür zu hassen.'},
+      {type:'myth',m:'"ADHS haben nur hyperaktive Kinder."',r:'ADHS zeigt sich sehr unterschiedlich – oft ohne Hyperaktivität, besonders bei Frauen. Viele Erwachsene werden erst spät diagnostiziert. Der unaufmerksame Typ bleibt häufig jahrelang unerkannt.'},
+      {type:'myth',m:'"ADHS ist keine echte Erkrankung – nur Erziehungsfehler."',r:'ADHS ist neurobiologisch nachgewiesen. Bildgebende Studien zeigen strukturelle Unterschiede im Gehirn. Es handelt sich um eine der am besten erforschten neurologischen Entwicklungsvarianten.'},
+      {type:'myth',m:'"Mit ADHS kann man sich bei Bedarf konzentrieren – also ist es keine Einschränkung."',r:'Hyperfokus bei Interessensthemen bedeutet nicht, dass Aufmerksamkeit steuerbar ist. Das ADHS-Gehirn reagiert stark auf Interesse und Dringlichkeit – nicht auf Willen allein.'},
+    ],
+    akut:[
+      {cat:'🧘 Beruhigung & Grounding',color:'#f0a030',items:[
+        {t:'5-4-3-2-1 Methode',d:'5 Dinge sehen → 4 hören → 3 fühlen → 2 riechen → 1 schmecken. Bringt das Gedankenkarussell zur Ruhe.'},
+        {t:'2 Füße + 1 Atemzug',d:'Füße bewusst auf den Boden stellen, Druck wahrnehmen, tief einatmen. Überall und jederzeit anwendbar.'},
+        {t:'Body Scan',d:'Von Zehen bis Kopf. Wo ist Anspannung? Nur wahrnehmen, nicht bewerten. 5 Minuten reichen.'},
+      ]},
+      {cat:'💨 Atemübungen',color:'#43b89c',items:[
+        {t:'Boxatmung (4-4-4-4)',d:'4 ein → 4 halten → 4 aus → 4 halten. Strukturiert und vorhersehbar – hilft dem ADHS-Gehirn besonders.'},
+        {t:'Verlängerte Ausatmung',d:'Einfach länger ausatmen als einatmen. Beruhigt das Nervensystem ohne viel Aufwand.'},
+      ]},
+      {cat:'🧠 Gedankenmanagement',color:'#8a6fbf',items:[
+        {t:'Brain Dump',d:'Alles was im Kopf ist auf Papier schreiben – ohne Ordnung. Entleert den Arbeitsspeicher und schafft Klarheit.'},
+        {t:'Eine Aufgabe, ein Timer',d:'Pomodoro-Technik: 25 Min. fokussiert, 5 Min. Pause. Der Timer gibt dem ADHS-Gehirn Struktur und Dringlichkeit.'},
+        {t:'Gedankenstopp',d:'Negativen Gedankenspirale erkennen → "Stopp!" → bewusst umlenken auf eine konkrete Handlung.'},
+      ]},
+      {cat:'💪 Bewegung & Aktivierung',color:'#e0a030',items:[
+        {t:'Bewegungspausen einbauen',d:'ADHS-Gehirne brauchen Bewegung zur Regulation. Kurz aufstehen, dehnen, schütteln – auch zwischen Aufgaben.'},
+        {t:'Rhythmische Bewegung',d:'Schaukeln, Wippen, Spazierengehen – repetitive Bewegung beruhigt das Nervensystem nachweislich.'},
+        {t:'Sport als Medizin',d:'Regelmäßige Bewegung erhöht Dopamin und Noradrenalin – ähnlich wie Medikamente, aber natürlich.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'🔍',col:'#f0a030',title:'Verstehen & Einordnen',list:['ADHS ist neurologisch bedingt – Vergesslichkeit und Impulsivität sind Symptome, keine Absicht.','Das ADHS-Gehirn reagiert auf Interesse und Dringlichkeit – nicht auf Willenskraft allein.','Hyperaktivität zeigt sich bei Erwachsenen oft als innere Unruhe, nicht als Zappeln.','Emotionale Dysregulation gehört zu ADHS – schnelle Stimmungswechsel sind Teil der Erkrankung.','Frauen und Mädchen werden häufig spät diagnostiziert – ihre Symptome wirken unauffälliger.']},
+      {icon:'💬',col:'#f0a030',title:'Hilfreiche Kommunikation',list:['"Darf ich dich an X erinnern?" – anbieten statt kontrollieren.','"Lass uns die Schritte gemeinsam aufschreiben."','"Was brauchst du um mit X anzufangen?" – Hürden konkret ansprechen.','Eine Aufgabe auf einmal kommunizieren – nicht mehrere gleichzeitig.','Wichtige Infos lieber schriftlich als mündlich.','Geduld bei Vergesslichkeit: erinnern ohne Vorwurfstonfall.']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Du könntest dich konzentrieren wenn du wolltest" – neurobiologisch falsch und verletzend.','"Schon wieder vergessen?" als Vorwurf – löst Scham und Rückzug aus.','"Reiß dich zusammen" – verstärkt das Gefühl des Versagens.','Mehrere Aufgaben gleichzeitig erklären – das ADHS-Gehirn verliert den Faden.','Spontane Planänderungen ohne Vorwarnung – das kostet enorm Anpassungsenergie.']},
+      {icon:'🌱',col:'#43b89c',title:'Im Alltag unterstützen',list:['Visuelle Erinnerungssysteme gemeinsam entwickeln: Whiteboard, App, Zettel.','Body Doubling anbieten – einfach danebensitzen erhöht Fokus nachweislich.','Aufgaben in kleine Schritte aufteilen und gemeinsam priorisieren.','Stärken aktiv benennen: Kreativität, Begeisterungsfähigkeit, Hyperfokus.','Andere Wege zum gleichen Ziel akzeptieren – nicht der Weg zählt, sondern das Ergebnis.']},
+      {icon:'⚠️',col:'#e0a030',title:'Warnsignale erkennen',list:['Anhaltende Erschöpfung durch dauernde Selbstregulation – ADHS kostet jeden Tag Energie.','Starke Niedergeschlagenheit oder Angst – erhöhtes Risiko für komorbide Erkrankungen.','Sozialer Rückzug durch Scham über Fehler, Vergessen oder verpasste Abmachungen.','Substanzkonsum als Selbstmedikation – insbesondere Koffein, Alkohol oder Stimulanzien.','Bei Verdacht auf ADHS: Hausarzt → Psychiater oder Neurologe.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen & Selbstfürsorge',list:['Eigene Frustration über Vergesslichkeit wahrnehmen und offen ansprechen.','Systeme statt Vorwürfe entwickeln – das entlastet beide Seiten dauerhaft.','ADHS Deutschland e.V. (adhs-deutschland.de) – Beratung auch für Angehörige.','Eigene Erschöpfung ernst nehmen – Begleitung braucht langen Atem.']},
+    ]
+  },
+  angst:{
+    name:'😰 Angststörungen',color:'#9b59b6',dark:'#6c3483',
+    grad:'linear-gradient(135deg,#6c3483,#9b59b6)',
+    verstehen:[
+      {type:'card',title:'Was sind Angststörungen?',dot:'#9b59b6',text:'Angststörungen sind die häufigste Gruppe psychischer Erkrankungen weltweit. Sie entstehen wenn das natürliche Alarmsystem des Gehirns überaktiv wird – und Gefahr signalisiert, auch wenn keine da ist. Es gibt verschiedene Formen: Generalisierte Angststörung, Panikstörung, soziale Phobie, spezifische Phobien und mehr.'},
+      {type:'card',title:'Psychische Anzeichen',dot:'#f0c040',list:['Anhaltende, unkontrollierbare Sorgen und Grübeln','Vermeidung von Situationen die Angst auslösen','Katastrophendenken: "Was wäre wenn..."','Schlafprobleme durch kreisende Gedanken','Konzentrationsprobleme durch dauernde Alarmbereitschaft','Reizbarkeit und innere Anspannung','Gefühl der Bedrohung ohne erklärbaren Grund']},
+      {type:'card',title:'Körperliche Anzeichen',dot:'#e07070',list:['Herzrasen oder Herzstolpern','Schwitzen, Zittern, Kribbeln','Atemnot oder Engegefühl in der Brust','Schwindel und Übelkeit','Muskelanspannung und Verspannungen','Bei Panikattacken: intensive Angst vor dem Sterben oder Kontrollverlust']},
+      {type:'exp',avatar:'👩',name:'Lisa, 23',col:'#f0e8ff',tag:'Betroffene',tagCol:'#6c3483',text:'Ich habe jahrelang gedacht, ich bin einfach überdramatisch. Bis ich verstanden habe: Mein Gehirn sendet echte Alarmsignale – auch wenn keine Gefahr da ist. Das zu wissen hat alles verändert.'},
+      {type:'myth',m:'"Angststörungen sind nur übertriebene Schüchternheit."',r:'Angststörungen sind neurobiologische Erkrankungen mit nachweisbaren Veränderungen in der Amygdala. Sie sind nicht durch Willenskraft überwindbar – aber sehr gut behandelbar.'},
+      {type:'myth',m:'"Einfach der Angst stellen – dann geht sie weg."',r:'Unkontrollierte Konfrontation kann Angst verstärken. Therapeutische Exposition geschieht graduell und begleitet – niemals durch Überrumpelung.'},
+      {type:'myth',m:'"Angst ist Schwäche."',r:'Angst ist ein evolutionäres Schutzsystem. Bei Angststörungen ist dieses System überaktiv – nicht die Person schwach. Mut bedeutet, trotz Angst zu handeln.'},
+    ],
+    akut:[
+      {cat:'💨 Atemübungen (besonders wirksam)',color:'#9b59b6',items:[
+        {t:'4-6-8 Atmung',d:'4 Sek. einatmen → 6 halten → 8 ausatmen. Die verlängerte Ausatmung aktiviert den Parasympathikus und senkt Herzrate schnell.'},
+        {t:'Boxatmung (4-4-4-4)',d:'4 ein → 4 halten → 4 aus → 4 halten. Strukturiert und berechenbar – gibt dem Nervensystem Kontrolle zurück.'},
+        {t:'Psychological Sigh',d:'2x kurz einatmen, dann lang ausatmen. Schnellste Methode zur Beruhigung – binnen Sekunden wirksam.'},
+        {t:'Verlängerte Ausatmung',d:'Einfach länger ausatmen als einatmen. Überall und sofort anwendbar.'},
+      ]},
+      {cat:'🧘 Grounding bei Panikattacken',color:'#5b8dee',items:[
+        {t:'5-4-3-2-1 Methode',d:'5 sehen → 4 hören → 3 fühlen → 2 riechen → 1 schmecken. Unterbricht den Panikkreislauf und bringt zurück in die Gegenwart.'},
+        {t:'Eiskaltes Wasser',d:'Gesicht oder Handgelenke kurz in kaltes Wasser halten. Aktiviert den Tauchreflex und beruhigt sofort.'},
+        {t:'Propriozeptives Erden',d:'Füße fest auf den Boden, gegen eine Wand drücken. Körperkontakt signalisiert: Ich bin sicher, ich bin hier.'},
+        {t:'Sichere Orte visualisieren',d:'Augen schließen, einen Ort vorstellen an dem du dich sicher fühlst. So detailliert wie möglich – was siehst, hörst, riechst du?'},
+      ]},
+      {cat:'🧠 Gedankenmanagement',color:'#8a6fbf',items:[
+        {t:'Gedankenstopp',d:'Angstgedanken erkennen → "Stopp!" → Stoppschild vorstellen → Aufmerksamkeit aktiv umlenken.'},
+        {t:'Realitätscheck',d:'Frage dich: "Wie wahrscheinlich ist das wirklich?" / "Was ist das Schlimmste was passieren kann – und wie würde ich damit umgehen?" Gibt Perspektive.'},
+        {t:'Sorgenzeit festlegen',d:'Nur 15 Min. täglich bewusst Sorgen denken – außerhalb dieser Zeit Sorgen verschieben. Gibt Kontrolle zurück.'},
+      ]},
+      {cat:'💪 Körper & Bewegung',color:'#43b89c',items:[
+        {t:'Progressive Muskelrelaxation',d:'Muskelgruppen anspannen und loslassen. Besonders bei körperlicher Anspannung durch Angst sehr wirksam.'},
+        {t:'Intensive Bewegung',d:'10 Min. rennen, Liegestütze oder Treppensteigen. Baut Adrenalin ab das bei Angst ausgeschüttet wird.'},
+        {t:'Yoga oder Dehnen',d:'Sanfte Bewegung mit Atemfokus beruhigt Körper und Geist gleichzeitig.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'🔍',col:'#9b59b6',title:'Verstehen & Einordnen',list:['Angststörungen sind neurobiologisch – die Angst ist real, auch ohne objektiven Auslöser.','Vermeidungsverhalten schützt kurzfristig, verstärkt die Störung aber langfristig.','Panikattacken sind nicht gefährlich, fühlen sich aber lebensbedrohlich an – das ist kein Drama.','Das Angstsystem lässt sich nicht durch Logik ausschalten – erst Beruhigung, dann Gespräch.','Deine eigene Ruhe ist die wirksamste Ressource in einer Angstsituation.']},
+      {icon:'💬',col:'#9b59b6',title:'Hilfreiche Kommunikation',list:['"Du bist sicher. Ich bin bei dir." – ruhige, klare Stimme genügt.','"Was brauchst du gerade?" – fragen statt entscheiden.','"Deine Angst macht Sinn – auch wenn ich den Auslöser nicht sehe."','Bei Panikattacken: nicht reden, einfach da bleiben und gleichmäßig atmen.','Kleine mutige Schritte aktiv benennen: "Das war mutig von dir."']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Da ist doch nichts – reiß dich zusammen." – minimiert echtes Leiden.','"Stell dich einfach der Angst" ohne Begleitung – unkontrollierte Konfrontation kann Angst verstärken.','"Du bist so übertrieben" – löst Scham aus und verhindert Hilfesuchen.','"Das ist alles nur in deinem Kopf" – ja, aber das macht es nicht weniger real.','Angstauslöser dauerhaft für alle vermeiden – das schränkt das gemeinsame Leben ein.','Unter Druck setzen – Tempo bestimmt immer die betroffene Person.']},
+      {icon:'🤲',col:'#43b89c',title:'Im Alltag unterstützen',list:['Angstauslöser kennen und respektieren – ohne das eigene Leben dauerhaft einzuschränken.','Zur Therapie ermutigen – KVT ist hochwirksam bei Angststörungen.','Notfallplan gemeinsam besprechen: Was braucht die Person konkret bei einer Panikattacke?','Kleine mutige Schritte begleiten – nicht drängen, aber aktiv dabei bleiben.','Eigene Ruhe als Ressource einbringen: ruhige Stimme, ruhige Atmung.']},
+      {icon:'⚠️',col:'#e0a030',title:'Warnsignale erkennen',list:['Immer größer werdende Vermeidung – Haus nicht mehr verlassen, Sozialleben bricht ein.','Angst schränkt alle Lebensbereiche ein: Arbeit, Beziehungen, Alltag.','Körperliche Symptome die dauerhaft ignoriert werden: Herzrasen, Atemnot, Erschöpfung.','Substanzkonsum zur Beruhigung – Alkohol oder Beruhigungsmittel.','Suizidgedanken – erhöhtes Risiko bei unbehandelter Angststörung: direkt und ruhig ansprechen.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen & Selbstfürsorge',list:['Du kannst nicht heilen – du kannst begleiten. Das ist ein wichtiger Unterschied.','Eigene Angstreaktionen kennen – wer selbst ruhig bleibt, hilft am meisten.','Angstauslöser dauerhaft zu vermeiden schadet der betroffenen Person langfristig.','Deutsche Angst-Hilfe (angst-hilfe.de) – Infos auch für Angehörige.','Professionelle Unterstützung suchen wenn du selbst belastet bist.']},
+    ]
+  },
+  burnout:{
+    name:'🔥 Burnout',color:'#e05555',dark:'#a02020',
+    grad:'linear-gradient(135deg,#a02020,#e05555)',
+    verstehen:[
+      {type:'card',title:'Was ist Burnout?',dot:'#e05555',text:'Burnout ist ein Zustand chronischer Erschöpfung, der durch anhaltenden Stress – besonders in Arbeit und Leistungskontexten – entsteht. Die WHO anerkannte Burnout 2019 offiziell als berufsbedingtes Phänomen (ICD-11). Es ist kein Zeichen von Schwäche sondern von zu langem Geben ohne ausreichende Erholung.'},
+      {type:'card',title:'Psychische Anzeichen',dot:'#f0c040',list:['Emotionale Erschöpfung – das Gefühl "leer" zu sein','Zynismus und Distanzierung von der Arbeit oder dem Umfeld','Gefühl von Sinnlosigkeit und fehlender Wirksamkeit','Reizbarkeit, Ungeduld, emotionale Taubheit','Konzentrationsprobleme und Vergesslichkeit','Verlust von Freude und Motivation','Rückzug aus sozialen Kontakten']},
+      {type:'card',title:'Körperliche Anzeichen',dot:'#e07070',list:['Chronische Erschöpfung die sich nicht erholt','Schlafprobleme trotz extremer Müdigkeit','Häufige Erkrankungen durch geschwächtes Immunsystem','Kopf- und Rückenschmerzen','Magen-Darm-Beschwerden','Herzrasen oder Bluthochdruck','Körperliche Taubheit oder Schwindel']},
+      {type:'exp',avatar:'🧔',name:'Stefan, 34',col:'#ffe8e8',tag:'Betroffener',tagCol:'#a02020',text:'Ich habe funktioniert – bis ich eines Morgens nicht mehr aufstehen konnte. Nicht weil ich nicht wollte, sondern weil buchstäblich nichts mehr da war. Burnout schleicht sich an, bis man den Boden nicht mehr unter den Füßen spürt.'},
+      {type:'myth',m:'"Burnout trifft nur schwache Menschen."',r:'Burnout trifft häufig besonders engagierte, pflichtbewusste Menschen die sehr viel geben. Es ist kein Zeichen von Schwäche – sondern von zu langer Überlastung ohne Erholung.'},
+      {type:'myth',m:'"Urlaub heilt Burnout."',r:'Bei echtem Burnout reicht Urlaub nicht aus. Die Erholung ist erschöpft – nicht nur die Energie. Professionelle Unterstützung und strukturelle Veränderungen sind nötig.'},
+      {type:'myth',m:'"Burnout ist dasselbe wie Depression."',r:'Es gibt Überschneidungen, aber Burnout ist spezifisch kontextbezogen (Arbeit, Leistung) und geht mit Erschöpfung statt Traurigkeit einher. Beide können gleichzeitig vorliegen.'},
+    ],
+    akut:[
+      {cat:'🌿 Sofortige Entlastung',color:'#e05555',items:[
+        {t:'Stopp einlegen',d:'Eine bewusste Pause – auch wenn es unmöglich scheint. 5 Minuten nichts tun ist kein Versagen, sondern Selbstschutz.'},
+        {t:'Nein sagen üben',d:'Eine Aufgabe ablehnen oder verschieben. "Nein" ist ein vollständiger Satz.'},
+        {t:'Eine Sache streichen',d:'Was kann heute warten? Was muss wirklich heute erledigt werden? Liste kürzen – radikal.'},
+      ]},
+      {cat:'💨 Nervensystem beruhigen',color:'#8a6fbf',items:[
+        {t:'Boxatmung (4-4-4-4)',d:'4 ein → 4 halten → 4 aus → 4 halten. Aktiviert den Parasympathikus direkt.'},
+        {t:'Progressive Muskelrelaxation',d:'Muskelgruppen anspannen und loslassen. Löst die körperliche Anspannung die Burnout begleitet.'},
+        {t:'Naturkontakt',d:'Draußen gehen, Bäume, Wasser, Himmel bewusst wahrnehmen. Natur senkt Cortisol nachweislich.'},
+      ]},
+      {cat:'🧠 Gedanken & Perspektive',color:'#5b8dee',items:[
+        {t:'Werte-Check',d:'Was ist mir wirklich wichtig? Was davon bekommt gerade meine Energie? Diskrepanz erkennen ohne zu bewerten.'},
+        {t:'Selbstmitgefühls-Brief',d:'Schreibe dir selbst einen Brief aus der Perspektive einer liebenden Person. Was würdest du einem Freund raten?'},
+        {t:'Brain Dump',d:'Alles raus schreiben was drückt – ohne Struktur. Entleert den Kopf und schafft Abstand.'},
+      ]},
+      {cat:'🤝 Unterstützung suchen',color:'#43b89c',items:[
+        {t:'Eine Person ansprechen',d:'Dem Arbeitgeber, einem Freund oder einem Arzt sagen wie es wirklich ist. Burnout gedeiht in der Stille.'},
+        {t:'Professionelle Hilfe',d:'Hausarzt als erste Anlaufstelle. Krankschreibung ist kein Versagen. Psychotherapie bei anhaltendem Burnout.'},
+        {t:'Strukturelle Veränderungen',d:'Burnout kommt zurück wenn die Ursachen bleiben. Arbeitsstunden, Erwartungen, Grenzen – etwas muss sich ändern.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'🔍',col:'#e05555',title:'Verstehen & Einordnen',list:['Burnout ist kein Versagen – es ist eine Reaktion auf anhaltende Überlastung ohne ausreichende Erholung.','Betroffene können noch "funktionieren" bis es zu spät ist – der Zusammenbruch kommt schleichend.','Urlaub allein heilt Burnout nicht – ohne strukturelle Veränderung kommt es zurück.','Burnout trifft besonders engagierte, pflichtbewusste Menschen – kein Zeichen von Schwäche.','Zynismus und Taubheit sind Schutzreaktionen – kein Desinteresse an dir oder der Beziehung.','Burnout und Depression überschneiden sich – professionelle Abklärung ist wichtig.']},
+      {icon:'💬',col:'#e05555',title:'Hilfreiche Kommunikation',list:['"Ich mache mir Sorgen um dich – wie geht es dir wirklich?"','"Du musst das nicht alleine tragen."','"Du darfst krank sein. Du musst nicht funktionieren."','Zuhören ohne sofort Lösungen anzubieten – erst gehört werden lassen.','"Was würde dir jetzt konkret helfen?" – fragen statt entscheiden.','"Ich nehme dir das ab" und es dann wirklich tun – keine leeren Angebote.']},
+      {icon:'🚫',col:'#e05555',title:'Was du vermeiden solltest',list:['"Anderen geht es schlechter" – minimiert echtes Leiden.','"Du brauchst nur Urlaub" – unterschätzt die Tiefe von Burnout.','"Reiß dich zusammen – das Leben geht weiter" – verstärkt Scham.','"Das ist doch nur Stress" – Burnout ist chronisch und mehr als eine schlechte Woche.','Leistungserwartungen aufrechterhalten – auch gut gemeinte Motivation ist Druck.']},
+      {icon:'🤲',col:'#43b89c',title:'Im Alltag unterstützen',list:['Konkrete Aufgaben abnehmen: Einkaufen, Kochen, Termine organisieren.','Druck aktiv reduzieren – keine Leistungserwartungen stellen.','Gemeinsam "Nein sagen" üben – strukturelle Entlastung ist das Ziel.','Zur professionellen Hilfe ermutigen: Hausarzt, Psychotherapie, Krankschreibung ist kein Versagen.','Kleine Schritte benennen: "Du hast heute Pause gemacht. Das war mutig."']},
+      {icon:'⚠️',col:'#e0a030',title:'Warnsignale erkennen',list:['Totale Erschöpfung die sich nach Schlaf nicht erholt – dauerhaft, nicht nur nach einer langen Woche.','Zunehmender Zynismus und emotionale Taubheit – die Person fühlt nichts mehr.','Häufige Erkrankungen durch geschwächtes Immunsystem.','Kompletter Rückzug aus Arbeit, Freundschaften und Familie.','"Ich kann nicht mehr" – ernst nehmen, direkt ansprechen, professionelle Hilfe suchen.']},
+      {icon:'🛡️',col:'#8a6fbf',title:'Eigene Grenzen & Selbstfürsorge',list:['Burnout kann sich auf Begleitpersonen übertragen – eigene Erschöpfung wahrnehmen.','Klare Grenzen kommunizieren: was du übernimmst und was nicht.','Eigene Energie regelmäßig prüfen – du kannst nur helfen wenn du selbst stabil bist.','Deutsche Burnout-Gesellschaft (burnout-gesellschaft.de) – auch für Angehörige.','Sekundären Stress ernst nehmen – Hilfe annehmen ist keine Schwäche.']},
+    ]
+  },
+  ess:{
+    name:'🍽️ Essstörungen',color:'#e8a0c0',dark:'#a04060',
+    grad:'linear-gradient(135deg,#a04060,#e8a0c0)',
+    verstehen:[
+      {type:'card',title:'⚠️ Hinweis',dot:'#e05555',text:'Dieser Bereich befindet sich noch in Entwicklung und wird von Fachleuten gegengelesen. Die Inhalte dienen zur ersten Orientierung – ersetzen aber keine professionelle Beratung. Bei Verdacht auf eine Essstörung: Bitte wende dich an eine Fachkraft.'},
+      {type:'card',title:'Was sind Essstörungen?',dot:'#e8a0c0',text:'Essstörungen sind ernsthafte psychische Erkrankungen die das Verhältnis zu Essen, Körper und Selbstbild betreffen. Sie entstehen durch ein Zusammenspiel aus biologischen, psychologischen und sozialen Faktoren. Essstörungen haben unter allen psychischen Erkrankungen eine der höchsten Sterblichkeitsraten – frühzeitige Hilfe ist entscheidend.'},
+      {type:'card',title:'Häufige Formen',dot:'#f0c040',list:['Anorexia Nervosa – stark eingeschränkte Nahrungsaufnahme, verzerrtes Körperbild','Bulimia Nervosa – Ess-Brech-Zyklen, oft im Verborgenen','Binge-Eating-Störung – unkontrollierte Essanfälle ohne Gegensteuern','ARFID – starke Einschränkung bei Lebensmitteln aus sensorischen Gründen','Orthorexie – krankhafter Fokus auf "gesundes" Essen']},
+      {type:'card',title:'Psychische Anzeichen',dot:'#f0c040',list:['Starke Beschäftigung mit Essen, Kalorien, Körpergewicht','Verzerrte Körperwahrnehmung','Scham und Geheimhaltung rund um Essen','Essen als Kontrolle oder Ventil für Emotionen','Sozialer Rückzug besonders bei Mahlzeiten','Stimmungsschwankungen in Zusammenhang mit Essen']},
+      {type:'myth',m:'"Essstörungen erkennt man immer am Gewicht."',r:'Essstörungen kommen in allen Körpergrößen vor. Viele Betroffene sehen äußerlich unauffällig aus – das macht Erkennung und Hilfesuchen schwerer.'},
+      {type:'myth',m:'"Essstörungen sind eine Diät die aus dem Ruder gelaufen ist."',r:'Essstörungen sind ernsthafte psychische Erkrankungen mit komplexen Ursachen – nicht mangelnde Willenskraft oder Eitelkeit.'},
+    ],
+    akut:[
+      {cat:'⚠️ Wichtiger Hinweis',color:'#e05555',items:[
+        {t:'Dieser Bereich ist in Entwicklung',d:'Die Akut-Methoden für Essstörungen werden derzeit von Fachleuten geprüft. Bei akuter Not bitte sofort professionelle Hilfe suchen.'},
+      ]},
+      {cat:'💬 Sofortige Unterstützung',color:'#e8a0c0',items:[
+        {t:'Fachliche Hilfe suchen',d:'Nationale Allianz für Essstörungen: 0221 4931045 – kostenlos, anonym, kompetent.'},
+        {t:'Eine Person ansprechen',d:'Jemandem vertrauen – auch wenn es schwer fällt. Essstörungen gedeihen in der Stille und im Geheimhalten.'},
+        {t:'Arzttermin machen',d:'Hausarzt als erste Anlaufstelle. Körperliche Auswirkungen müssen überwacht werden.'},
+      ]},
+      {cat:'🆘 In schweren Momenten',color:'#7a3a7a',crisis:true},
+    ],
+    umfeld:[
+      {icon:'💬',col:'#e8a0c0',title:'Hilfreiche Kommunikation',list:['"Ich mache mir Sorgen um dich – nicht wegen deines Aussehens, sondern weil du mir wichtig bist."','Nie Kommentare über Gewicht, Körper oder Essen – auch keine positiven.','Über Gefühle sprechen, nicht über Essen.','Zuhören ohne zu urteilen oder Ratschläge zu geben.']},
+      {icon:'🚫',col:'#e05555',title:'Was du unbedingt vermeiden solltest',list:['"Du siehst doch gut aus – iss einfach mehr." Minimiert die Erkrankung.',['Drängen zum Essen oder Überwachen von Mahlzeiten.'],'Körperkommentare – auch gemeinte Komplimente können schaden.','Diätgespräche oder Kommentare über eigenes Körperbild.']},
+      {icon:'🤲',col:'#43b89c',title:'Unterstützung finden',list:['Bundeszentrale für gesundheitliche Aufklärung: bzga.de','Nationale Allianz für Essstörungen: 0221 4931045','Beratung für Angehörige: anad.de','Eigene Belastung wahrnehmen – Angehörige brauchen auch Unterstützung.']},
+      {icon:'⚠️',col:'#e05555',title:'Dieser Bereich wird noch geprüft',list:['Die Inhalte zu Essstörungen befinden sich in Entwicklung.','Sie werden von Fachleuten gegengelesen bevor die App veröffentlicht wird.','Bei Fragen oder Anmerkungen: Feedback gerne über das Forum.']},
+    ]
+  }
+
 };
 
 let currentTopic='dep';
@@ -1009,30 +1183,177 @@ function switchTab(name,btn){
 
 // LERNEN
 const lernpfade=[
-  {id:'lp-dep',icon:'🌧️',color:'#5b8dee',grad:'linear-gradient(135deg,#2d55b0,#5b8dee)',title:'Depression verstehen',sub:'Grundlagen · Mythen · Umgang',progress:0,lessons:[
+  // DEPRESSION
+  {id:'lp-dep',icon:'🌧️',color:'#5b8dee',grad:'linear-gradient(135deg,#2d55b0,#5b8dee)',title:'Depression verstehen',sub:'Grundlagen · Mythen · Akutmethoden · Umfeld',progress:0,lessons:[
     {title:'Was ist Depression wirklich?',sub:'5 Min · Lektion',content:[
-      {type:'text',h:'Depression ist eine Erkrankung',p:'Depression ist keine Schwäche und kein Charakterfehler. Es ist eine neurobiologische Erkrankung – genau wie Diabetes eine körperliche Erkrankung ist.'},
-      {type:'list',h:'Typische Anzeichen',items:['Anhaltende Niedergeschlagenheit','Interessenverlust (Anhedonie)','Erschöpfung ohne Grund','Schlafprobleme','Körperliche Symptome wie Kopfschmerzen']},
-      {type:'quiz',q:'Welches ist ein Kernsymptom der Depression?',opts:['Zu viel Energie','Anhedonie (Freudlosigkeit)','Euphorie'],correct:1,fb:'Anhedonie – die Unfähigkeit Freude zu empfinden – ist eines der zwei Kernsymptome der Depression laut DSM-5.'},
+      {type:'text',h:'Depression ist eine Erkrankung',p:'Depression ist keine Schwäche und kein Charakterfehler. Es ist eine neurobiologische Erkrankung mit messbaren Veränderungen im Gehirn – genau wie Diabetes eine körperliche Erkrankung ist.'},
+      {type:'list',h:'Zwei Kernsymptome (DSM-5)',items:['Anhedonie – Unfähigkeit, Freude zu empfinden','Anhaltende gedrückte Stimmung an fast allen Tagen']},
+      {type:'list',h:'Weitere häufige Anzeichen',items:['Erschöpfung ohne erklärbaren Grund','Schlafprobleme oder übermäßiges Schlafen','Konzentrationsprobleme','Körperliche Symptome: Kopfschmerzen, Magen-Darm-Beschwerden','Rückzug von Familie und Freunden']},
+      {type:'quiz',q:'Was ist Anhedonie?',opts:['Übermäßige Traurigkeit','Unfähigkeit Freude zu empfinden','Schlaflosigkeit'],correct:1,fb:'Anhedonie – die Unfähigkeit Freude zu empfinden – ist neben gedrückter Stimmung das Kernsymptom der Depression laut DSM-5.'},
     ]},
-    {title:'Mythen & Fakten',sub:'4 Min · Quiz',content:[
-      {type:'text',h:'Warum Mythen schaden',p:'Falsche Vorstellungen über Depression hindern Betroffene daran, Hilfe zu suchen. Und sie verletzen Menschen, die ohnehin schon kämpfen.'},
-      {type:'quiz',q:'"Reiß dich zusammen" hilft bei Depression.',opts:['Richtig','Falsch'],correct:1,fb:'Depression ist eine Erkrankung. Man kann sie nicht durch Willenskraft überwinden.'},
-      {type:'quiz',q:'Depression und Traurigkeit sind dasselbe.',opts:['Richtig','Falsch'],correct:1,fb:'Traurigkeit ist normal und vergeht. Depression ist eine klinische Erkrankung die Wochen bis Monate anhält.'},
+    {title:'Mythen & Fakten',sub:'5 Min · Quiz',content:[
+      {type:'text',h:'Warum Mythen schaden',p:'Falsche Vorstellungen über Depression hindern Betroffene daran, Hilfe zu suchen. Und sie verletzen Menschen die ohnehin schon kämpfen.'},
+      {type:'quiz',q:'"Reiß dich zusammen" hilft bei Depression.',opts:['Richtig','Falsch'],correct:1,fb:'Depression ist eine neurobiologische Erkrankung. Man kann sie nicht durch Willenskraft überwinden – genauso wenig wie ein gebrochenes Bein.'},
+      {type:'quiz',q:'Depression und Traurigkeit sind dasselbe.',opts:['Richtig','Falsch'],correct:1,fb:'Traurigkeit ist normal und vergeht. Depression hält Wochen bis Monate an, betrifft alle Lebensbereiche und erfordert Behandlung.'},
+      {type:'quiz',q:'Antidepressiva machen süchtig.',opts:['Richtig','Falsch'],correct:1,fb:'Antidepressiva erzeugen keine Abhängigkeit im klassischen Sinne. Sie werden schrittweise mit ärztlicher Begleitung abgesetzt.'},
+      {type:'quiz',q:'Wer über Suizid spricht, tut es nicht wirklich.',opts:['Richtig','Falsch'],correct:1,fb:'Das Gegenteil ist richtig. Ankündigungen immer ernst nehmen – sie sind ein Hilferuf.'},
+    ]},
+    {title:'Akutmethoden kennenlernen',sub:'6 Min · Interaktiv',content:[
+      {type:'text',h:'Was hilft in schweren Momenten?',p:'Es gibt viele evidenzbasierte Methoden die in akuten Momenten helfen. Hier lernst du die wirksamsten kennen.'},
+      {type:'list',h:'🧘 In den Moment kommen',items:['5-4-3-2-1 Methode: 5 sehen, 4 hören, 3 fühlen, 2 riechen, 1 schmecken','2 Füße + 1 Atemzug: Boden spüren, tief einatmen','Sicheren Ort visualisieren: Augen zu, Ort vorstellen']},
+      {type:'list',h:'💨 Atemübungen',items:['Boxatmung: 4 ein → 4 halten → 4 aus → 4 halten','4-6-8 Atmung: verlängerte Ausatmung beruhigt am stärksten','Psychological Sigh: 2x kurz einatmen, lang ausatmen']},
+      {type:'quiz',q:'Welche Methode hilft am schnellsten bei akuter Anspannung?',opts:['Stundenlang schlafen','Psychological Sigh – 2x einatmen, lang ausatmen','Kaffee trinken'],correct:1,fb:'Der Psychological Sigh baut CO₂ schnell ab und beruhigt das Nervensystem binnen Sekunden – eine der schnellsten Methoden.'},
+    ]},
+    {title:'Das Umfeld – wie helfen?',sub:'5 Min · Szenarien',content:[
+      {type:'text',h:'Was wirklich hilft',p:'Als Angehöriger oder Freund kannst du viel bewirken – oder ohne es zu wissen Schaden anrichten. Diese Lektion zeigt den Unterschied.'},
+      {type:'quiz',q:'Dein Freund sagt er ist erschöpft und hat keine Freude mehr. Was sagst du?',opts:['"Anderen geht es viel schlechter!"','"Ich bin für dich da. Wie geht es dir wirklich?"','"Denk einfach positiv!"'],correct:1,fb:'Zuhören ohne zu urteilen ist das Wirksamste. Dein Freund braucht das Gefühl, gehört zu werden – nicht Ratschläge oder Vergleiche.'},
+      {type:'quiz',q:'Was ist die hilfreichste Art Unterstützung anzubieten?',opts:['"Kann ich irgendwie helfen?"','"Ich kaufe heute ein – brauchst du etwas?"','Nichts sagen und warten'],correct:1,fb:'Konkrete Angebote sind viel leichter anzunehmen als offene Fragen. "Ich kaufe ein" ist besser als "Darf ich helfen?"'},
+      {type:'list',h:'Das Wichtigste zusammengefasst',items:['Sag: "Ich bin für dich da – egal was."','Vermeide: "Reiß dich zusammen" oder "Denk positiv"','Biete konkrete Hilfe an – nicht offene Fragen','Ermutige professionelle Hilfe zu suchen']},
     ]},
   ]},
-  {id:'lp-bor',icon:'🌊',color:'#e0607e',grad:'linear-gradient(135deg,#a03050,#e0607e)',title:'Borderline begleiten',sub:'Verstehen · DBT · Angehörige',progress:0,lessons:[
+
+  // BORDERLINE
+  {id:'lp-bor',icon:'🌊',color:'#e0607e',grad:'linear-gradient(135deg,#a03050,#e0607e)',title:'Borderline begleiten',sub:'Grundlagen · DBT · Mythen · Umfeld',progress:0,lessons:[
     {title:'Was ist BPS?',sub:'5 Min · Lektion',content:[
-      {type:'text',h:'Intensive Gefühle ohne Schutzschicht',p:'Stell dir vor, du erlebst Emotionen ohne die Hülle die anderen Menschen schützt. Jede Kritik trifft mit voller Wucht. Das ist Borderline.'},
-      {type:'text',h:'Was DBT ist',p:'Die Dialektisch-Behaviorale Therapie ist der Goldstandard bei BPS. Sie lehrt Fähigkeiten zur Emotionsregulation, Achtsamkeit und Stresstoleranz.'},
-      {type:'quiz',q:'Was ist die evidenzbasierte Haupttherapie bei Borderline?',opts:['Verhaltenstherapie','DBT','Hypnose'],correct:1,fb:'DBT wurde von Marsha Linehan entwickelt und ist der Goldstandard bei Borderline-Persönlichkeitsstörung.'},
+      {type:'text',h:'Intensive Gefühle ohne Schutzschicht',p:'Stell dir vor, du erlebst Emotionen ohne die schützende Hülle die andere Menschen haben. Jede Kritik trifft mit voller Wucht. Jede Trennung fühlt sich wie das Ende der Welt an. Das ist Borderline.'},
+      {type:'list',h:'Häufige Anzeichen (DSM-5)',items:['Intensive Angst vor Verlassenwerden','Instabile Beziehungen: Idealisierung ↔ Abwertung','Impulsivität in selbstschädigenden Bereichen','Stimmungsschwankungen in Minuten bis Stunden','Chronische innere Leere','Selbstverletzung als Spannungsabbau']},
+      {type:'quiz',q:'Was kennzeichnet Borderline besonders?',opts:['Anhaltende Traurigkeit','Intensive Gefühle ohne Schutzschicht','Halluzinationen'],correct:1,fb:'Das Kernmerkmal von BPS sind intensive Emotionen die die Betroffenen ohne die Pufferzone erleben, die andere schützt.'},
+    ]},
+    {title:'Was ist DBT?',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Der Goldstandard bei Borderline',p:'DBT (Dialektisch-Behaviorale Therapie) wurde von Marsha Linehan entwickelt und ist die wirksamste Therapie bei BPS. Sie lehrt konkrete Fähigkeiten zur Emotionsregulation, Achtsamkeit und Stresstoleranz.'},
+      {type:'list',h:'Die 4 DBT-Module',items:['Achtsamkeit – im Moment präsent sein','Stresstoleranz – Krisen ohne Eskalation überstehen','Emotionsregulation – Gefühle verstehen und regulieren','Zwischenmenschliche Effektivität – Beziehungen gestalten']},
+      {type:'quiz',q:'Was ist die evidenzbasierte Haupttherapie bei Borderline?',opts:['Hypnosetherapie','DBT – Dialektisch-Behaviorale Therapie','Gesprächstherapie'],correct:1,fb:'DBT ist der Goldstandard. Langzeitstudien zeigen: bis zu 50% der Betroffenen erreichen nach 10 Jahren mit DBT eine Remission (Zanarini et al., 2012).'},
+    ]},
+    {title:'Mythen über Borderline',sub:'4 Min · Quiz',content:[
+      {type:'quiz',q:'"Borderline-Menschen sind manipulativ und gefährlich."',opts:['Richtig','Falsch'],correct:1,fb:'Betroffene handeln aus echtem, intensivem Schmerz – nicht aus Kalkül. BPS erhöht das Risiko für Selbstverletzung, nicht für Fremdgefährdung.'},
+      {type:'quiz',q:'"Selbstverletzung ist Aufmerksamkeitssuche."',opts:['Richtig','Falsch'],correct:1,fb:'Selbstverletzung ist meist ein Versuch, unerträgliche emotionale Spannung zu regulieren – oft im Verborgenen. Ein ernstzunehmendes Alarmsignal.'},
+      {type:'quiz',q:'"BPS ist unheilbar."',opts:['Richtig','Falsch'],correct:1,fb:'Mit DBT erreichen bis zu 50% der Betroffenen nach 10 Jahren eine Remission. Frühe Behandlung verbessert die Prognose erheblich.'},
+    ]},
+    {title:'Als Angehöriger begleiten',sub:'6 Min · Szenarien',content:[
+      {type:'text',h:'Das Wichtigste: Validieren',p:'Validierung bedeutet nicht zustimmen – sondern anerkennen dass die Gefühle der betroffenen Person real und verständlich sind.'},
+      {type:'quiz',q:'Deine Freundin ruft weinend an und sagt, du verlässt sie auch. Was sagst du?',opts:['"Das stimmt doch nicht, ich bin doch hier!"','"Ich verstehe, dass du gerade Angst hast verlassen zu werden. Ich bin hier."','Auflegen – du weißt nicht was du sagen sollst'],correct:1,fb:'Validierung zuerst – dann Fakten. Die Emotion anerkennen bevor du etwas korrigierst ist entscheidend bei BPS.'},
+      {type:'quiz',q:'Was schützt BEIDE Seiten in einer Beziehung mit BPS-Betroffenen?',opts:['Keine Grenzen setzen um Eskalation zu vermeiden','Liebevolle, klare und konsistente Grenzen','Immer nachgeben wenn die Stimmung hochkocht'],correct:1,fb:'Konsistente Grenzen geben Betroffenen Sicherheit. Unvorhersehbarkeit verstärkt die Verlustangst. Grenzen schützen beide Seiten.'},
     ]},
   ]},
-  {id:'lp-aut',icon:'🧩',color:'#43b89c',grad:'linear-gradient(135deg,#1e7a62,#43b89c)',title:'Autismus & Neurodiversität',sub:'Spektrum · Frühzeichen · Stärken',progress:0,lessons:[
+
+  // AUTISMUS
+  {id:'lp-aut',icon:'🧩',color:'#43b89c',grad:'linear-gradient(135deg,#1e7a62,#43b89c)',title:'Autismus & Neurodiversität',sub:'Spektrum · Empathie · Frühzeichen · Umfeld',progress:0,lessons:[
     {title:'Neurodiversität verstehen',sub:'5 Min · Lektion',content:[
       {type:'text',h:'Eine andere Art zu denken',p:'Autismus ist kein Defizit – es ist eine andere neurologische Variante. Autistische Menschen denken, fühlen und kommunizieren anders. Das bringt Herausforderungen, aber auch besondere Stärken.'},
-      {type:'text',h:'Das doppelte Empathieproblem',p:'Oft heißt es, Autist:innen hätten kein Einfühlungsvermögen. Die Forschung zeigt: Das Missverständnis geht in beide Richtungen.'},
-      {type:'quiz',q:'Autismus ist eine Erkrankung die geheilt werden muss.',opts:['Richtig','Falsch'],correct:1,fb:'Autismus ist eine Entwicklungsvariante, keine Krankheit. Das Ziel ist Verstehen und Unterstützung – nicht Heilung.'},
+      {type:'list',h:'Häufige Merkmale',items:['Andersartige soziale Kommunikation','Intensive Sonderinteressen','Stimming – stereotype Bewegungen zur Selbstregulation','Starkes Bedürfnis nach Routinen','Hyper- oder Hyposensitivität auf Reize']},
+      {type:'quiz',q:'Autismus ist eine Erkrankung die geheilt werden muss.',opts:['Richtig','Falsch'],correct:1,fb:'Autismus ist eine neurologische Entwicklungsvariante – keine Krankheit. Das Ziel ist nicht Heilung, sondern Verstehen, Unterstützung und Inklusion.'},
+    ]},
+    {title:'Das doppelte Empathieproblem',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Empathie geht in beide Richtungen',p:'Oft heißt es, Autist:innen hätten kein Einfühlungsvermögen. Die Forschung von Damian Milton (2012) zeigt: Das Missverständnis geht in beide Richtungen. NT-Menschen verstehen autistische Menschen genauso wenig wie umgekehrt.'},
+      {type:'text',h:'Was Masking bedeutet',p:'Viele Autist:innen passen ihr Verhalten bewusst oder unbewusst an um dazuzugehören – sogenanntes Masking. Das kostet enorm Energie und führt zu Erschöpfung. Besonders bei Frauen und Mädchen bleibt Autismus dadurch jahrelang unerkannt.'},
+      {type:'quiz',q:'Was bedeutet "Masking" bei Autismus?',opts:['Aggressives Verhalten verbergen','Autistisches Verhalten anpassen um dazuzugehören','Einen Shutdown simulieren'],correct:1,fb:'Masking beschreibt das bewusste oder unbewusste Anpassen an neurotypische Normen. Es ist erschöpfend und führt oft zu Autistic Burnout.'},
+    ]},
+    {title:'Frühzeichen erkennen',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Je früher desto besser',p:'Frühe Diagnose ermöglicht frühe Förderung. Besonders bei Mädchen werden Zeichen oft übersehen weil sie gut maskieren.'},
+      {type:'list',h:'Frühe Zeichen (0–2 Jahre)',items:['Kein Blickkontakt oder Lächeln bis 6 Monate','Kein Zeigen oder Winken bis 12 Monate','Keine einzelnen Wörter bis 16 Monate','Reagiert nicht auf eigenen Namen','Verlust bereits erlernter Fähigkeiten']},
+      {type:'quiz',q:'Warum wird Autismus bei Mädchen oft später erkannt?',opts:['Mädchen haben seltenere Symptome','Mädchen maskieren häufig – passen sich sozial an','Ärzte testen Mädchen seltener'],correct:1,fb:'Mädchen maskieren häufiger und besser als Jungen. Das führt dazu, dass Diagnosen oft erst im Erwachsenenalter gestellt werden (Hull et al., 2020).'},
+    ]},
+    {title:'Inklusiv begegnen',sub:'5 Min · Szenarien',content:[
+      {type:'quiz',q:'Ein autistischer Kollege macht bei Meetings keinen Augenkontakt. Was denkst du?',opts:['Er ist desinteressiert und unhöflich','Augenkontakt kostet autistischen Menschen enorm Energie – er hört trotzdem zu','Er mag mich nicht'],correct:1,fb:'Augenkontakt ist für viele Autist:innen kognitiv sehr aufwändig. Kein Augenkontakt bedeutet nicht Desinteresse – im Gegenteil.'},
+      {type:'quiz',q:'Ein Kind schaukelt beim Lernen ständig. Was ist die beste Reaktion?',opts:['Es stoppen – das lenkt andere ab','Ignorieren und weitermachen','Den Raum geben – Stimming ist Selbstregulation, kein Störverhalten'],correct:2,fb:'Stimming ist eine wichtige Selbstregulationsstrategie. Es zu unterbinden kostet das Kind Energie die es zum Lernen braucht.'},
+      {type:'list',h:'Inklusiv kommunizieren',items:['Klar und direkt sprechen – keine Ironie','Zeit zum Antworten lassen','Augenkontakt nicht erzwingen','Änderungen immer vorher ankündigen']},
+    ]},
+  ]},
+
+  // ADHS
+  {id:'lp-adhs',icon:'🧠',color:'#f0a030',grad:'linear-gradient(135deg,#b06010,#f0a030)',title:'ADHS verstehen',sub:'Neurodiversität · Mythen · Strategien · Umfeld',progress:0,lessons:[
+    {title:'Was ist ADHS?',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Neurobiologische Entwicklungsvariante',p:'ADHS ist keine Faulheit und kein Erziehungsfehler. Es ist eine neurologische Entwicklungsvariante mit anders reguliertem Aufmerksamkeits- und Impulskontrollsystem. ADHS besteht oft bis ins Erwachsenenalter – und wird besonders bei Frauen und Mädchen häufig spät erkannt.'},
+      {type:'list',h:'Häufige Merkmale',items:['Schwierigkeiten Aufmerksamkeit zu halten','Hyperfokus bei Interessensthemen','Impulsivität und innere Unruhe','Vergesslichkeit im Alltag','Emotionale Dysregulation','Prokrastination – besonders beim Anfangen']},
+      {type:'quiz',q:'Was ist Hyperfokus bei ADHS?',opts:['Unfähigkeit sich je zu konzentrieren','Stundenlange intensive Konzentration bei Interessensthemen','Absichtliche Verweigerung von Aufgaben'],correct:1,fb:'Hyperfokus zeigt: Das ADHS-Gehirn kann sich konzentrieren – aber nicht auf Befehl. Es reagiert stark auf Interesse und Dringlichkeit, nicht auf Willenskraft.'},
+    ]},
+    {title:'Mythen über ADHS',sub:'4 Min · Quiz',content:[
+      {type:'quiz',q:'"ADHS haben nur hyperaktive Kinder."',opts:['Richtig','Falsch'],correct:1,fb:'ADHS zeigt sich sehr unterschiedlich – oft ohne Hyperaktivität, besonders bei Frauen. Viele Erwachsene werden erst spät diagnostiziert.'},
+      {type:'quiz',q:'"Wer sich bei Interesse konzentrieren kann, hat kein echtes ADHS."',opts:['Richtig','Falsch'],correct:1,fb:'Hyperfokus ist ein typisches ADHS-Merkmal. Das Gehirn reagiert auf Interesse – aber Aufmerksamkeit ist trotzdem nicht steuerbar.'},
+      {type:'quiz',q:'"ADHS ist eine Modediagnose."',opts:['Richtig','Falsch'],correct:1,fb:'ADHS ist neurobiologisch nachgewiesen. Bildgebende Studien zeigen strukturelle Unterschiede im Gehirn. Es ist eine der am besten erforschten Entwicklungsvarianten.'},
+    ]},
+    {title:'Strategien im Alltag',sub:'6 Min · Interaktiv',content:[
+      {type:'text',h:'Was wirklich hilft',p:'Viele Strategien die für alle Menschen gut sind, wirken bei ADHS besonders – weil das Gehirn Struktur, Dringlichkeit und Interessensreize braucht.'},
+      {type:'list',h:'🧠 Strukturierungshilfen',items:['Pomodoro-Technik: 25 Min. Fokus, 5 Min. Pause','Brain Dump: alles aufschreiben was den Kopf blockiert','Eine Aufgabe – ein Timer – kein Multitasking','Visuelle Erinnerungen statt verbaler']},
+      {type:'list',h:'💪 Körperliche Regulation',items:['Bewegungspausen einbauen – das ADHS-Gehirn braucht Bewegung','Rhythmische Bewegung: Schaukeln, Wippen beruhigt nachweislich','Regelmäßiger Sport erhöht Dopamin ähnlich wie Medikamente']},
+      {type:'quiz',q:'Warum hilft "Body Doubling" bei ADHS?',opts:['Es macht Aufgaben interessanter','Die Anwesenheit einer anderen Person erhöht Fokus und Dringlichkeit','Es ist nur ein Mythos'],correct:1,fb:'Body Doubling ist wissenschaftlich belegt: Die Anwesenheit einer anderen Person – auch stumm – erhöht die Aufmerksamkeit und reduziert Prokrastination.'},
+    ]},
+    {title:'Umfeld & Unterstützung',sub:'5 Min · Szenarien',content:[
+      {type:'quiz',q:'Dein Mitbewohner mit ADHS vergisst ständig Abmachungen. Was hilft?',opts:['"Du vergisst schon wieder alles!" – direkt ansprechen','Gemeinsam ein visuelles System entwickeln: Kalender, Zettel, Apps','"Ich mach das einfach selbst" – aufgeben'],correct:1,fb:'Visuelle externe Erinnerungssysteme kompensieren die Schwäche des Arbeitsgedächtnisses bei ADHS. Vorwürfe helfen nicht – Systeme schon.'},
+      {type:'quiz',q:'Was bedeutet "anders erwarten" bei ADHS?',opts:['Weniger von der Person erwarten','Andere Wege zum gleichen Ziel akzeptieren','Keine Erwartungen mehr haben'],correct:1,fb:'ADHS-Menschen erreichen Ziele oft auf unkonventionellen Wegen. Das Ziel bleibt gleich – der Weg darf anders sein.'},
+      {type:'list',h:'Das Wichtigste',items:['"Du könntest wenn du wolltest" ist falsch und verletzend','Konkrete Hilfe: Aufgaben gemeinsam priorisieren','Stärken sehen: Kreativität, Begeisterung, Hyperfokus','ADHS Deutschland e.V. (adhs-deutschland.de)']},
+    ]},
+  ]},
+
+  // ANGSTSTÖRUNGEN
+  {id:'lp-angst',icon:'😰',color:'#9b59b6',grad:'linear-gradient(135deg,#6c3483,#9b59b6)',title:'Angststörungen verstehen',sub:'Grundlagen · Panik · Methoden · Umfeld',progress:0,lessons:[
+    {title:'Was sind Angststörungen?',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Das überaktive Alarmsystem',p:'Angst ist normal und wichtig – sie schützt uns. Bei Angststörungen ist dieses Alarmsystem überaktiv: Es schlägt Alarm, auch wenn keine echte Gefahr da ist. Das ist keine Schwäche – sondern Neurobiologie.'},
+      {type:'list',h:'Häufige Formen',items:['Generalisierte Angststörung – anhaltende unkontrollierbare Sorgen','Panikstörung – plötzliche intensive Angstattacken','Soziale Phobie – starke Angst vor sozialen Situationen','Spezifische Phobien – Angst vor bestimmten Objekten/Situationen']},
+      {type:'quiz',q:'Was passiert bei einer Panikattacke im Gehirn?',opts:['Das Gehirn schläft kurz ein','Die Amygdala löst einen Fehlalarm aus – als ob echte Gefahr da wäre','Man verliert kurz das Bewusstsein'],correct:1,fb:'Die Amygdala – das Angstzentrum – reagiert auf wahrgenommene Bedrohung und löst die Stressreaktion aus, auch wenn keine echte Gefahr besteht.'},
+    ]},
+    {title:'Panikattacken verstehen',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Was ist eine Panikattacke?',p:'Eine Panikattacke ist eine plötzliche intensive Angstreaktion mit körperlichen Symptomen – Herzrasen, Atemnot, Schwindel – und dem Gefühl die Kontrolle zu verlieren oder zu sterben. Sie ist nicht gefährlich, fühlt sich aber lebensbedrohlich an.'},
+      {type:'list',h:'Typische Symptome',items:['Herzrasen oder Herzstolpern','Atemnot oder Engegefühl','Schwindel und Übelkeit','Kribbeln in Händen oder Gesicht','Gefühl der Unwirklichkeit (Depersonalisation)','Angst zu sterben oder die Kontrolle zu verlieren']},
+      {type:'quiz',q:'Ist eine Panikattacke gefährlich?',opts:['Ja – das Herz könnte versagen','Nein – sie fühlt sich gefährlich an, ist es aber nicht','Nur wenn sie länger als 10 Minuten dauert'],correct:1,fb:'Panikattacken sind nicht gefährlich. Sie gehen von selbst vorbei – meist nach 5–20 Minuten. Das Wissen allein kann den Kreislauf unterbrechen.'},
+    ]},
+    {title:'Akutmethoden bei Angst',sub:'6 Min · Interaktiv',content:[
+      {type:'text',h:'Was sofort hilft',p:'Bei Angst und Panik helfen Methoden die das Nervensystem direkt beruhigen – besonders Atemtechniken und Grounding.'},
+      {type:'list',h:'💨 Atemübungen (besonders wirksam)',items:['4-6-8: 4 ein → 6 halten → 8 aus. Verlängerte Ausatmung beruhigt am stärksten','Boxatmung: 4-4-4-4. Gibt Kontrolle zurück','Psychological Sigh: 2x einatmen, lang ausatmen – binnen Sekunden wirksam']},
+      {type:'list',h:'🧘 Grounding bei Panik',items:['5-4-3-2-1: 5 sehen, 4 hören, 3 fühlen, 2 riechen, 1 schmecken','Eiskaltes Wasser: Tauchreflex aktivieren','Füße fest auf den Boden – Körperkontakt signalisiert Sicherheit']},
+      {type:'quiz',q:'Warum hilft die verlängerte Ausatmung bei Angst besonders?',opts:['Sie lenkt von der Angst ab','Sie aktiviert den Parasympathikus – das Beruhigungssystem des Körpers','Sie erhöht den Sauerstoffgehalt im Blut'],correct:1,fb:'Die verlängerte Ausatmung aktiviert den Parasympathikus direkt. Das ist der Gegenspieler des Sympathikus – er signalisiert dem Körper: Gefahr vorbei, entspannen.'},
+    ]},
+    {title:'Umfeld bei Angststörungen',sub:'5 Min · Szenarien',content:[
+      {type:'quiz',q:'Deine Freundin hat eine Panikattacke. Was tust du?',opts:['"Stell dich nicht so an – da ist nichts!"','Ruhig bleiben, langsam sprechen, da sein: "Du bist sicher. Ich bin hier."','Sofort den Notruf rufen'],correct:1,fb:'Ruhe ausstrahlen ist das Wichtigste. Deine Gelassenheit überträgt sich. Klare, ruhige Stimme: "Du bist sicher. Das geht vorbei."'},
+      {type:'quiz',q:'Was ist kontraproduktiv bei Angststörungen?',opts:['Professionelle Hilfe empfehlen','Anxiety-Auslöser immer vermeiden – für immer','Kleine mutige Schritte begleiten'],correct:1,fb:'Dauernde Vermeidung verstärkt Angststörungen langfristig. Therapeutische Exposition geschieht graduell – kleine Schritte mit Begleitung helfen mehr als ewige Vermeidung.'},
+    ]},
+  ]},
+
+  // BURNOUT
+  {id:'lp-burnout',icon:'🔥',color:'#e05555',grad:'linear-gradient(135deg,#a02020,#e05555)',title:'Burnout erkennen & vorbeugen',sub:'Grundlagen · Erkennung · Methoden · Prävention',progress:0,lessons:[
+    {title:'Was ist Burnout?',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Chronische Erschöpfung',p:'Burnout ist ein Zustand chronischer Erschöpfung durch anhaltenden Stress – besonders in Leistungskontexten. Die WHO anerkannte Burnout 2019 offiziell als berufsbedingtes Phänomen (ICD-11). Es trifft oft besonders engagierte Menschen die sehr viel geben.'},
+      {type:'list',h:'Die drei Kerndimensionen (Maslach)',items:['Emotionale Erschöpfung – das Gefühl "leer" zu sein','Depersonalisation – Zynismus und emotionale Distanz','Reduzierte Leistungsfähigkeit – Gefühl der Wirkungslosigkeit']},
+      {type:'quiz',q:'Wen trifft Burnout am häufigsten?',opts:['Menschen die wenig arbeiten','Besonders engagierte, pflichtbewusste Menschen','Nur Führungskräfte'],correct:1,fb:'Burnout trifft häufig Menschen die sehr viel geben und hohe Ansprüche an sich selbst haben – nicht diejenigen die wenig leisten.'},
+    ]},
+    {title:'Burnout früh erkennen',sub:'5 Min · Lektion',content:[
+      {type:'text',h:'Burnout schleicht sich an',p:'Burnout entwickelt sich über Monate oder Jahre. Frühe Zeichen zu erkennen ist entscheidend – bevor der Zusammenbruch kommt.'},
+      {type:'list',h:'Frühe Warnsignale',items:['Dauerhafte Erschöpfung die sich nicht erholt','Schlafprobleme trotz extremer Müdigkeit','Reizbarkeit und emotionale Taubheit','Wachsender Zynismus gegenüber der Arbeit','Körperliche Symptome: Kopfschmerzen, Magen-Darm','Rückzug aus sozialen Kontakten']},
+      {type:'quiz',q:'Was unterscheidet Burnout von "normalem" Stress?',opts:['Burnout ist kurzfristig und geht mit Urlaub weg','Burnout ist chronisch – Urlaub allein reicht nicht zur Erholung','Burnout betrifft nur körperliche Erschöpfung'],correct:1,fb:'Bei echtem Burnout ist die Erholungsfähigkeit erschöpft – nicht nur die Energie. Urlaub gibt kurze Erleichterung, löst aber nicht die Ursachen.'},
+    ]},
+    {title:'Akut & Prävention',sub:'6 Min · Interaktiv',content:[
+      {type:'text',h:'Was hilft – sofort und langfristig',p:'Bei Burnout braucht es beides: sofortige Entlastung UND strukturelle Veränderungen. Ohne Letzteres kommt Burnout zurück.'},
+      {type:'list',h:'🛑 Sofortige Entlastung',items:['Eine Aufgabe bewusst streichen oder verschieben','"Nein" sagen – auch wenn es sich falsch anfühlt','5 Minuten nichts tun als Selbstschutz, nicht als Versagen']},
+      {type:'list',h:'🌱 Langfristige Prävention',items:['Grenzen kennen und kommunizieren','Regelmäßige Erholung einplanen – nicht erst wenn es zu spät ist','Werte-Check: Was bekommt meine Energie – stimmt das mit meinen Werten überein?','Professionelle Hilfe: Hausarzt, Psychotherapie']},
+      {type:'quiz',q:'Warum kommt Burnout ohne strukturelle Veränderungen zurück?',opts:['Weil man noch nicht stark genug ist','Weil die Ursachen – Überlastung, fehlende Grenzen – geblieben sind','Weil Burnout genetisch bedingt ist'],correct:1,fb:'Burnout ist kein persönliches Versagen sondern eine Reaktion auf Bedingungen. Wenn die Bedingungen gleich bleiben, kommt Burnout zurück – egal wie viel man sich erholt hat.'},
+    ]},
+    {title:'Umfeld bei Burnout',sub:'5 Min · Szenarien',content:[
+      {type:'quiz',q:'Dein Kollege wirkt seit Wochen leer und zynisch. Was sagst du?',opts:['"Du brauchst einfach Urlaub!"','"Ich mache mir Sorgen um dich – wie geht es dir wirklich?"','"Stell dich nicht so an, wir alle haben Stress."'],correct:1,fb:'Echtes Interesse zeigen ohne sofort Lösungen anzubieten. "Wie geht es dir wirklich?" öffnet die Tür – ohne Druck.'},
+      {type:'quiz',q:'Was ist die hilfreichste Art, jemanden mit Burnout zu unterstützen?',opts:['Hohe Erwartungen aufrechterhalten um Motivation zu fördern','Konkrete Entlastung: Aufgaben abnehmen, Druck reduzieren','Ständig fragen wie es geht'],correct:1,fb:'Konkrete Entlastung wirkt mehr als Worte. Aufgaben abnehmen, Erwartungen reduzieren, Ruhe geben – das ist echte Unterstützung.'},
+    ]},
+  ]},
+
+  // ESSSTÖRUNGEN
+  {id:'lp-ess',icon:'🍽️',color:'#e8a0c0',grad:'linear-gradient(135deg,#a04060,#e8a0c0)',title:'Essstörungen verstehen',sub:'⚠️ In Entwicklung – wird gegengelesen',progress:0,lessons:[
+    {title:'⚠️ Wichtiger Hinweis',sub:'Bitte zuerst lesen',content:[
+      {type:'text',h:'Dieser Lernpfad ist in Entwicklung',p:'Die Inhalte zu Essstörungen werden derzeit von Fachleuten geprüft und ergänzt. Sie dienen zur ersten Orientierung – ersetzen aber keine professionelle Beratung oder Therapie.'},
+      {type:'text',h:'Bei akuter Not',p:'Nationale Allianz für Essstörungen: 0221 4931045 – kostenlos, anonym, kompetent. Hausarzt oder Notaufnahme aufsuchen bei körperlichen Symptomen.'},
+      {type:'quiz',q:'Wofür steht dieser Lernpfad?',opts:['Als vollständige Therapieanleitung','Als erste Orientierung – kein Ersatz für professionelle Hilfe','Als medizinisches Nachschlagewerk'],correct:1,fb:'Richtig. Dieser Bereich bietet erste Orientierung und Sensibilisierung – bei Verdacht auf eine Essstörung bitte immer professionelle Hilfe suchen.'},
+    ]},
+    {title:'Was sind Essstörungen?',sub:'5 Min · Lektion · In Entwicklung',content:[
+      {type:'text',h:'Ernsthafte psychische Erkrankungen',p:'Essstörungen sind ernsthafte psychische Erkrankungen die das Verhältnis zu Essen, Körper und Selbstbild betreffen. Sie haben unter allen psychischen Erkrankungen eine der höchsten Sterblichkeitsraten – frühzeitige Hilfe ist entscheidend.'},
+      {type:'list',h:'Häufige Formen',items:['Anorexia Nervosa – stark eingeschränkte Nahrungsaufnahme','Bulimia Nervosa – Ess-Brech-Zyklen','Binge-Eating-Störung – unkontrollierte Essanfälle','ARFID – starke sensorische Einschränkung bei Lebensmitteln']},
+      {type:'quiz',q:'Essstörungen erkennt man immer am Körpergewicht.',opts:['Richtig','Falsch'],correct:1,fb:'Essstörungen kommen in allen Körpergrößen vor. Viele Betroffene sehen äußerlich unauffällig aus – das erschwert Erkennung und Hilfesuchen erheblich.'},
+    ]},
+    {title:'Warnsignale erkennen',sub:'5 Min · Lektion · In Entwicklung',content:[
+      {type:'text',h:'Wann sollte man sich Hilfe suchen?',p:'Essstörungen entwickeln sich schleichend. Frühe Warnsignale zu kennen ist entscheidend – für Betroffene selbst und für ihr Umfeld. Bei Verdacht gilt: lieber früh ansprechen als abwarten.'},
+      {type:'list',h:'Häufige Warnsignale',items:['Starke Beschäftigung mit Essen, Kalorien oder Gewicht','Mahlzeiten regelmäßig auslassen oder Essen verbergen','Körperliche Anzeichen: Schwindel, Ohnmacht, Haarverlust','Sozialer Rückzug besonders bei Mahlzeiten oder Essen in Gesellschaft','Stimmungsschwankungen in engem Zusammenhang mit Essen','Verzerrte Wahrnehmung des eigenen Körpers']},
+      {type:'quiz',q:'Welches ist ein typisches Warnsignal für eine Essstörung?',opts:['Gelegentlich keinen Hunger haben','Regelmäßiges Verbergen von Mahlzeiten und sozialer Rückzug beim Essen','Bestimmte Lebensmittel nicht mögen'],correct:1,fb:'Regelmäßiges Verbergen von Mahlzeiten und Rückzug beim gemeinsamen Essen sind ernsthafte Warnsignale – besonders wenn sie dauerhaft auftreten.'},
+    ]},
+    {title:'Umfeld: Wie helfen?',sub:'5 Min · Szenarien · In Entwicklung',content:[
+      {type:'text',h:'Ansprechen – aber wie?',p:'Das Umfeld spielt eine wichtige Rolle – kann aber auch schaden wenn es falsch reagiert. Der wichtigste Grundsatz: Keine Kommentare über Gewicht oder Aussehen – auch gut gemeinte nicht.'},
+      {type:'quiz',q:'Deine Freundin isst bei Treffen nie mit. Du machst dir Sorgen. Was sagst du?',opts:['"Du siehst viel zu dünn aus – iss doch endlich was!"','"Ich mache mir Sorgen um dich – nicht wegen deines Aussehens, sondern weil du mir wichtig bist."','Nichts – das ist ihre Entscheidung.'],correct:1,fb:'Sorge ohne Körperkommentar zeigen ist der richtige Weg. Nicht das Gewicht ansprechen, sondern die Person und die Beziehung in den Mittelpunkt stellen.'},
+      {type:'list',h:'Das Wichtigste für das Umfeld',items:['Keine Kommentare über Gewicht, Essen oder Körper – auch positive nicht.','Zur professionellen Hilfe ermutigen: Nationale Allianz für Essstörungen 0221 4931045.','Über Gefühle sprechen, nicht über Essen.','Eigene Belastung wahrnehmen – Angehörige brauchen auch Unterstützung.']},
     ]},
   ]},
 ];
@@ -1120,6 +1441,13 @@ let forumPosts=[
     {avatar:'🙋',name:'Anna M.',text:'Das ist so schön zu hören! Genau dafür ist diese App da 💙'},
   ]},
   {id:4,avatar:'🧔',bg:'#e8f0ff',name:'Marc B.',time:'vor 2 Tagen',text:'Buchempfehlungen zum Thema Depression für Angehörige? Suche noch mehr Input...',likes:7,replies:[]},
+  {id:5,avatar:'🧑',bg:'#fff4e0',name:'Mia S.',time:'vor 3 Tagen',text:'Ich wurde letzte Woche mit ADHS diagnostiziert – mit 28. Und plötzlich macht mein ganzes Leben Sinn. Hat hier jemand ähnliche Erfahrungen gemacht?',likes:41,replies:[
+    {avatar:'👩',name:'Lena R.',text:'Das kenne ich! Bei mir war es mit 26. Diese Erleichterung, endlich eine Erklärung zu haben – und dann auch noch Trauer, wegen all der Jahre davor.'},
+    {avatar:'🙋',name:'Anna M.',text:'Herzlichen Glückwunsch zu deiner Diagnose 💛 Auch wenn das komisch klingt – es ist ein echter Neuanfang.'},
+  ]},
+  {id:6,avatar:'🧔',bg:'#ffe8e8',name:'Stefan R.',time:'vor 4 Tagen',text:'Ich glaube ich bin kurz vor einem Burnout. Ich funktioniere noch – aber ich fühle schon lange nichts mehr. Wie habt ihr das erkannt bevor es zu spät war?',likes:29,replies:[
+    {avatar:'🧑',name:'Tom K.',text:'Bei mir war es genau so. Der Weckruf war, dass ich nach dem Urlaub genauso erschöpft zurückkam wie ich gefahren bin.'},
+  ]},
 ];
 let likedPosts=new Set();
 
@@ -1159,19 +1487,52 @@ function showSubpage(id){document.getElementById(id).classList.add('active');}
 function hideSubpage(id){document.getElementById(id).classList.remove('active');}
 function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
+// FEEDBACK
+function submitFeedback(){
+  const text=document.getElementById('feedbackText').value.trim();if(!text)return;
+  document.getElementById('feedbackBtn').style.display='none';
+  document.getElementById('feedbackSuccess').style.display='block';
+  document.getElementById('feedbackText').value='';
+}
+
+// PROFIL EDIT
+const avatarOptions=['🌱','🌸','🦋','💙','🌊','🧩','⭐','🌿','🎯','🧠'];
+let profileData={name:'',role:'',avatar:'🌱'};
+
+function renderAvatarGrid(){
+  const grid=document.getElementById('avatarGrid');
+  grid.innerHTML=avatarOptions.map(e=>`<div onclick="selectAvatar('${e}')" style="aspect-ratio:1;background:${profileData.avatar===e?'var(--dep-light)':'#f8f8fb'};border:2px solid ${profileData.avatar===e?'var(--dep)':'transparent'};border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;">${e}</div>`).join('');
+}
+
+function selectAvatar(e){profileData.avatar=e;renderAvatarGrid();}
+
+function openEditPage(){
+  document.getElementById('editName').value=profileData.name;
+  document.getElementById('editRole').value=profileData.role;
+  renderAvatarGrid();
+  showSubpage('editPage');
+}
+
+function saveProfile(){
+  profileData.name=document.getElementById('editName').value.trim();
+  profileData.role=document.getElementById('editRole').value.trim();
+  document.getElementById('profilName').textContent=profileData.name||'Dein Profil';
+  document.getElementById('profilRole').textContent=profileData.role||'MindBridge Nutzer:in';
+  document.getElementById('profilAvatar').textContent=profileData.avatar;
+  hideSubpage('editPage');
+}
+
 renderLernpfade();renderForum();
 
-// QR Code
 window.addEventListener('load', function() {
-  const url = window.location.href.replace('mindbridge-praesentation.html','mindbridge-vollbild.html');
-  document.getElementById('qrUrl').textContent = url;
   try {
     new QRCode(document.getElementById('qrcode'), {
-      text: url, width:140, height:140,
-      colorDark:'#1a1a2e', colorLight:'#ffffff',
+      text: 'https://wilpersalina22-stack.github.io/AppMindBridge/',
+      width: 160, height: 160,
+      colorDark: '#1a1a2e', colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.M
     });
-  } catch(e) {}
+  } catch(e) { console.log('QR:', e); }
 });
 </script>
 </body>
